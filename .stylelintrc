@@ -1,0 +1,19 @@
+{
+  "extends": "stylelint-config-standard",
+  "ignoreFiles": ["**/*.js"],
+  "rules": {
+    "indentation": "tab",
+    "number-leading-zero": "never",
+    "property-no-unknown": null,
+    "shorthand-property-no-redundant-values": null,
+    "rule-empty-line-before": [
+      "always-multi-line",
+      {
+          "except": [
+            "inside-block-and-after-rule",
+            "first-nested"
+          ]
+      }
+  ]
+  }
+}

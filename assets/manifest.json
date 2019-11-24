@@ -1,0 +1,14 @@
+{
+	"assets": {
+		"appfollow-ui.css": "css/appfollow-ui--fc7ae128.min.css",
+		"appfollow-ui.js": "appfollow-ui--ef20f0f3.min.js",
+		"appfollow-ui.map": "appfollow-ui--ef20f0f3.min.js.map"
+	},
+	"assetsLocal": {
+		"appfollow-ui.css": "assets/css/appfollow-ui.min.css",
+		"appfollow-ui.js": "assets/appfollow-ui.min.js",
+		"appfollow-ui.map": "assets/appfollow-ui.min.js.map"
+	},
+	"localPath": "http://127.0.0.1:8080",
+	"publicPath": "/assets"
+}

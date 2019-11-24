@@ -1,0 +1,41 @@
+{
+  "presets": [
+    "@babel/preset-react",
+    ["@babel/preset-env", {
+      "targets": {
+        "browsers": "last 10 versions"
+      },
+      "modules": false
+    }]
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "@babel/plugin-transform-runtime",
+        ["@babel/plugin-proposal-decorators", {"legacy": true}]
+      ]
+    },
+    "production": {
+      "plugins": [
+        "transform-react-remove-prop-types"
+      ]
+    }
+  },
+  "plugins": [
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
+    ["@babel/plugin-proposal-class-properties", { "loose" : true }],
+    "@babel/plugin-proposal-json-strings",
+    "@babel/plugin-transform-modules-commonjs",
+    "@babel/plugin-transform-react-display-name",
+    "@babel/plugin-transform-runtime",
+    "transform-async-generator-functions",
+    "babel-plugin-lodash",
+    ["module-resolver", {
+      "alias": {
+        "app": "./js/app",
+        "css": "./css",
+        "nextjs": "./nextjs",
+      }
+    }]
+  ]
+}
