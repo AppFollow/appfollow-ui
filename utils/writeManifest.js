@@ -9,7 +9,7 @@ module.exports = function(output, options) {
 			const data = {
 				assets: {},
 				assetsLocal: {},
-				localPath: 'http://127.0.0.1:8080',
+				localPath: 'http://127.0.0.1:8079',
 			};
 			const hashLength = 8;
 
