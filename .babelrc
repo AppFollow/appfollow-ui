@@ -32,9 +32,8 @@
     "babel-plugin-lodash",
     ["module-resolver", {
       "alias": {
-        "app": "./js/app",
-        "css": "./css",
-        "nextjs": "./nextjs",
+        "app": "./src/app",
+        "css": "./src/css",
       }
     }]
   ]

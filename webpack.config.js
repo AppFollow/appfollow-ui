@@ -83,8 +83,8 @@ const postcssLoaderProd = [
 ];
 
 const alias = {
-	'app': path.resolve('src/app'),
-	'css': path.resolve('src/css'),
+	app: path.resolve(__dirname, 'src/app'),
+	css: path.resolve(__dirname, 'src/css'),
 };
 
 if (__DEV__) {
@@ -100,10 +100,11 @@ module.exports = {
 	output: {
 		filename: `${chunkNameJs}.js`,
 		path: distDir,
-		publicPath: `/assets`,
+		publicPath: '/assets',
 	},
 	entry: {
 		'appfollow-ui': './src/index.js',
+		'stylebook': './src/stylebook.js',
 	},
 	resolve: {
 		modules: ['node_modules', path.resolve(__dirname, 'js')],
@@ -118,7 +119,7 @@ module.exports = {
 		showStartTimestamp,
 		new CleanWebpackPlugin({
 			verbose: true,
-			cleanOnceBeforeBuildPatterns: ['./data/'],
+			cleanOnceBeforeBuildPatterns: ['./assets/'],
 		}),
 		new WriteFilePlugin(),
 		new ProgressBarPlugin(),
@@ -138,7 +139,7 @@ module.exports = {
 			publicPath: '/assets',
 		}),
 		new WebpackNotifierPlugin({
-			title: 'Appfollow',
+			title: 'Appfollow UI',
 			alwaysNotify: true,
 		}),
 		miniExtractCSS,
@@ -177,7 +178,7 @@ module.exports = {
 						},
 					},
 				],
-				include: path.resolve(__dirname, 'js'),
+				include: path.resolve(__dirname, 'src'),
 			},
 			{
 				test: /\.(css|scss)$/,
@@ -194,7 +195,7 @@ module.exports = {
 	devServer: {
 		publicPath: '/assets/',
 		contentBase: __dirname,
-		port: 8080,
+		port: 8079,
 		headers: {
 			'Access-Control-Allow-Origin': '*',
 			'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
