@@ -1,9 +1,9 @@
 export const Main = () => (
-	<div>
-		<h2>Main</h2>
+  <div>
+    <h2>Main</h2>
 
-		<br />
+    <br />
 
-		<p>test</p>
-	</div>
+    <p>test</p>
+  </div>
 );

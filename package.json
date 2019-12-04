@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "Appfollow UI",
   "scripts": {
-    "preinstall": "echo node $(node -v) && echo npm $(npm -v)",
     "build": "cross-env NODE_ENV=production cross-env TYPE=instance webpack --progress",
     "dev": "cross-env LOCAL=local webpack-dev-server",
-    "style:fix": "stylelint *.css ./src/css --fix; exit 0"
+    "css:fix": "stylelint *.css ./src/css --fix; exit 0",
+    "js:fix": "eslint *.js ./src/app --fix; exit 0",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -53,7 +55,6 @@
     "eslint-plugin-react": "7.12.4",
     "eslint-plugin-react-hooks": "2.0.1",
     "file-loader": "4.2.0",
-    "history": "4.9.0",
     "lodash": "4.17.15",
     "mini-css-extract-plugin": "0.5.0",
     "node-sass": "4.12.0",
@@ -83,5 +84,11 @@
     "webpack-dev-server": "3.8.0",
     "webpack-notifier": "1.8.0",
     "write-file-webpack-plugin": "4.5.1"
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^5.2.8",
+    "@storybook/addon-links": "^5.2.8",
+    "@storybook/addons": "^5.2.8",
+    "@storybook/react": "^5.2.8"
   }
 }

@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-import 'css/main.scss';
+import 'scss/main.scss';
 import ReactDOM from 'react-dom';
 import {Layout} from './app/Layout';
 

@@ -53,7 +53,7 @@ module.exports = {
 		'no-nested-ternary': 'off',
 		'jsx-a11y/click-events-have-key-events': 'off',
 		'no-unused-vars': ['error', {'varsIgnorePattern': '^styles$'}],
-		'indent': ['error', 'tab', {SwitchCase: 1}],
+		'indent': ['error', 2, {SwitchCase: 1}],
 		'no-multiple-empty-lines': ["error", {'max': 1, 'maxEOF': 0, 'maxBOF': 0}],
 		'implicit-arrow-linebreak': 'off',
 		'jsx-a11y/anchor-is-valid': ['error', {
@@ -129,7 +129,7 @@ module.exports = {
 		"react/jsx-no-undef": [2, {"allowGlobals": true}],
 		"react/no-did-update-set-state": 'off',
 		"react/no-did-mount-set-state": 'off',
-		'react/jsx-indent-props': ['error', 'tab'],
+		'react/jsx-indent-props': ['error', 2],
 		"react/jsx-filename-extension": [1, {"extensions": [".js"]}],
 		'react/jsx-key': 'error',
 		'react/no-danger': 'off',
@@ -149,7 +149,7 @@ module.exports = {
 			"prop": "parens"
 		}],
 		'react/jsx-no-bind': 'warn',
-		'react/jsx-indent': ['error', 'tab'],
+		'react/jsx-indent': ['error', 2],
 		'react/jsx-one-expression-per-line': 'off',
 		'jsx-a11y/label-has-for': 'off',
 		'jsx-a11y/label-has-associated-control': 'off',
