@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "Appfollow UI",
   "scripts": {
-    "preinstall": "echo node $(node -v) && echo npm $(npm -v)",
     "build": "cross-env NODE_ENV=production cross-env TYPE=instance webpack --progress",
     "dev": "cross-env LOCAL=local webpack-dev-server",
-    "style:fix": "stylelint *.css ./src/css --fix; exit 0"
+    "css:fix": "stylelint *.css ./src/css --fix; exit 0",
+    "js:fix": "eslint *.js ./src/app --fix; exit 0"
   },
   "repository": {
     "type": "git",
@@ -53,7 +53,6 @@
     "eslint-plugin-react": "7.12.4",
     "eslint-plugin-react-hooks": "2.0.1",
     "file-loader": "4.2.0",
-    "history": "4.9.0",
     "lodash": "4.17.15",
     "mini-css-extract-plugin": "0.5.0",
     "node-sass": "4.12.0",
