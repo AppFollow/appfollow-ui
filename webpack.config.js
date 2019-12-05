@@ -1,4 +1,6 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 const path = require('path');
+
 const __DEV__ = process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test';
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const WriteFilePlugin = require('write-file-webpack-plugin');
@@ -104,7 +106,6 @@ module.exports = {
   },
   entry: {
     'appfollow-ui': './src/index.js',
-    // 'stylebook': './src/stylebook.js',
   },
   resolve: {
     modules: ['node_modules', path.resolve(__dirname, 'js')],
@@ -192,15 +193,5 @@ module.exports = {
   },
   performance: {
     hints: false,
-  },
-  devServer: {
-    publicPath: '/assets/',
-    contentBase: __dirname,
-    port: 8079,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
-      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
-    },
   },
 };
