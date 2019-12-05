@@ -6,7 +6,9 @@
     "build": "cross-env NODE_ENV=production cross-env TYPE=instance webpack --progress",
     "dev": "cross-env LOCAL=local webpack-dev-server",
     "css:fix": "stylelint *.css ./src/css --fix; exit 0",
-    "js:fix": "eslint *.js ./src/app --fix; exit 0"
+    "js:fix": "eslint *.js ./src/app --fix; exit 0",
+    "stylebook:dev": "npx styleguidist server",
+    "stylebook:build": "npx styleguidist build"
   },
   "repository": {
     "type": "git",
@@ -70,9 +72,11 @@
     "postcss-sorting": "5.0.1",
     "precss": "4.0.0",
     "progress-bar-webpack-plugin": "1.12.1",
+    "prop-types": "15.7.2",
     "react": "16.9.0",
     "react-dom": "16.9.0",
     "react-router-dom": "5.0.1",
+    "react-styleguidist": "^10.2.1",
     "stylelint": "9.10.1",
     "stylelint-config-standard": "18.3.0",
     "uglifyjs-webpack-plugin": "2.2.0",

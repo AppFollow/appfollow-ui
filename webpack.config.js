@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 const path = require('path');
 const __DEV__ = process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test';
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
@@ -129,6 +128,7 @@ module.exports = {
       React: 'react',
       moment: 'moment',
       classNames: 'classnames',
+      PropTypes: 'prop-types',
     }),
     new webpack.DefinePlugin({
       'process.env': {
