@@ -1,15 +1,243 @@
 /*
  * https://www.figma.com/file/qMezLwJn7RUX3cqHoMpHiq/Colours?node-id=2%3A27
  */
-
 .ui-button {
-  color: #36c55f;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 8px 15px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 3px;
+  text-shadow: none;
+  text-indent: 0;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  letter-spacing: .02em;
+  text-align: center;
+  word-spacing: normal;
+  text-transform: none;
+  -webkit-transition:
+    opacity .1s ease,
+    background-color .1s ease,
+    color .1s ease,
+    box-shadow .1s ease,
+    background .1s ease;
+  transition:
+    opacity .1s ease,
+    background-color .1s ease,
+    color .1s ease,
+    box-shadow .1s ease,
+    background .1s ease;
+
+  background-color: #1c76cc;
+
+  border-color: #1c76cc
 }
+.ui-button:hover {
+    background-color: #2380da;
+    border-color: #2380da;
+  }
+.ui-button.ui-button--loading {
+    background-color: #1c76cc;
+    border-color: #1c76cc;
+  }
+.ui-button.ui-button--disabled {
+    background-color: #8ebbe6;
+    border-color: #8ebbe6;
+  }
+.ui-button.ui-button--basic {
+    background-color: transparent;
+    color: #1c76cc
+  }
+.ui-button.ui-button--basic:hover {
+    background-color: transparent;
+  }
+.ui-button.ui-button--basic.ui-button--disabled {
+      background-color: transparent;
+      color: #8ebbe6;
+    }
+.ui-button.ui-button--basic.ui-button--disabled:hover {
+    background-color: transparent;
+  }
+.ui-button.ui-button--basic.ui-button--loading::after {
+        border-color: #1c76cc;
+      }
+.ui-button:focus {
+    outline: none;
+  }
+.ui-button--loading {
+    color: transparent !important;
+    cursor: default;
+    position: relative
+  }
+.ui-button--loading::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 16px;
+      height: 16px;
+      border-radius: 8px;
+      border: 1px solid #fff;
+      margin-top: -8px;
+      margin-left: -8px;
+    }
+.ui-button--disabled {
+    cursor: default;
+  }
+.ui-button--action {
+    background-color: #00bebe;
+    border-color: #00bebe;
+  }
+.ui-button--action:hover {
+    background-color: #21c6c5;
+    border-color: #21c6c5;
+  }
+.ui-button--action.ui-button--loading {
+    background-color: #00bebe;
+    border-color: #00bebe;
+  }
+.ui-button--action.ui-button--disabled {
+    background-color: #80dfdf;
+    border-color: #80dfdf;
+  }
+.ui-button--action.ui-button--basic {
+    background-color: transparent;
+    color: #00bebe
+  }
+.ui-button--action.ui-button--basic:hover {
+    background-color: transparent;
+  }
+.ui-button--action.ui-button--basic.ui-button--disabled {
+      background-color: transparent;
+      color: #80dfdf;
+    }
+.ui-button--action.ui-button--basic.ui-button--disabled:hover {
+    background-color: transparent;
+  }
+.ui-button--action.ui-button--basic.ui-button--loading::after {
+        border-color: #00bebe;
+      }
+.ui-button--service {
+    background-color: #f2f2f2;
+    border-color: #f2f2f2
+  }
+.ui-button--service:hover {
+    background-color: #eaebed;
+    border-color: #eaebed;
+  }
+.ui-button--service.ui-button--loading {
+    background-color: #f2f2f2;
+    border-color: #f2f2f2;
+  }
+.ui-button--service.ui-button--disabled {
+    background-color: #f7f7f7;
+    border-color: #f7f7f7;
+  }
+.ui-button--service.ui-button--basic {
+    background-color: transparent;
+    color: #f2f2f2
+  }
+.ui-button--service.ui-button--basic:hover {
+    background-color: transparent;
+  }
+.ui-button--service.ui-button--basic.ui-button--disabled {
+      background-color: transparent;
+      color: #f7f7f7;
+    }
+.ui-button--service.ui-button--basic.ui-button--disabled:hover {
+    background-color: transparent;
+  }
+.ui-button--service.ui-button--basic.ui-button--loading::after {
+        border-color: #f2f2f2;
+      }
+.ui-button--service {
+
+    color: #1c76cc
+  }
+.ui-button--service:hover {
+      color: #637889;
+    }
+.ui-button--service.ui-button--disabled {
+      color: #b2bed0;
+    }
+.ui-button--service.ui-button--loading::after {
+        border-color: #1c76cc;
+      }
+.ui-button--subscriptionPositive {
+    background-color: #36c55f;
+    border-color: #36c55f;
+  }
+.ui-button--subscriptionPositive:hover {
+    background-color: #36c55f;
+    border-color: #36c55f;
+  }
+.ui-button--subscriptionPositive.ui-button--loading {
+    background-color: #36c55f;
+    border-color: #36c55f;
+  }
+.ui-button--subscriptionPositive.ui-button--disabled {
+    background-color: #86dc9f;
+    border-color: #86dc9f;
+  }
+.ui-button--subscriptionPositive.ui-button--basic {
+    background-color: transparent;
+    color: #36c55f
+  }
+.ui-button--subscriptionPositive.ui-button--basic:hover {
+    background-color: transparent;
+  }
+.ui-button--subscriptionPositive.ui-button--basic.ui-button--disabled {
+      background-color: transparent;
+      color: #86dc9f;
+    }
+.ui-button--subscriptionPositive.ui-button--basic.ui-button--disabled:hover {
+    background-color: transparent;
+  }
+.ui-button--subscriptionPositive.ui-button--basic.ui-button--loading::after {
+        border-color: #36c55f;
+      }
+.ui-button--subscriptionNegative {
+    background-color: #fd334b;
+    border-color: #fd334b;
+  }
+.ui-button--subscriptionNegative:hover {
+    background-color: #fd334b;
+    border-color: #fd334b;
+  }
+.ui-button--subscriptionNegative.ui-button--loading {
+    background-color: #fd334b;
+    border-color: #fd334b;
+  }
+.ui-button--subscriptionNegative.ui-button--disabled {
+    background-color: #ff8492;
+    border-color: #ff8492;
+  }
+.ui-button--subscriptionNegative.ui-button--basic {
+    background-color: transparent;
+    color: #fd334b
+  }
+.ui-button--subscriptionNegative.ui-button--basic:hover {
+    background-color: transparent;
+  }
+.ui-button--subscriptionNegative.ui-button--basic.ui-button--disabled {
+      background-color: transparent;
+      color: #ff8492;
+    }
+.ui-button--subscriptionNegative.ui-button--basic.ui-button--disabled:hover {
+    background-color: transparent;
+  }
+.ui-button--subscriptionNegative.ui-button--basic.ui-button--loading::after {
+        border-color: #fd334b;
+      }
 
 /*
  * https://www.figma.com/file/qMezLwJn7RUX3cqHoMpHiq/Colours?node-id=2%3A27
  */
-
 .xx {
   background-color: red;
 }

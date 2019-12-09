@@ -1,31 +1,30 @@
 /*
  * https://www.figma.com/file/qMezLwJn7RUX3cqHoMpHiq/Colours?node-id=2%3A27
  */
+$regularColor: #1c76cc;
+$regularHoverColor: #2380da;
+$regularDisabledColor: #8ebbe6;
+$regularLoadingColor: #1c76cc;
 
-$subscriptionColor: #36c55f;
-$subscriptionHoverColor: #36c55f;
-$subscriptionDisabledColor: #86dc9f;
-$subscriptionLoadingColor: #36c55f;
-
-$subscriptionErrorColor: #fd334b;
-$subscriptionErrorHoverColor: #fd334b;
-$subscriptionErrorDisabledColor: #ff8492;
-$subscriptionErrorLoadingColor: #fd334b;
-
-$addActionColor: #00bebe;
-$addActionHoverColor: #21c6c5;
-$addActionDisabledColor: #80dfdf;
-$addActionLoadingColor: #00bebe;
-
-$actionColor: #1c76cc;
-$actionHoverColor: #2380da;
-$actionDisabledColor: #8ebbe6;
-$actionLoadingColor: #1c76cc;
+$actionColor: #00bebe;
+$actionHoverColor: #21c6c5;
+$actionDisabledColor: #80dfdf;
+$actionLoadingColor: #00bebe;
 
 $serviceColor: #f2f2f2;
 $serviceHoverColor: #eaebed;
 $serviceDisabledColor: #f7f7f7;
 $serviceLoadingColor: #f2f2f2;
+
+$subscriptionPositiveColor: #36c55f;
+$subscriptionPositiveHoverColor: #36c55f;
+$subscriptionPositiveDisabledColor: #86dc9f;
+$subscriptionPositiveLoadingColor: #36c55f;
+
+$subscriptionNegativeColor: #fd334b;
+$subscriptionNegativeHoverColor: #fd334b;
+$subscriptionNegativeDisabledColor: #ff8492;
+$subscriptionNegativeLoadingColor: #fd334b;
 
 $mainTextColor: #0a1b2a;
 $addText1Color: #1e384e;
@@ -51,28 +50,3 @@ $rating1Color: #f05f3a;
 $ratingLowColor: #cb4747;
 $ratingLow2Color: #b60000;
 $ratingLow3Color: #790909;
-
-$subscriptionOfferColor: #73df70;
-$subscriptionOfferHoverColor: #78e075;
-$subscriptionOfferDisabledColor: #aae6a8;
-$subscriptionOfferLoadingColor: #73df70;
-
-$subscriptionOffer1Color: #36c55f;
-$subscriptionOffer1HoverColor: #34d562;
-$subscriptionOffer1DisabledColor: #86dc9f;
-$subscriptionOffer1LoadingColor: #36c55f;
-
-$subscriptionOffer2Color: #4aaa93;
-$subscriptionOffer2HoverColor: #50b39b;
-$subscriptionOffer2DisabledColor: #a0d4c7;
-$subscriptionOffer2LoadingColor: #4aaa93;
-
-$subscriptionOffer3Color: #438080;
-$subscriptionOffer3HoverColor: #4b8f8f;
-$subscriptionOffer3DisabledColor: #97c4c4;
-$subscriptionOffer3LoadingColor: #438080;
-
-$subscriptionOfferEnterpriceColor: #1e384e;
-$subscriptionOfferEnterpriceHoverColor: #254967;
-$subscriptionOfferEnterpriceDisabledColor: #a9becf;
-$subscriptionOfferEnterpriceLoadingColor: #1e384e;

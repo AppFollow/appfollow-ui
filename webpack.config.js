@@ -128,8 +128,7 @@ module.exports = {
       _: 'lodash',
       React: 'react',
       moment: 'moment',
-      classNames: 'classnames',
-      PropTypes: 'prop-types',
+      cx: 'classnames',
     }),
     new webpack.DefinePlugin({
       'process.env': {

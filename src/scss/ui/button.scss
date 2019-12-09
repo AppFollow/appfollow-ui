@@ -1,3 +1,122 @@
+$transitionAnimation: .1s ease;
+
+@define-mixin fillButton $color {
+  background-color: $color;
+  border-color: $color;
+}
+
+@define-mixin fillBasicButton $color {
+  background-color: transparent;
+  color: $color;
+
+  &:hover {
+    background-color: transparent;
+  }
+}
+
+@define-mixin setColorButton $main, $hover, $disabled, $loading {
+  @mixin fillButton $main;
+
+  &:hover {
+    @mixin fillButton $hover;
+  }
+  &.ui-button--loading {
+    @mixin fillButton $loading;
+  }
+  &.ui-button--disabled {
+    @mixin fillButton $disabled;
+  }
+  &.ui-button--basic {
+    @mixin fillBasicButton $main;
+
+    &.ui-button--disabled {
+      @mixin fillBasicButton $disabled;
+    }
+    &.ui-button--loading {
+      &::after {
+        border-color: $loading;
+      }
+    }
+  }
+}
+
 .ui-button {
-  color: $subscriptionColor;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 8px 15px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 3px;
+  text-shadow: none;
+  text-indent: 0;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  letter-spacing: .02em;
+  text-align: center;
+  word-spacing: normal;
+  text-transform: none;
+  transition:
+    opacity $transitionAnimation,
+    background-color $transitionAnimation,
+    color $transitionAnimation,
+    box-shadow $transitionAnimation,
+    background $transitionAnimation,
+    -webkit-box-shadow $transitionAnimation;
+
+  @mixin setColorButton $regularColor, $regularHoverColor, $regularDisabledColor, $regularLoadingColor;
+
+  &:focus {
+    outline: none;
+  }
+  &--loading {
+    color: transparent !important;
+    cursor: default;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 16px;
+      height: 16px;
+      border-radius: 8px;
+      border: 1px solid #fff;
+      margin-top: -8px;
+      margin-left: -8px;
+    }
+  }
+  &--disabled {
+    cursor: default;
+  }
+  &--action {
+    @mixin setColorButton $actionColor, $actionHoverColor, $actionDisabledColor, $actionLoadingColor;
+  }
+  &--service {
+    @mixin setColorButton $serviceColor, $serviceHoverColor, $serviceDisabledColor, $serviceLoadingColor;
+
+    color: $regularColor;
+
+    &:hover {
+      color: $addText2Color;
+    }
+    &.ui-button--disabled {
+      color: $borderColor;
+    }
+    &.ui-button--loading {
+      &::after {
+        border-color: $regularColor;
+      }
+    }
+  }
+  &--subscriptionPositive {
+    @mixin setColorButton $subscriptionPositiveColor, $subscriptionPositiveHoverColor, $subscriptionPositiveDisabledColor, $subscriptionPositiveLoadingColor;
+  }
+  &--subscriptionNegative {
+    @mixin setColorButton $subscriptionNegativeColor, $subscriptionNegativeHoverColor, $subscriptionNegativeDisabledColor, $subscriptionNegativeLoadingColor;
+  }
 }

@@ -167,7 +167,7 @@ module.exports = {
     'app': true,
     'i18n': true,
     '_': true,
-    'classNames': true,
+    'cx': true,
     'Intercom': true,
     'queryString': true,
   },
