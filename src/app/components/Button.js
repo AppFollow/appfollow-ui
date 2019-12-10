@@ -6,11 +6,12 @@ import PropTypes from 'prop-types';
  *
  * @author [Alec Zvoncov](https://github.com/offcall)
  */
-export const Button = props => {
+const ButtonComponent = props => {
   const {
     content,
     children,
     type,
+    color,
     size,
     disabled,
     loading,
@@ -18,18 +19,20 @@ export const Button = props => {
     ...otherProps
   } = props;
   const ElementType = getElementType(Button, props);
-  const className = cx(
+
+  const colorClassName = type === 'custom' ? color : type;
+  const className = cn(
     'ui-button',
+    `ui-button--${colorClassName}`,
     {
-      [`ui-button--${type}`]: type && type !== Button.defaultProps.type,
-      [`ui-button--${size}`]: size && size !== Button.defaultProps.size,
+      [`ui-button--${size}`]: size && size !== ButtonComponent.defaultProps.size,
       'ui-button--disabled': disabled,
       'ui-button--loading': loading,
       'ui-button--basic': basic,
     },
-    otherProps.className,
   );
-  const renderProps = _.omit(otherProps, 'as');
+  // eslint-disable-next-line no-unused-vars
+  const {as, ...renderProps} = otherProps;
 
   if (ElementType === 'button') {
     renderProps.type = 'button';
@@ -45,28 +48,87 @@ export const Button = props => {
   );
 };
 
-Button.propTypes = {
+ButtonComponent.displayName = 'Button';
+ButtonComponent.propTypes = {
   /**
-   * Тип элемента для отображение
+   * Тип элемента при отображении (тег или компонент)
    */
   as: PropTypes.oneOfType([
     PropTypes.string,
+    PropTypes.elementType,
+  ]),
+  /**
+   * Содержание кнопки
+   */
+  children: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
     PropTypes.element,
+    PropTypes.array,
+  ]),
+  /**
+   * Сокращенный вариант содержания кнопки
+   */
+  content: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+    PropTypes.element,
+    PropTypes.array,
   ]),
   /**
    * Тип кнопки
+   *
+   * One of: default, primary, secondary, custom
    */
-  type: PropTypes.oneOf([
-    'regular',
-    'action',
-    'service',
-    'subscriptionPositive',
-    'subscriptionNegative',
-  ]),
+  type: (props, propName, componentName) => {
+    let error;
+
+    const {color, type} = props;
+    const isCustom = type === 'custom';
+
+    // Если type === custom, a color не указан
+    if (isCustom && !color) {
+      error = new Error(`\`${componentName}\` color must be specified if type=custom.`);
+    }
+
+    const avaibleValues = ['default', 'primary', 'secondary', 'custom'];
+
+    if (type && !avaibleValues.includes(type)) {
+      // eslint-disable-next-line max-len
+      error = new Error(`Invalid prop \`type\` of value \`${type}\` supplied to \`${componentName}\`, expected one of ["${avaibleValues.join('", "')}"].`);
+    }
+
+    return error;
+  },
   /**
    * Размер кнопки
    */
-  size: PropTypes.oneOf(['regular', 'big']),
+  size: PropTypes.oneOf(['normal', 'big']),
+  /**
+   * Цвет кнопки
+   *
+   * One of: reg, green
+   */
+  color: (props, propName, componentName) => {
+    let error;
+
+    const isCustom = props.type === 'custom';
+    const {color} = props;
+
+    // Если указан color, но type !== custom
+    if (!isCustom && color) {
+      error = new Error(`\`${componentName}\` color can be used if type=custom.`);
+    }
+
+    const avaibleValues = ['red', 'green'];
+
+    if (color && !avaibleValues.includes(color)) {
+      // eslint-disable-next-line max-len
+      error = new Error(`Invalid prop \`color\` of value \`${color}\` supplied to \`${componentName}\`, expected one of ["${avaibleValues.join('", "')}"].`);
+    }
+
+    return error;
+  },
   /**
    * Если нужно установить индикатор загрузки
    */
@@ -81,11 +143,16 @@ Button.propTypes = {
   basic: PropTypes.bool,
 };
 
-Button.defaultProps = {
+ButtonComponent.defaultProps = {
   as: 'button',
-  type: 'regular',
-  size: 'regular',
+  children: null,
+  content: null,
+  type: 'default',
+  size: 'normal',
+  color: '',
   disabled: false,
   loading: false,
   basic: false,
 };
+
+export const Button = React.memo(ButtonComponent);

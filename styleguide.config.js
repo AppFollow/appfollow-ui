@@ -4,8 +4,8 @@ const path = require('path');
 module.exports = {
   title: 'AppFollow UI',
   require: [
-    path.join(__dirname, 'src/scss/index.scss'),
-    path.join(__dirname, 'src/scss/stylebook.scss'),
+    path.join(__dirname, 'src/css/index.css'),
+    path.join(__dirname, 'src/css/stylebook.css'),
   ],
   ribbon: {
     url: 'https://github.com/sharifulin/appfollow-ui',

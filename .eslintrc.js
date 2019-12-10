@@ -159,16 +159,7 @@ module.exports = {
   },
   'globals': {
     'React': true,
-    '$': true,
-    'analytics': true,
-    '_mfq': true,
-    'jQuery': true,
-    'moment': true,
     'app': true,
-    'i18n': true,
-    '_': true,
-    'cx': true,
-    'Intercom': true,
-    'queryString': true,
+    'cn': true,
   },
 };

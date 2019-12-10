@@ -18,7 +18,8 @@ _Inline/
 log/
 node_modules/
 tmp/
-/assets
+assets/
+styleguide/
 
 .DS_Store
 .eslintcache
