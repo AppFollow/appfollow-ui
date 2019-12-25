@@ -1,0 +1,139 @@
+$transitionAnimation: .3s ease;
+
+@define-mixin fillButton $fillColor {
+  background-color: $fillColor;
+  border-color: $fillColor;
+}
+
+@define-mixin fillBasicButton $borderColor, $hoverFill, $colorHover:#fff {
+  background-color: transparent;
+  color: $borderColor;
+
+  &:hover:not(.ui-button--disabled, .ui-button--loading) {
+    background-color: $hoverFill;
+    color: $colorHover;
+    border-color: $hoverFill;
+  }
+  &.ui-button--loading::after {
+    border-color: $borderColor;
+  }
+}
+
+@define-mixin setColorButton $main, $hover, $disabled {
+  @mixin fillButton $main;
+
+  &:hover:not(.ui-button--disabled, .ui-button--loading, .ui-button--basic) {
+    @mixin fillButton $hover;
+  }
+  &.ui-button--loading {
+    @mixin fillButton $main;
+  }
+  &.ui-button--disabled {
+    @mixin fillButton $disabled;
+
+    &.ui-button--basic {
+      color: $disabled;
+
+      &.ui-button--loading::after {
+        border-color: $disabled;
+      }
+    }
+  }
+  &.ui-button--basic {
+    @mixin fillBasicButton $main, $hover;
+  }
+}
+
+.ui-button {
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 8px 15px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 3px;
+  text-shadow: none;
+  text-indent: 0;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  letter-spacing: .02em;
+  text-align: center;
+  word-spacing: normal;
+  text-transform: none;
+  transition:
+    opacity $transitionAnimation,
+    background-color $transitionAnimation,
+    color $transitionAnimation,
+    box-shadow $transitionAnimation,
+    background $transitionAnimation,
+    -webkit-box-shadow $transitionAnimation;
+
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .18);
+  }
+  &--disabled:hover,
+  &--loading:hover,
+  &--basic:hover,
+  &--default:hover {
+    box-shadow: none;
+  }
+  &--loading {
+    color: transparent !important;
+    cursor: default;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 16px;
+      height: 16px;
+      border-radius: 8px;
+      border: 1px solid #fff;
+      margin-top: -9px;
+      margin-left: -8px;
+    }
+  }
+  &--disabled {
+    cursor: default;
+  }
+  &--primary {
+    @mixin setColorButton $blue, $blue__hover, $blue__disabled;
+  }
+  &--secondary {
+    @mixin setColorButton $teal, $teal__hover, $teal__disabled;
+  }
+  &--default {
+    color: $blue;
+
+    @mixin setColorButton $grey, $grey__hover, $grey__disabled;
+
+    &:hover {
+      color: $steel;
+    }
+    &.ui-button--disabled {
+      color: $silver;
+    }
+    &.ui-button--loading {
+      &::after {
+        border-color: $blue;
+      }
+    }
+  }
+  &--green {
+    @mixin setColorButton $green, $green__hover, $green__disabled;
+  }
+  &--red {
+    @mixin setColorButton $red, $red__hover, $red__disabled;
+  }
+  &--big {
+    padding: 15px 24px;
+  }
+}

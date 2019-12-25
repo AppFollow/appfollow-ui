@@ -1,0 +1,70 @@
+/*
+ * https://www.figma.com/file/qMezLwJn7RUX3cqHoMpHiq/Colours?node-id=2%3A27
+ */
+
+/* Green */
+$green: #36c55f;
+$green__hover: #34d562;
+$green__disabled: #86dc9f;
+
+/* Red */
+$red: #fd334b;
+$red__hover: #ff435a;
+$red__disabled: #ff8492;
+
+/* Blue */
+$blue: #1c76cc;
+$blue__hover: #2380da;
+$blue__disabled: #8ebbe6;
+
+/* Teal */
+$teal: #00bebe;
+$teal__hover: #21c6c5;
+$teal__disabled: #80dfdf;
+
+/* Grey */
+$grey: #f2f2f2;
+$grey__hover: #eaebed;
+$grey__disabled: #f7f7f7;
+
+/* Text */
+$dark: #0a1b2a;
+$graphite: #1e384e;
+$steel: #637889;
+$silver: #b2bed0;
+$stone: #d4d4d5;
+$snow: #fafafa;
+$cream: #fff6d4;
+
+/* Rating */
+$ratingHigh3Color: #004f5a;
+$ratingHigh2Color: #007020;
+$ratingHigh1Color: #3a9754;
+$rating5Color: #66b47c;
+$rating4Color: #99c95d;
+$rating3Color: #fac718;
+$rating2Color: #f48e1f;
+$rating1Color: #f05f3a;
+$ratingLow1Color: #cb4747;
+$ratingLow2Color: #b60000;
+$ratingLow3Color: #790909;
+
+/* Tags */
+$tags50Color: #36c55f;
+$tags80Color: #edbc2f;
+$tags100Color: #fd334b;
+$tagsEmptyColor: #999;
+
+/* Extra Colors */
+$sun: #edbc2f;
+$sky: #55b1f4;
+
+/* Messages Banners Background */
+$bannerBlue: #f5fcfc;
+$bannerYellow: #fffcf1;
+$bannerRed: #fff7f8;
+
+/* Messages Banners Border */
+$bannerBorderBlue: #b3ecec;
+$bannerBorderYellow: #fceebd;
+$bannerBorderRed: #fec2c9;

@@ -1,0 +1,109 @@
+@import "ui/color.css";
+
+html * {
+  box-sizing: border-box;
+}
+
+.color {
+  &-table {
+    &__row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+    }
+    &__text {
+      width: 100px;
+      text-align: center;
+      line-height: 20px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+  }
+  &-item {
+    width: 100px;
+    height: 100px;
+    border-radius: 4px;
+    color: #fff;
+    margin-right: 10px;
+    margin-bottom: 10px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+    &__name,
+    &__color {
+      line-height: 50px;
+      font-size: 10px;
+      box-sizing: border-box;
+      display: block;
+      cursor: pointer;
+      opacity: 0;
+      text-align: center;
+      transition: all .3s;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, .1);
+      }
+    }
+    &__color {
+      font-size: 18px;
+    }
+    &:hover {
+      .color-item__name,
+      .color-item__color {
+        opacity: 1;
+      }
+    }
+    &--inverted {
+      color: $graphite;
+    }
+  }
+}
+
+.comments {
+  &__btn {
+    font-size: 15px;
+    color: rgb(118, 118, 118);
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 8px 0;
+    background: transparent;
+    transition: color 750ms ease-out 0s;
+    line-height: normal;
+    border-bottom: 2px solid rgb(238, 153, 0);
+    height: 36px;
+    display: inline-block;
+
+    &:hover {
+      color: rgb(238, 153, 0);
+    }
+  }
+}
+
+.button-table {
+  width: 100%;
+
+  td {
+    text-align: left;
+    padding-right: 20px;
+  }
+  &__head {
+    color: $graphite;
+    font-weight: bold;
+
+    td {
+      padding-bottom: 30px;
+    }
+  }
+  &__line {
+    color: $steel;
+    font-size: 11px;
+
+    td {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      border-top: 1px solid #eceff3;
+    }
+  }
+}
