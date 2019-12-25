@@ -2,7 +2,8 @@
   "extends": "stylelint-config-standard",
   "ignoreFiles": ["**/*.js"],
   "rules": {
-    "indentation": "tab",
+    "at-rule-no-unknown": null,
+    "indentation": 2,
     "number-leading-zero": "never",
     "property-no-unknown": null,
     "shorthand-property-no-redundant-values": null,

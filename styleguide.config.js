@@ -1,33 +1,45 @@
-// https://react-styleguidist.js.org/docs/components.html
 // eslint-disable-next-line import/no-extraneous-dependencies
 const path = require('path');
 
 module.exports = {
   title: 'AppFollow UI',
-  // components: 'src/app/components/**/[A-Z]*.js',
   require: [
-    path.join(__dirname, 'src/scss/index.scss'),
-    path.join(__dirname, 'src/scss/stylebook.scss'),
+    path.join(__dirname, 'src/css/index.css'),
+    path.join(__dirname, 'src/css/stylebook.css'),
   ],
+  ribbon: {
+    url: 'https://github.com/sharifulin/appfollow-ui',
+    text: 'GitHub',
+  },
+  pagePerSection: true,
   sections: [
     {
       name: 'Welcome',
+      content: 'readme.md',
       sections: [
-        {
-          name: 'Github',
-          href: 'https://github.com/sharifulin/appfollow-ui',
-        },
         {
           name: 'Color',
           content: 'docs/color.md',
         },
       ],
+      sectionDepth: 1,
     },
     {
       name: 'Components',
-      components: 'src/app/components/**/[A-Z]*.js',
-      exampleMode: 'expand',
+      components: 'src/app/components/[A-Z]*.js',
+      exampleMode: 'collapse',
       usageMode: 'expand',
+      sectionDepth: 1,
     },
   ],
+  getComponentPathLine(componentPath) {
+    const name = path.basename(componentPath, '.js');
+
+    return `import {${name}} from 'appfollow-ui';`;
+  },
+  getExampleFilename(componentPath) {
+    const name = path.basename(componentPath, '.js');
+
+    return path.join(__dirname, `docs/components/${name}.md`);
+  },
 };

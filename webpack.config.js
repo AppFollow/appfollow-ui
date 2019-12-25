@@ -86,7 +86,7 @@ const postcssLoaderProd = [
 
 const alias = {
   app: path.resolve(__dirname, 'src/app'),
-  scss: path.resolve(__dirname, 'src/scss'),
+  css: path.resolve(__dirname, 'src/css'),
 };
 
 if (__DEV__) {
@@ -125,11 +125,8 @@ module.exports = {
     new WriteFilePlugin(),
     new ProgressBarPlugin(),
     new webpack.ProvidePlugin({
-      _: 'lodash',
       React: 'react',
-      moment: 'moment',
-      classNames: 'classnames',
-      PropTypes: 'prop-types',
+      cn: 'classnames',
     }),
     new webpack.DefinePlugin({
       'process.env': {
@@ -183,7 +180,7 @@ module.exports = {
         include: path.resolve(__dirname, 'src'),
       },
       {
-        test: /\.(css|scss)$/,
+        test: /\.css$/,
         use: [
           MiniCssExtractPlugin.loader,
           ...(__DEV__ ? postcssLoaderDev : postcssLoaderProd),
