@@ -9,7 +9,7 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const webpack = require('webpack');
 const WebpackChunkHash = require('webpack-chunk-hash');
 const WebpackNotifierPlugin = require('webpack-notifier');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const chunkNameJs = `[name]${__DEV__ ? '' : '--[chunkhash:8]'}.min`;
 const chunkNameCss = `[name]${__DEV__ ? '' : '--[contenthash:8]'}.min`;
@@ -152,8 +152,7 @@ module.exports = {
   optimization: __DEV__ ? {} : {
     concatenateModules: true,
     minimizer: [
-      new UglifyJsPlugin({
-        cache: true,
+      new TerserPlugin({
         parallel: true,
         sourceMap: true,
       }),
