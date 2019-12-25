@@ -1,8 +1,10 @@
-`yarn` - поставить зависимости
+`yarn` - установить npm зависимости
 
-`yarn dev` - дев сборка можно открыть http://localhost:8079/
+`yarn dev` - дев сборка стайлбука http://localhost:6060/
 
-`yarn build` - сборка js/css
+`yarn prod` - прод сборка стайлбука в /styleguide
+
+`yarn build` - собрать ui-библиотеку
 
 `yarn js:fix` - исправить js
 
