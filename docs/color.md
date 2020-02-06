@@ -91,9 +91,9 @@ const colors = [
   {
     text: 'Tags',
     colors: [
-      {name: '$tags50Color', color: '#36c55f'},
+      {name: '$tags50Color', color: '#86dc9f'},
       {name: '$tags80Color', color: '#edbc2f'},
-      {name: '$tags100Color', color: '#fd334b'},
+      {name: '$tags100Color', color: '#ff8492'},
       {name: '$tagsEmptyColor', color: '#999'},
     ],
   },

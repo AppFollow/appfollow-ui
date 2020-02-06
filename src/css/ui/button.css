@@ -48,6 +48,7 @@ $transitionAnimation: .3s ease;
   display: inline-block;
   box-sizing: border-box;
   margin: 0;
+  height: 36px;
   padding: 8px 15px;
   border-width: 1px;
   border-style: solid;
@@ -134,6 +135,7 @@ $transitionAnimation: .3s ease;
     @mixin setColorButton $red, $red__hover, $red__disabled;
   }
   &--big {
-    padding: 15px 24px;
+    padding: 14px 23px;
+    height: 48px;
   }
 }
