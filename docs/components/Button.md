@@ -60,7 +60,7 @@ const btnsData = [
   {
     name: 'Buttons_Big/Turquoise',
     props: {type: 'secondary', size: 'big', content: 'Title'},
-    comments: '',
+    comments: 'How to start',
   },
   {
     name: 'Buttons/Ghost_Turquoise_Icon',
