@@ -5,14 +5,14 @@ $transitionAnimation: .3s ease;
   border-color: $fillColor;
 }
 
-@define-mixin fillBasicButton $borderColor, $hoverFill, $colorHover:#fff {
+@define-mixin fillBasicButton $borderColor, $colorHover:#fff {
   background-color: transparent;
   color: $borderColor;
 
   &:hover:not(.ui-button--disabled, .ui-button--loading) {
-    background-color: $hoverFill;
+    background-color: $borderColor;
     color: $colorHover;
-    border-color: $hoverFill;
+    border-color: $borderColor;
   }
   &.ui-button--loading::after {
     border-color: $borderColor;
@@ -40,7 +40,7 @@ $transitionAnimation: .3s ease;
     }
   }
   &.ui-button--basic {
-    @mixin fillBasicButton $main, $hover;
+    @mixin fillBasicButton $main;
   }
 }
 
