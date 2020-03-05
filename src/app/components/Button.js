@@ -10,25 +10,30 @@ const ButtonComponent = props => {
   const {
     content,
     children,
+    className,
+    inverted,
     type,
     color,
     size,
     disabled,
     loading,
     basic,
+    icon,
     ...otherProps
   } = props;
   const ElementType = getElementType(Button, props);
 
   const colorClassName = type === 'custom' ? color : type;
-  const className = cn(
+  const resultClassName = cn(
     'ui-button',
     `ui-button--${colorClassName}`,
+    className,
     {
       [`ui-button--${size}`]: size && size !== ButtonComponent.defaultProps.size,
       'ui-button--disabled': disabled,
       'ui-button--loading': loading,
       'ui-button--basic': basic,
+      'ui-button--inverted': inverted,
     },
   );
   // eslint-disable-next-line no-unused-vars
@@ -40,9 +45,10 @@ const ButtonComponent = props => {
 
   return (
     <ElementType
-      className={className}
+      className={resultClassName}
       {...renderProps}
     >
+      {icon ? <i className={`icon ${icon}`} /> : null}
       {content || children}
     </ElementType>
   );
@@ -57,6 +63,10 @@ ButtonComponent.propTypes = {
     PropTypes.string,
     PropTypes.elementType,
   ]),
+  /**
+   * Класс
+   */
+  className: PropTypes.string,
   /**
    * Содержание кнопки
    */
@@ -75,6 +85,10 @@ ButtonComponent.propTypes = {
     PropTypes.element,
     PropTypes.array,
   ]),
+  /**
+   * Если кнопка на темном фоне
+   */
+  inverted: PropTypes.bool,
   /**
    * Тип кнопки
    *
@@ -141,18 +155,25 @@ ButtonComponent.propTypes = {
   * Если кнопка без заливки
   */
   basic: PropTypes.bool,
+  /**
+  * Иконка (на странице стайлбука - стили не подгружены)
+  */
+  icon: PropTypes.string,
 };
 
 ButtonComponent.defaultProps = {
   as: 'button',
+  className: '',
   children: null,
   content: null,
+  inverted: false,
   type: 'default',
   size: 'normal',
   color: '',
   disabled: false,
   loading: false,
   basic: false,
+  icon: '',
 };
 
 export const Button = React.memo(ButtonComponent);

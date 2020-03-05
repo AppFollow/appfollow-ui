@@ -44,12 +44,12 @@ const btnsData = [
   },
   {
     name: 'Buttons/Turquoise_Icon',
-    props: {type: 'secondary', content: 'Title'},
+    props: {icon: 'plus', type: 'secondary', content: 'Title'},
     comments: 'Integrations, Email Reports, Templates, Folders, Competitors overview, Subscription',
   },
   {
     name: 'Buttons_Big/Turquoise_Icon',
-    props: {type: 'secondary', size: 'big', content: 'Title'},
+    props: {icon: 'plus', type: 'secondary', size: 'big', content: 'Title'},
     comments: '',
   },
   {
@@ -64,7 +64,7 @@ const btnsData = [
   },
   {
     name: 'Buttons/Ghost_Turquoise_Icon',
-    props: {type: 'secondary', basic: true, content: 'Title'},
+    props: {icon: 'plus', type: 'secondary', basic: true, content: 'Title'},
     comments: 'Integrations, Add New App, Compare Apps',
   },
   {
@@ -79,12 +79,12 @@ const btnsData = [
   },
   {
     name: 'Buttons/Regular_Icon',
-    props: {type: 'primary', content: 'Title'},
+    props: {icon: 'plus', type: 'primary', content: 'Title'},
     comments: 'Add New App',
   },
   {
     name: 'Buttons_Big/Regular_Icon',
-    props: {type: 'primary', size: 'big', content: 'Title'},
+    props: {icon: 'plus', type: 'primary', size: 'big', content: 'Title'},
     comments: '',
   },
   {
@@ -101,7 +101,7 @@ Billing settings, Get a discount`,
   },
   {
     name: 'Buttons/Ghost_Blue_Icon',
-    props: {type: 'primary', basic: true, content: 'Title'},
+    props: {icon: 'plus', type: 'primary', basic: true, content: 'Title'},
     comments: 'Upgrade Account, Integrations, Subscription, Invoices',
   },
   {
@@ -117,12 +117,12 @@ Featured: Apps, Featured: Apps (Modal Window)`,
   },
   {
     name: 'Buttons/Grey_Icon',
-    props: {content: 'Title'},
+    props: {icon: 'plus', content: 'Title'},
     comments: 'Featured: Today, Integrations, Ratings & Reviews, App preview',
   },
   {
     name: 'Buttons_Big/Grey_Icon',
-    props: {size: 'big', content: 'Title'},
+    props: {icon: 'plus', size: 'big', content: 'Title'},
     comments: 'Subscription (Modal Window)',
   },
   {
@@ -136,28 +136,72 @@ Featured: Apps (Modal Window), Tags Chart, Featured: Today (Modal Window), Integ
     props: {size: 'big', content: 'Title'},
     comments: '',
   },
-
-
 ];
 
-<table className="button-table">
-  <tr className="button-table__head">
-    <td>Buttons Name</td>
-    <td>Regular View</td>
-    <td>Disabled</td>
-    <td>Loading</td>
-    <td>Pages</td>
-  </tr>
-  {btnsData.map(item => (
-    <tr key={item.name} className="button-table__line">
-      <td>{item.name}</td>
-      <td><Button {...item.props} /></td>
-      <td><Button {...item.props} disabled /></td>
-      <td><Button {...item.props} loading /></td>
-      <td>{item.comments}</td>
+const btnsDataDark = [
+  {
+    name: 'Buttons_Big/Regular',
+    props: {type: 'primary', inverted: true, content: 'Title'},
+    comments: '-',
+  },
+  {
+    name: 'Buttons_Big/Ghost_Blue',
+    props: {inverted: true, basic: true, content: 'Title'},
+    comments: '-',
+  },
+  {
+    name: 'Buttons_Big/Payments_Green',
+    props: {type: 'custom', color: 'green', inverted: true, content: 'TITLE'},
+    comments: '-',
+  },
+  {
+    name: 'Buttons_Big/Trial',
+    props: {type: 'custom', color: 'green', inverted: true, basic: true, content: 'TITLE'},
+    comments: '-',
+  },
+];
+
+<div>
+  <table className="button-table">
+    <tr className="button-table__head">
+      <td>Buttons Name</td>
+      <td>Regular View</td>
+      <td>Disabled</td>
+      <td>Loading</td>
+      <td>Pages</td>
     </tr>
-  ))}
-</table>
+    {btnsData.map(item => (
+      <tr key={item.name} className="button-table__line">
+        <td>{item.name}</td>
+        <td><Button {...item.props} /></td>
+        <td><Button {...item.props} disabled /></td>
+        <td><Button {...item.props} loading /></td>
+        <td>{item.comments}</td>
+      </tr>
+    ))}
+  </table>
+
+  <h2>Dark Mode</h2>
+
+  <table className="button-table button-table--dark">
+    <tr className="button-table__head">
+      <td>Buttons Name</td>
+      <td>Regular View</td>
+      <td>Disabled</td>
+      <td>Loading</td>
+      <td>Pages</td>
+    </tr>
+    {btnsDataDark.map(item => (
+      <tr key={item.name} className="button-table__line">
+        <td>{item.name}</td>
+        <td><Button {...item.props} /></td>
+        <td><Button {...item.props} disabled /></td>
+        <td><Button {...item.props} loading /></td>
+        <td>{item.comments}</td>
+      </tr>
+    ))}
+  </table>
+</div>
 ```
 
 Types:
@@ -204,5 +248,13 @@ Disabled:
 <Button type="secondary" disabled>Secondary</Button>
 
 <Button type="custom" color="red" disabled basic>Basic red disabled</Button>
+```
+
+Dark mode:
+```js
+<Button type="primary" inverted>Title</Button>
+<Button basic inverted>Title</Button>
+<Button type="custom" color="green" inverted>TITLE</Button>
+<Button type="custom" color="green" basic inverted>TITLE</Button>
 ```
 

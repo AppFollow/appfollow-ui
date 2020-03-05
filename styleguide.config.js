@@ -42,4 +42,9 @@ module.exports = {
 
     return path.join(__dirname, `docs/components/${name}.md`);
   },
+  template: {
+    body: {
+      raw: '<link rel="stylesheet" href="/data/semantic/semantic.min.css">',
+    },
+  },
 };
