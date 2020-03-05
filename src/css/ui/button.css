@@ -64,6 +64,7 @@ $transitionAnimation: .3s ease;
   text-align: center;
   word-spacing: normal;
   text-transform: none;
+  white-space: nowrap;
   transition:
     opacity $transitionAnimation,
     background-color $transitionAnimation,
@@ -137,5 +138,68 @@ $transitionAnimation: .3s ease;
   &--big {
     padding: 14px 23px;
     height: 48px;
+  }
+  &--inverted {
+    /* TODO: Когда будут все стили кнопок - надо переписать красиво */
+
+    &.ui-button--primary {
+      @mixin fillButton #1187f9;
+
+      &:hover {
+        box-shadow: none;
+
+        @mixin fillButton #2e96fa;
+      }
+      &.ui-button--disabled {
+        color: $silver;
+
+        @mixin fillButton #294f6d;
+      }
+    }
+    &.ui-button--basic {
+      border-color: $steel;
+
+      @mixin fillBasicButton #a5afb8;
+
+      &:hover:not(.ui-button--disabled, .ui-button--loading) {
+        color: $graphite;
+
+        @mixin fillButton #d7dde2;
+      }
+      &.ui-button--disabled {
+        color: #637889;
+        border-color: #294f6d;
+      }
+    }
+    &.ui-button--green {
+      &.ui-button--disabled {
+        color: $silver;
+
+        @mixin fillButton #407759;
+      }
+      &.ui-button--basic {
+        border-color: #31a95c;
+
+        @mixin fillBasicButton $green;
+
+        &:hover:not(.ui-button--disabled, .ui-button--loading) {
+          color: #fff;
+
+          @mixin fillButton $green;
+        }
+        &.ui-button--disabled {
+          color: #407759;
+          border-color: #407759;
+        }
+      }
+    }
+  }
+  .icon {
+    padding-right: 0;
+    margin-right: 5px;
+    width: auto;
+    font-size: 11px;
+    vertical-align: top;
+    line-height: 18px;
   }
 }
