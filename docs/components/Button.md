@@ -141,22 +141,22 @@ Featured: Apps (Modal Window), Tags Chart, Featured: Today (Modal Window), Integ
 const btnsDataDark = [
   {
     name: 'Buttons_Big/Regular',
-    props: {type: 'primary', inverted: true, content: 'Title'},
+    props: {type: 'primary', inverted: true, content: 'Title', size: 'big'},
     comments: '-',
   },
   {
     name: 'Buttons_Big/Ghost_Blue',
-    props: {inverted: true, basic: true, content: 'Title'},
+    props: {inverted: true, basic: true, content: 'Title', size: 'big'},
     comments: '-',
   },
   {
     name: 'Buttons_Big/Payments_Green',
-    props: {type: 'custom', color: 'green', inverted: true, content: 'TITLE'},
+    props: {type: 'custom', color: 'green', inverted: true, content: 'TITLE', size: 'big'},
     comments: '-',
   },
   {
     name: 'Buttons_Big/Trial',
-    props: {type: 'custom', color: 'green', inverted: true, basic: true, content: 'TITLE'},
+    props: {type: 'custom', color: 'green', inverted: true, basic: true, content: 'TITLE', size: 'big'},
     comments: '-',
   },
 ];

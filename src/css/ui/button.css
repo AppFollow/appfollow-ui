@@ -145,21 +145,20 @@ $transitionAnimation: .3s ease;
     &.ui-button--primary {
       @mixin fillButton #1187f9;
 
-      &:hover {
+      &:hover:not(.ui-button--disabled):not(.ui-button--loading):not(.ui-button--basic) {
         box-shadow: none;
 
         @mixin fillButton #2e96fa;
       }
       &.ui-button--disabled {
         color: $silver;
-
-        @mixin fillButton #294f6d;
+        border-color: #294f6d;
+        background-color: #294f6d;
       }
     }
     &.ui-button--basic {
-      border-color: $steel;
-
-      @mixin fillBasicButton #a5afb8;
+      color: #fff;
+      border-color: #a5afb8;
 
       &:hover:not(.ui-button--disabled, .ui-button--loading) {
         color: $graphite;
