@@ -1,16 +1,17 @@
 {
   "name": "appfollow-ui",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Appfollow UI",
   "scripts": {
     "prepublishOnly": "npm run compile",
-    "compile": "webpack --progress --config webpack.compile.config.js",
+    "compile": "webpack --config webpack.compile.config.js",
     "dev": "npx styleguidist server",
     "prod": "npx styleguidist build",
     "lib:build": "cross-env NODE_ENV=production webpack --progress",
     "css:fix": "stylelint *.css ./src/css --fix; exit 0",
     "js:fix": "eslint *.js ./src/app --fix; exit 0"
   },
+  "main": "./lib/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/AppFollow/appfollow-ui.git"
@@ -88,14 +89,14 @@
     "postcss-sorting": "5.0.1",
     "precss": "4.0.0",
     "progress-bar-webpack-plugin": "1.12.1",
-    "react-styleguidist": "^10.2.1",
+    "react-styleguidist": "10.2.1",
     "stylelint": "9.10.1",
     "stylelint-config-standard": "18.3.0",
     "terser-webpack-plugin": "2.3.1",
     "webpack": "4.39.3",
     "webpack-chunk-hash": "0.6.0",
     "webpack-cli": "3.3.8",
-    "webpack-node-externals": "^1.7.2",
+    "webpack-node-externals": "1.7.2",
     "webpack-notifier": "1.8.0",
     "write-file-webpack-plugin": "4.5.1"
   }

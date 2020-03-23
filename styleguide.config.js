@@ -8,7 +8,7 @@ module.exports = {
     path.join(__dirname, 'src/css/stylebook.css'),
   ],
   ribbon: {
-    url: 'https://github.com/sharifulin/appfollow-ui',
+    url: 'https://github.com/AppFollow/appfollow-ui',
     text: 'GitHub',
   },
   pagePerSection: true,

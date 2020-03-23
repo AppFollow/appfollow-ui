@@ -58,13 +58,12 @@ const alias = {
 };
 
 module.exports = {
-  cache: true,
+  // cache: true,
   mode: 'production',
   output: {
     filename: 'index.js',
     path: distDir,
     publicPath: '/lib',
-    library: 'appfollow-ui',
     libraryTarget: 'commonjs',
   },
   entry: {
