@@ -10,6 +10,8 @@
 
 `yarn css:fix` - исправить css
 
+`yarn compile` - собрать версию для npm
+
 Поставить плагин, чтобы автоматически применились настройки проекта
 https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig
 
