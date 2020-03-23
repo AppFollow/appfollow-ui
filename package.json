@@ -1,6 +1,6 @@
 {
   "name": "appfollow-ui",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Appfollow UI",
   "scripts": {
     "dev": "npx styleguidist server",
@@ -11,10 +11,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/sharifulin/appfollow-ui.git"
+    "url": "https://github.com/AppFollow/appfollow-ui.git"
   },
-  "author": "Alec Zvoncov",
+  "author": "AppFollow",
   "license": "ISC",
+  "keywords": [
+    "appfollow",
+    "app store",
+    "google play",
+    "ui",
+    "library",
+    "aso",
+    "reviews",
+    "keywords"
+  ],
   "dependencies": {
     "classnames": "2.2.6",
     "prop-types": "15.7.2",
