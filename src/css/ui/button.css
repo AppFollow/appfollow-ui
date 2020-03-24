@@ -15,7 +15,7 @@ $transitionAnimation: .3s ease;
     border-color: $borderColor;
   }
   &.ui-button--loading::after {
-    border-color: $borderColor;
+    color: $borderColor;
   }
 }
 
@@ -35,7 +35,7 @@ $transitionAnimation: .3s ease;
       color: $disabled;
 
       &.ui-button--loading::after {
-        border-color: $disabled;
+        color: $disabled;
       }
     }
   }
@@ -91,16 +91,18 @@ $transitionAnimation: .3s ease;
     position: relative;
 
     &::after {
-      content: '';
+      content: "\f110";
+      animation: icon-loading 2s linear infinite;
       position: absolute;
       left: 50%;
       top: 50%;
       width: 16px;
       height: 16px;
-      border-radius: 8px;
-      border: 1px solid #fff;
       margin-top: -9px;
-      margin-left: -8px;
+      margin-left: -9px;
+      font-family: Icons;
+      font-weight: 400;
+      color: #fff;
     }
   }
   &--disabled {
