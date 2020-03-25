@@ -12,9 +12,6 @@ const TextPlaceholderComponent = ({
     className={cn(
       'ui-placeholder',
       'ui-placeholder-text',
-      {
-        [`ui-placeholder-text--${type}`]: type !== 'text',
-      },
       className,
     )}
     style={{width}}
@@ -23,7 +20,12 @@ const TextPlaceholderComponent = ({
 
 TextPlaceholderComponent.propTypes = {
   className: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
+  type: PropTypes.oneOf([
+    'h2',
+    'h5',
+    'kpi',
+    'text',
+  ]).isRequired,
   width: PropTypes.string.isRequired,
 };
 

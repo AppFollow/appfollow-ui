@@ -28,20 +28,17 @@
     background-color: $grey;
     border-radius: 2px;
 
-    &--desc {
-      height: 8px;
-    }
-    &--info {
-      background-color: #d6dadf;
-      height: 6px;
-    }
     &--h2 {
       background-color: #d6dadf;
       height: 12px;
     }
-    &--h4 {
+    &--h5 {
       background-color: #d6dadf;
+      height: 6px;
+    }
+    &--kpi {
       height: 27px;
+      background-color: #d6dadf;
     }
   }
   &-checkbox {

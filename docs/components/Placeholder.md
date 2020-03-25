@@ -11,19 +11,14 @@ H2
 <Placeholder type="h2" />
 ```
 
-H4
+H5
 ```js
-<Placeholder type="h4" />
+<Placeholder type="h5" />
 ```
 
-Desc
+Kpi
 ```js
-<Placeholder type="desc" />
-```
-
-Info
-```js
-<Placeholder type="info" />
+<Placeholder type="kpi" />
 ```
 
 Input/Dropdown

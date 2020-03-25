@@ -3,7 +3,7 @@ import {InputPlaceholder} from 'app/components/placeholder/InputPlaceholder';
 import {TextPlaceholder} from 'app/components/placeholder/TextPlaceholder';
 import {CheckboxPlaceholder} from 'app/components/placeholder/CheckboxPlaceholder';
 
-const textTypes = ['text', 'h2', 'h4', 'desc', 'info'];
+const textTypes = ['h2', 'h5', 'kpi', 'text'];
 /**
  * Компонент кнопки
  */
@@ -21,39 +21,44 @@ const PlaceholderComponent = ({
     className,
   );
 
+  const isText = textTypes.includes(type);
+
+  let Component = null;
+
   if (type === 'input') {
-    return (
-      <InputPlaceholder
-        className={resultClassName}
-        width={width}
-        iconDropdown={iconDropdown}
-      />
-    );
+    Component = InputPlaceholder;
   }
 
-  if (textTypes.includes(type)) {
-    return (
-      <TextPlaceholder
-        className={resultClassName}
-        width={width}
-        type={type}
-      />
-    );
+  if (isText) {
+    Component = TextPlaceholder;
   }
 
   if (type === 'checkbox') {
-    return (
-      <CheckboxPlaceholder
-        className={resultClassName}
-        width={width}
-      />
-    );
+    Component = CheckboxPlaceholder;
   }
 
-  return null;
+  if (!Component) return null;
+
+  const props = {
+    className: resultClassName,
+    width: typeof width === 'number' && width
+      ? `${width}px`
+      : width,
+  };
+
+  if (type === 'input') {
+    props.iconDropdown = iconDropdown;
+  }
+
+  if (isText) {
+    props.type = type;
+  }
+
+  return <Component {...props} />;
 };
 
 PlaceholderComponent.displayName = 'Placeholder';
+
 PlaceholderComponent.propTypes = {
   /**
    * Класс
@@ -63,11 +68,10 @@ PlaceholderComponent.propTypes = {
    * Тип заглушки
    */
   type: PropTypes.oneOf([
-    'text',
     'h2',
-    'h4',
-    'desc',
-    'info',
+    'h5',
+    'kpi',
+    'text',
     'input',
     'checkbox',
   ]),
@@ -76,9 +80,12 @@ PlaceholderComponent.propTypes = {
    */
   isAnimate: PropTypes.bool,
   /**
-   * Ширина (10px, 10%)
+   * Ширина (10, 10px, 10%)
    */
-  width: PropTypes.string,
+  width: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
   /**
    * Иконка для инпута
    */
@@ -89,7 +96,7 @@ PlaceholderComponent.defaultProps = {
   className: '',
   type: 'text',
   isAnimate: false,
-  width: '',
+  width: null,
   iconDropdown: 'caret down',
 };
 

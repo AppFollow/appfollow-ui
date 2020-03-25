@@ -70,6 +70,7 @@ const ButtonComponent = props => {
 };
 
 ButtonComponent.displayName = 'Button';
+
 ButtonComponent.propTypes = {
   /**
    * Тип элемента при отображении (тег или компонент)
