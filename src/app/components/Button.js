@@ -1,5 +1,6 @@
 import {getElementType} from 'app/helpers/getElementType';
 import PropTypes from 'prop-types';
+import {useCallback} from 'react';
 
 /**
  * Компонент кнопки
@@ -19,6 +20,7 @@ const ButtonComponent = props => {
     loading,
     basic,
     icon,
+    onClick,
     ...otherProps
   } = props;
   const ElementType = getElementType(Button, props);
@@ -43,10 +45,23 @@ const ButtonComponent = props => {
     renderProps.type = 'button';
   }
 
+  const handleClick = useCallback(event => {
+    if (disabled) {
+      event.preventDefault();
+
+      return;
+    }
+
+    if (onClick) {
+      onClick(event);
+    }
+  }, []);
+
   return (
     <ElementType
       className={resultClassName}
       {...renderProps}
+      onClick={handleClick}
     >
       {icon ? <i className={`icon ${icon}`} /> : null}
       {content || children}
@@ -55,6 +70,7 @@ const ButtonComponent = props => {
 };
 
 ButtonComponent.displayName = 'Button';
+
 ButtonComponent.propTypes = {
   /**
    * Тип элемента при отображении (тег или компонент)
@@ -159,6 +175,10 @@ ButtonComponent.propTypes = {
   * Иконка (на странице стайлбука - стили не подгружены)
   */
   icon: PropTypes.string,
+  /**
+  * Клик по кнопке
+  */
+  onClick: PropTypes.func,
 };
 
 ButtonComponent.defaultProps = {
@@ -174,6 +194,7 @@ ButtonComponent.defaultProps = {
   loading: false,
   basic: false,
   icon: '',
+  onClick: null,
 };
 
 export const Button = React.memo(ButtonComponent);
