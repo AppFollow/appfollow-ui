@@ -12,6 +12,7 @@ const TextPlaceholderComponent = ({
     className={cn(
       'ui-placeholder',
       'ui-placeholder-text',
+      `ui-placeholder-text--${type}`,
       className,
     )}
     style={{width}}
