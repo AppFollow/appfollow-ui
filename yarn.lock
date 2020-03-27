@@ -8207,7 +8207,7 @@ react-simple-code-editor@^0.10.0:
   resolved "https://registry.yarnpkg.com/react-simple-code-editor/-/react-simple-code-editor-0.10.0.tgz#73e7ac550a928069715482aeb33ccba36efe2373"
   integrity sha512-bL5W5mAxSW6+cLwqqVWY47Silqgy2DKDTR4hDBrLrUqC5BXc29YVx17l2IZk5v36VcDEq1Bszu2oHm1qBwKqBA==
 
-react-styleguidist@^10.2.1:
+react-styleguidist@10.2.1:
   version "10.2.1"
   resolved "https://registry.yarnpkg.com/react-styleguidist/-/react-styleguidist-10.2.1.tgz#de83739128532974858667c2a138d8a44348c6aa"
   integrity sha512-Or3Ey8mCFGTgfwMY3sBYDnfZLnJO6JN+82xmT/QXaknbx9qYHtHWejUES7bslUXek1Ykmwllrn9x+lzTSHMDAg==
@@ -10364,7 +10364,7 @@ webpack-merge@^4.2.2:
   dependencies:
     lodash "^4.17.15"
 
-webpack-node-externals@^1.7.2:
+webpack-node-externals@1.7.2:
   version "1.7.2"
   resolved "https://registry.yarnpkg.com/webpack-node-externals/-/webpack-node-externals-1.7.2.tgz#6e1ee79ac67c070402ba700ef033a9b8d52ac4e3"
   integrity sha512-ajerHZ+BJKeCLviLUUmnyd5B4RavLF76uv3cs6KNuO8W+HuQaEs0y0L7o40NQxdPy5w0pcv8Ew7yPUAQG0UdCg==
