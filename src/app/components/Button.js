@@ -55,7 +55,7 @@ const ButtonComponent = props => {
     if (onClick) {
       onClick(event);
     }
-  }, [disabled]);
+  }, [onClick, disabled]);
 
   return (
     <ElementType
