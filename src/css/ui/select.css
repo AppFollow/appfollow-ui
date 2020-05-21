@@ -1,0 +1,220 @@
+$imgSize: 16px;
+$colorSize: 16px;
+
+.ui-select {
+  border: 1px solid $silver;
+  border-radius: 3px;
+  display: inline-block;
+  vertical-align: top;
+  max-width: 100%;
+  min-height: 36px;
+  position: relative;
+
+  &__value {
+    padding: 0 33px 0 7px;
+    display: inline-flex;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    flex-wrap: wrap;
+    max-width: 100%;
+
+    &-text,
+    &-placeholder {
+      font-size: 14px;
+      line-height: 34px;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+    }
+    &-placeholder {
+      color: $steel;
+    }
+    &-text {
+      color: $dark;
+    }
+    &-label {
+      margin: 4px 8px 4px 0;
+
+      &--first {
+        margin-left: 8px;
+      }
+      &--last {
+        margin-right: 0;
+      }
+    }
+  }
+  &__symbol {
+    margin: 0 4px 0 0 !important;
+  }
+  &__icon {
+    color: $graphite;
+    font-size: 14px !important;
+    display: flex !important;
+    align-items: center;
+    width: auto !important;
+  }
+  &__color {
+    display: inline-block;
+    height: $colorSize;
+    width: $colorSize;
+    border-radius: 3px;
+    vertical-align: top;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 3px;
+      border: 1px solid rgba(10, 27, 42, .25);
+    }
+  }
+  &__img {
+    width: $imgSize;
+    height: $imgSize;
+    min-width: $imgSize;
+    border-radius: 22%;
+    position: relative;
+    overflow: hidden;
+
+    img {
+      display: block;
+      height: $imgSize;
+      width: $imgSize;
+      position: relative;
+    }
+  }
+  &__label {
+    padding: 0 8px;
+    background-color: #e6f9f9;
+    border-radius: 3px;
+    max-width: 100%;
+    align-items: center;
+    display: flex;
+
+    &-text {
+      display: block;
+      height: 24px;
+      line-height: 24px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      color: $graphite;
+      font-size: 14px;
+    }
+    &-remove {
+      color: $graphite;
+      font-size: 12px !important;
+      margin: 0 0 0 8px !important;
+      display: flex !important;
+      align-items: center;
+      padding-top: 1px;
+      width: auto !important;
+    }
+  }
+  &__arrow-icon {
+    font-size: 12px !important;
+    color: $graphite;
+    position: absolute;
+    margin: 0 !important;
+    top: 9px;
+    right: 10px;
+  }
+  &__remove {
+    background-color: #e5e5e5;
+    border-left: 1px solid $silver;
+    align-items: center;
+    width: 34px;
+    justify-content: space-around;
+    display: inline-flex;
+    cursor: pointer;
+
+    &-icon {
+      margin: 0 !important;
+      width: auto !important;
+      font-size: 12px !important;
+      line-height: 14px;
+    }
+  }
+  &__menu {
+    position: absolute;
+    top: 100%;
+    margin-top: 6px;
+    background-color: #fff;
+    border: 1px solid $silver;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, .08);
+    border-radius: 3px;
+    min-width: 240px;
+    max-width: 40vw;
+    z-index: 1;
+  }
+  &__search {
+    padding: 7px;
+  }
+  &__list {
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  &__item {
+    border-top: 1px solid $grey;
+    line-height: 32px;
+    padding: 0 7px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: $graphite;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    &:first-child {
+      border-top-width: 0;
+    }
+    &:hover {
+      background-color: #f3f3f3;
+    }
+    &--selected {
+      background-color: #e6f9f9;
+
+      &:hover {
+        background-color: #e6f9f9;
+      }
+    }
+    &--multi-selected {
+      padding-top: 4px;
+      padding-bottom: 4px;
+
+      &:hover {
+        background-color: inherit;
+        color: inherit;
+      }
+    }
+    &-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  &__apply {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 42px;
+    text-align: center;
+    color: $blue;
+    width: 100%;
+    border-top: 1px solid #f2f2f2;
+    cursor: pointer;
+  }
+  &--removable {
+    display: inline-flex;
+
+    .ui-select__value {
+      max-width: calc(100% - 34px);
+    }
+  }
+}
