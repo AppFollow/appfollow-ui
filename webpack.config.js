@@ -76,9 +76,7 @@ const postcssLoaderProd = [
           restructure: false,
           comments: 'none',
         }),
-        autoprefixer({
-          browsers: ['last 5 versions'],
-        }),
+        autoprefixer(),
       ],
     },
   },
