@@ -123,6 +123,25 @@ const options = [
     ]}
   />
 
+  <Dropdown
+    field="tag"
+    name="Tag"
+    onChange={onChange}
+    options={[
+      {value: 'val1', text: 'Длинный длинный Длинный длинный Длинный длинный Длинный длинный тег'},
+      options[2],
+      options[3],
+      options[4],
+      options[5],
+    ]}
+    customLabel={(
+      <React.Fragment>
+        <i className="icon plus" />
+        Add Filters
+      </React.Fragment>
+    )}
+  />
+
   <br />
   <br />
   <br />

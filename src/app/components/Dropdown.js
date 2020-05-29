@@ -8,7 +8,7 @@ import {
 import {DropdownLabel} from 'app/components/dropdown/DropdownLabel';
 import {DropdownMenu} from 'app/components/dropdown/DropdownMenu';
 import {DropdownRemove} from 'app/components/dropdown/DropdownRemove';
-import {getIsEmptyArray, keyBy} from 'app/helpers/common';
+import {getIsEmptyArray, keyBy, noop} from 'app/helpers/common';
 
 const getValueOption = (multi, value, mapOptionsByValue) => {
   let valueOption = null;
@@ -41,8 +41,15 @@ const DropdownComponent = ({
   options,
   removable,
   onRemove,
+  customLabel,
 }) => {
-  const {dropdownRef, isOpen, toggle, close, positionDropdown} = useDropdown();
+  const {
+    dropdownRef,
+    isOpen,
+    toggle,
+    close,
+    positionDropdown,
+  } = useDropdown();
 
   const mapOptionsByValue = React.useMemo(
     () => keyBy(options, 'value'),
@@ -72,15 +79,22 @@ const DropdownComponent = ({
       ref={dropdownRef}
       className={cn('ui-select', className, {
         'ui-select--removable': removable,
+        'ui-select--custom-label': customLabel,
       })}
     >
-      <DropdownLabel
-        isEmpty={isEmpty}
-        multi={multi}
-        name={name}
-        valueOption={valueOption}
-        onClick={toggle}
-      />
+      {customLabel ? (
+        <div className="ui-select__custom-label" onClick={toggle}>
+          {customLabel}
+        </div>
+      ) : (
+        <DropdownLabel
+          isEmpty={isEmpty}
+          multi={multi}
+          name={name}
+          valueOption={valueOption}
+          onClick={toggle}
+        />
+      )}
       {removable ? <DropdownRemove onRemove={onRemove} /> : null}
       {isOpen ? (
         <DropdownMenu
@@ -143,6 +157,10 @@ DropdownComponent.propTypes = {
    * Колбек закрытия фильтра
    */
   onRemove: PropTypes.func,
+  /**
+   * Кастомный лейбл
+   */
+  customLabel: PropTypes.node,
 };
 
 DropdownComponent.defaultProps = {
@@ -151,7 +169,8 @@ DropdownComponent.defaultProps = {
   multi: false,
   search: null,
   removable: false,
-  onRemove: null,
+  onRemove: noop,
+  customLabel: null,
 };
 
 export const Dropdown = React.memo(DropdownComponent);
