@@ -14,45 +14,43 @@ export const DropdownMenu = ({
   options,
   multi,
   isShowSearch,
+  dropdownRef,
 }) => {
   const menuRef = React.useRef(null);
-  const [leftMargin, setLeftMargin] = React.useState(0);
-  const [isShow, setIsShow] = React.useState(false);
+  const [styles, setStyles] = React.useState({
+    opacity: 0,
+    left: '-10000px',
+  });
   const {search, setSearch, viewList} = useSearch(options);
 
   React.useEffect(() => {
-    if (menuRef.current) {
+    if (menuRef.current && dropdownRef.current) {
       const MAX_PADDING_RIGHT = 24;
 
-      const positionMenu = menuRef.current.getBoundingClientRect();
+      const {left} = dropdownRef.current.getBoundingClientRect();
+      const {width} = menuRef.current.getBoundingClientRect();
       const windowWidth = window.innerWidth;
+      const windowPageXOffset = window.pageXOffset;
+
+      const realLeft = left + windowPageXOffset;
 
       // отступ от правого края окна
-      const paddingRight = windowWidth - positionMenu.right;
+      const paddingRight = windowWidth - realLeft - width;
 
-      if (paddingRight < MAX_PADDING_RIGHT) {
-        setLeftMargin(paddingRight - MAX_PADDING_RIGHT);
-      }
+      const resultLeft = paddingRight < MAX_PADDING_RIGHT
+        ? `${paddingRight - MAX_PADDING_RIGHT}px`
+        : 0;
 
-      setIsShow(true);
+      setStyles({left: resultLeft});
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const style = React.useMemo(() => {
-    const resultStyle = {left: `${leftMargin}px`};
-
-    if (!isShow) {
-      resultStyle.opacity = 0;
-    }
-
-    return resultStyle;
-  }, [isShow, leftMargin]);
 
   return (
     <div
       ref={menuRef}
       className="ui-select__menu"
-      style={style}
+      style={styles}
     >
       {isShowSearch ? (
         <DropdownSearch
@@ -84,4 +82,10 @@ DropdownMenu.propTypes = {
   options: PropTypes.arrayOf(DropdownItemPropTypes).isRequired,
   value: DropdownValuePropTypes.isRequired,
   isShowSearch: PropTypes.bool.isRequired,
+  dropdownRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({
+      current: PropTypes.instanceOf(Element),
+    }),
+  ]).isRequired,
 };
