@@ -3,6 +3,6 @@ cache
 cacheParallel
 package-lock.json
 node_modules/
-assets/
+/assets
 styleguide/
 lib/

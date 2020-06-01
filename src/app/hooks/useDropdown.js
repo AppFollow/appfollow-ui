@@ -3,8 +3,10 @@ import {ESC_KEY} from 'app/constants/keyConstant';
 
 const onEscapeKeyPress = fn => ({keyCode}) => keyCode === ESC_KEY ? fn() : null;
 
-export const useDropdown = () => {
-  const [isOpen, setIsOpen] = useState(false);
+export const useDropdown = ({
+  startOpened = false,
+} = {}) => {
+  const [isOpen, setIsOpen] = useState(startOpened);
   const dropdownRef = useRef(null);
 
   const open = useCallback(() => setIsOpen(true), []);

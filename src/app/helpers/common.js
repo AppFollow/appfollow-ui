@@ -11,3 +11,5 @@ export const keyBy = (data, field) => {
     return acc;
   }, {});
 };
+
+export const noop = () => {};
