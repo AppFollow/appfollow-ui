@@ -123,6 +123,7 @@ $colorSize: 16px;
     margin: 0 !important;
     top: 9px;
     right: 10px;
+    line-height: 18px;
   }
   &__remove {
     background-color: #e5e5e5;
@@ -132,6 +133,7 @@ $colorSize: 16px;
     justify-content: space-around;
     display: inline-flex;
     cursor: pointer;
+    border-radius: 0 2px 2px 0;
 
     &-icon {
       margin: 0 !important;
@@ -211,21 +213,6 @@ $colorSize: 16px;
     border-top: 1px solid #f2f2f2;
     cursor: pointer;
   }
-  &__custom-label {
-    line-height: 36px;
-    height: 36px;
-    font-size: 14px;
-    letter-spacing: .02em;
-    color: #00bebe;
-    font-weight: bold;
-    cursor: pointer;
-
-    .icon {
-      color: #00bebe;
-      font-size: 12px !important;
-      margin: 0 8px 0 0 !important;
-    }
-  }
   &--removable {
     display: inline-flex;
 
@@ -234,6 +221,6 @@ $colorSize: 16px;
     }
   }
   &--custom-label {
-    border-color: rgba(0, 0, 0, 0);
+    border-width: 0;
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "appfollow-ui",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "description": "Appfollow UI",
   "scripts": {
     "prepublishOnly": "npm run compile",

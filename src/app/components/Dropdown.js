@@ -31,6 +31,7 @@ const getValueOption = (multi, value, mapOptionsByValue) => {
 };
 
 const DropdownComponent = ({
+  id,
   name,
   value,
   field,
@@ -66,7 +67,11 @@ const DropdownComponent = ({
 
   const handleChange = React.useCallback(
     (event, newValue) => {
-      onChange(event, {[field]: newValue});
+      const changeQuery = field
+        ? {[field]: newValue}
+        : newValue;
+
+      onChange(event, changeQuery);
       close();
     },
     [close, field, onChange],
@@ -83,9 +88,9 @@ const DropdownComponent = ({
       })}
     >
       {customLabel ? (
-        <div className="ui-select__custom-label" onClick={toggle}>
+        <span onClick={toggle}>
           {customLabel}
-        </div>
+        </span>
       ) : (
         <DropdownLabel
           isEmpty={isEmpty}
@@ -95,7 +100,7 @@ const DropdownComponent = ({
           onClick={toggle}
         />
       )}
-      {removable ? <DropdownRemove onRemove={onRemove} /> : null}
+      {removable ? <DropdownRemove onRemove={onRemove} id={id} /> : null}
       {isOpen ? (
         <DropdownMenu
           value={value}
@@ -104,6 +109,7 @@ const DropdownComponent = ({
           multi={multi}
           isShowSearch={isShowSearch}
           positionDropdown={positionDropdown}
+          dropdownRef={dropdownRef}
         />
       ) : null}
     </div>
@@ -119,9 +125,14 @@ DropdownComponent.propTypes = {
    */
   value: DropdownValuePropTypes,
   /**
-   * Поле, которое изменяется в onChange => (event, {field: newValue})
+   * Id фильтра, прокидывается в onRemove
    */
-  field: PropTypes.string.isRequired,
+  id: PropTypes.string,
+  /**
+   * Поле, которое изменяется в onChange => (event, {field: newValue})
+   * Если не передали, то onChange => (event, newValue)
+   */
+  field: PropTypes.string,
   /**
    * Возможен ли мультивыбор
    */
@@ -166,6 +177,8 @@ DropdownComponent.propTypes = {
 DropdownComponent.defaultProps = {
   value: null,
   className: '',
+  field: '',
+  id: '',
   multi: false,
   search: null,
   removable: false,
