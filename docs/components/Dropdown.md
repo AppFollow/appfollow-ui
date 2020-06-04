@@ -92,7 +92,6 @@ const options = [
     onChange={onChange}
     options={options}
     value="val3"
-    removable
   />
 
   <Dropdown
@@ -107,7 +106,6 @@ const options = [
       options[5],
     ]}
     value="val1"
-    removable
   />
 
   <Dropdown
