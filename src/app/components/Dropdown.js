@@ -7,8 +7,7 @@ import {
 } from 'app/constants/dropdownConstant';
 import {DropdownLabel} from 'app/components/dropdown/DropdownLabel';
 import {DropdownMenu} from 'app/components/dropdown/DropdownMenu';
-import {DropdownRemove} from 'app/components/dropdown/DropdownRemove';
-import {getIsEmptyArray, keyBy, noop} from 'app/helpers/common';
+import {getIsEmptyArray, keyBy} from 'app/helpers/common';
 
 const getValueOption = (multi, value, mapOptionsByValue) => {
   let valueOption = null;
@@ -31,7 +30,6 @@ const getValueOption = (multi, value, mapOptionsByValue) => {
 };
 
 const DropdownComponent = ({
-  id,
   name,
   value,
   field,
@@ -40,16 +38,13 @@ const DropdownComponent = ({
   search,
   className,
   options,
-  removable,
-  onRemove,
   customLabel,
 }) => {
   const {
     dropdownRef,
     isOpen,
-    toggle,
+    open,
     close,
-    positionDropdown,
   } = useDropdown();
 
   const mapOptionsByValue = React.useMemo(
@@ -83,12 +78,11 @@ const DropdownComponent = ({
     <div
       ref={dropdownRef}
       className={cn('ui-select', className, {
-        'ui-select--removable': removable,
         'ui-select--custom-label': customLabel,
       })}
     >
       {customLabel ? (
-        <span onClick={toggle}>
+        <span onClick={open}>
           {customLabel}
         </span>
       ) : (
@@ -97,10 +91,9 @@ const DropdownComponent = ({
           multi={multi}
           name={name}
           valueOption={valueOption}
-          onClick={toggle}
+          onClick={open}
         />
       )}
-      {removable ? <DropdownRemove onRemove={onRemove} id={id} /> : null}
       {isOpen ? (
         <DropdownMenu
           value={value}
@@ -108,7 +101,6 @@ const DropdownComponent = ({
           options={options}
           multi={multi}
           isShowSearch={isShowSearch}
-          positionDropdown={positionDropdown}
           dropdownRef={dropdownRef}
         />
       ) : null}
@@ -124,10 +116,6 @@ DropdownComponent.propTypes = {
    * Значение дропдауна
    */
   value: DropdownValuePropTypes,
-  /**
-   * Id фильтра, прокидывается в onRemove
-   */
-  id: PropTypes.string,
   /**
    * Поле, которое изменяется в onChange => (event, {field: newValue})
    * Если не передали, то onChange => (event, newValue)
@@ -161,14 +149,6 @@ DropdownComponent.propTypes = {
    */
   search: PropTypes.bool,
   /**
-   * Можно ли закрыть фильтр
-   */
-  removable: PropTypes.bool,
-  /**
-   * Колбек закрытия фильтра
-   */
-  onRemove: PropTypes.func,
-  /**
    * Кастомный лейбл
    */
   customLabel: PropTypes.node,
@@ -181,8 +161,6 @@ DropdownComponent.defaultProps = {
   id: '',
   multi: false,
   search: null,
-  removable: false,
-  onRemove: noop,
   customLabel: null,
 };
 

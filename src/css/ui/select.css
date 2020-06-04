@@ -9,6 +9,7 @@ $colorSize: 16px;
   max-width: 100%;
   min-height: 36px;
   position: relative;
+  background-color: #fff;
 
   &__value {
     padding: 0 33px 0 7px;
@@ -152,7 +153,7 @@ $colorSize: 16px;
     border-radius: 3px;
     min-width: 240px;
     max-width: 40vw;
-    z-index: 1;
+    z-index: 10;
   }
   &__search {
     padding: 7px;
@@ -213,14 +214,8 @@ $colorSize: 16px;
     border-top: 1px solid #f2f2f2;
     cursor: pointer;
   }
-  &--removable {
-    display: inline-flex;
-
-    .ui-select__value {
-      max-width: calc(100% - 34px);
-    }
-  }
   &--custom-label {
     border-width: 0;
+    background-color: transparent;
   }
 }
