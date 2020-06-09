@@ -27,6 +27,10 @@ $grey: #f2f2f2;
 $grey__hover: #eaebed;
 $grey__disabled: #f7f7f7;
 
+/* Graphite */
+$graphite__hover: #fff;
+$graphite__disabled: #294f6d;
+
 /* Text */
 $dark: #0a1b2a;
 $graphite: #1e384e;

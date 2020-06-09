@@ -230,6 +230,8 @@ Only border:
 <Button type="primary" basic>Primary</Button>
 
 <Button type="secondary" basic>Secondary</Button>
+
+<Button type="custom" color="graphite" basic>Graphite</Button>
 ```
 
 Loading:
