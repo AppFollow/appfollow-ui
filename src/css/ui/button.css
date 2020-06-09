@@ -137,6 +137,9 @@ $transitionAnimation: .3s ease;
   &--red {
     @mixin setColorButton $red, $red__hover, $red__disabled;
   }
+  &--graphite {
+    @mixin setColorButton $graphite, $graphite__hover, $graphite__disabled;
+  }
   &--big {
     padding: 14px 23px;
     height: 48px;

@@ -137,7 +137,7 @@ ButtonComponent.propTypes = {
   /**
    * Цвет кнопки
    *
-   * One of: reg, green
+   * One of: reg, green, graphite
    */
   color: (props, propName, componentName) => {
     let error;
@@ -150,7 +150,7 @@ ButtonComponent.propTypes = {
       error = new Error(`\`${componentName}\` color can be used if type=custom.`);
     }
 
-    const avaibleValues = ['red', 'green'];
+    const avaibleValues = ['red', 'green', 'graphite'];
 
     if (color && !avaibleValues.includes(color)) {
       // eslint-disable-next-line max-len
