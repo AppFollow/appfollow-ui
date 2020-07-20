@@ -1,4 +1,4 @@
-.ui-message {
+.ui-infostrip {
   display: flex;
   padding: 9px 16px;
   border-radius: 3px;
@@ -32,17 +32,18 @@
       box-shadow: 0 6px 8px rgba(0, 0, 0, .05);
     }
     &--big {
-      .ui-message__icon-img {
+      .ui-infostrip__icon-img {
         width: 28px;
         height: 28px;
       }
-      .ui-message__icon-icon {
+      .ui-infostrip__icon-icon {
         font-size: 18px !important;
       }
     }
   }
   &__content {
     color: $graphite;
+    font-size: 14px;
   }
   &__action {
     padding-left: 12px;
@@ -69,21 +70,21 @@
   &--warning {
     background-color: $bannerYellow;
 
-    .ui-message__icon-icon {
+    .ui-infostrip__icon-icon {
       color: #ffd634;
     }
   }
   &--info {
     background-color: $bannerBlue;
 
-    .ui-message__icon-icon {
+    .ui-infostrip__icon-icon {
       color: $blue;
     }
   }
   &--error {
     background-color: $bannerRed;
 
-    .ui-message__icon-icon {
+    .ui-infostrip__icon-icon {
       color: $red;
     }
   }
@@ -92,10 +93,10 @@
     border: 1px solid #d9dfe8;
     padding: 8px 15px;
 
-    .ui-message__content {
+    .ui-infostrip__content {
       color: $steel;
     }
-    .ui-message__icon-icon {
+    .ui-infostrip__icon-icon {
       color: $graphite;
     }
   }

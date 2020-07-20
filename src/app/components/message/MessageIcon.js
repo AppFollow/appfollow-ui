@@ -10,20 +10,20 @@ const MessageIconComponent = ({
   className,
 }) => (
   <div
-    className={cn('ui-message__icon', className, {
-      'ui-message__icon--background': isBackground,
-      [`ui-message__icon--${size}`]: size !== 'normal',
+    className={cn('ui-infostrip__icon', className, {
+      'ui-infostrip__icon--background': isBackground,
+      [`ui-infostrip__icon--${size}`]: size !== 'normal',
     })}
   >
     {type === 'icon' ? (
-      <i className={`icon ${name} ui-message__icon-icon`} />
+      <i className={`icon ${name} ui-infostrip__icon-icon`} />
     ) : null}
 
     {type === 'img' ? (
       <img
         src={img}
         alt="Banner icon"
-        className="ui-message__icon-img"
+        className="ui-infostrip__icon-img"
       />
 
     ) : null}
