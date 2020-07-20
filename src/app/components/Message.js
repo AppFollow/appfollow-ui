@@ -46,6 +46,8 @@ MessageComponent.propTypes = {
     size: PropTypes.oneOf(['normal', 'big']),
     /** Нужна ли белая подложка */
     isBackground: PropTypes.bool,
+    /** Кастомный класс для иконки */
+    className: PropTypes.string,
   }),
   /** Колбек, если баннер умеет закрываться */
   onRemove: PropTypes.func,

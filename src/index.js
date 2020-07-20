@@ -5,5 +5,6 @@ export {Button} from 'app/components/Button';
 export {Placeholder} from 'app/components/Placeholder';
 export {Tabs} from 'app/components/Tabs';
 export {Dropdown} from 'app/components/Dropdown';
+export {Message} from 'app/components/Message';
 export {useDropdown} from 'app/hooks/useDropdown';
 export {useSearch} from 'app/hooks/useSearch';

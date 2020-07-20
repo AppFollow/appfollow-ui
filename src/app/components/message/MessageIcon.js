@@ -7,9 +7,10 @@ const MessageIconComponent = ({
   node,
   size,
   isBackground,
+  className,
 }) => (
   <div
-    className={cn('ui-message__icon', {
+    className={cn('ui-message__icon', className, {
       'ui-message__icon--background': isBackground,
       [`ui-message__icon--${size}`]: size !== 'normal',
     })}
@@ -43,6 +44,8 @@ MessageIconComponent.propTypes = {
   size: PropTypes.oneOf(['normal', 'big']),
   /** Нужна ли белая подложка */
   isBackground: PropTypes.bool,
+  /** Кастомный класс для иконки */
+  className: PropTypes.string,
 };
 
 MessageIconComponent.defaultProps = {
@@ -52,6 +55,7 @@ MessageIconComponent.defaultProps = {
   node: null,
   size: 'normal',
   isBackground: true,
+  className: '',
 };
 
 export const MessageIcon = React.memo(MessageIconComponent);
