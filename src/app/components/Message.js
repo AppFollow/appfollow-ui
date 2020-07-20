@@ -9,18 +9,18 @@ const MessageComponent = ({
   onRemove,
   actionNode,
 }) => (
-  <div className={cn('ui-message', `ui-message--${type}`, className)}>
+  <div className={cn('ui-infostrip', `ui-infostrip--${type}`, className)}>
     {icon ? <MessageIcon {...icon} /> : null}
 
-    <div className="ui-message__content">{children}</div>
+    <div className="ui-infostrip__content">{children}</div>
 
     {actionNode ? (
-      <div className="ui-message__action">{actionNode}</div>
+      <div className="ui-infostrip__action">{actionNode}</div>
     ) : null}
 
     {onRemove ? (
-      <div className="ui-message__remove">
-        <i onClick={onRemove} className="icon close ui-message__remove-icon" />
+      <div className="ui-infostrip__remove">
+        <i onClick={onRemove} className="icon close ui-infostrip__remove-icon" />
       </div>
     ) : null}
   </div>
