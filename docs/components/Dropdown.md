@@ -69,7 +69,8 @@ const options = [
   },
   {
     value: 'val12',
-    text: 'Val val val val val val val val val',
+    text: 'My super collection',
+    dotColor: 'red',
   },
 ];
 
@@ -83,7 +84,7 @@ const options = [
     onChange={onChange}
     options={options}
     multi
-    value={['val1', 'val2', 'val3', 'val4', 'val5', 'val6', 'val7']}
+    value={['val1', 'val2', 'val3', 'val4', 'val5', 'val6', 'val7', 'val12']}
   />
 
   <Dropdown
@@ -106,6 +107,7 @@ const options = [
       options[5],
     ]}
     value="val1"
+    disabled
   />
 
   <Dropdown
@@ -119,6 +121,7 @@ const options = [
       options[4],
       options[5],
     ]}
+    disabled
   />
 
   <Dropdown

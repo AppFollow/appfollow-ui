@@ -13,9 +13,13 @@ const normalizeValue = (value) => {
 
 const getIsSelected = (dropdownOption, optionValue) => normalizeValue(dropdownOption) === normalizeValue(optionValue);
 
-export const DropdownListSingle = ({options, onChange, value}) => (
+export const DropdownListSingle = ({
+  options,
+  onChange,
+  value,
+}) => (
   <div className="ui-select__list ui-scrollbar">
-    {options.map(option => (
+    {options.map((option) => (
       <div
         key={option.value}
         className={cn('ui-select__item', {

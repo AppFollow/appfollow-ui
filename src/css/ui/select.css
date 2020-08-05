@@ -27,6 +27,8 @@ $colorSize: 16px;
       display: flex;
       align-items: center;
       white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     &-placeholder {
       color: $steel;
@@ -34,6 +36,11 @@ $colorSize: 16px;
     &-text {
       color: $dark;
     }
+    &-single {
+      text-overflow: ellipsis;
+      display: block;
+      overflow: hidden;
+  }
     &-label {
       margin: 4px 8px 4px 0;
 
@@ -73,6 +80,13 @@ $colorSize: 16px;
       border-radius: 3px;
       border: 1px solid rgba(10, 27, 42, .25);
     }
+  }
+  &__dot {
+    display: inline-block;
+    height: 6px;
+    width: 6px;
+    border-radius: 3px;
+    vertical-align: top;
   }
   &__img {
     width: $imgSize;
@@ -171,7 +185,7 @@ $colorSize: 16px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: $graphite;
+    color: $steel;
     font-size: 14px;
     cursor: pointer;
     display: flex;
@@ -181,23 +195,33 @@ $colorSize: 16px;
       border-top-width: 0;
     }
     &:hover {
-      background-color: #f3f3f3;
+      background-color: #f5fcfc;
     }
     &--selected {
       background-color: #e6f9f9;
+      color: $graphite;
 
       &:hover {
         background-color: #e6f9f9;
       }
     }
-    &--multi-selected {
-      padding-top: 4px;
-      padding-bottom: 4px;
+    &--active {
+      background-color: #fffcf1;
+      color: $graphite;
 
       &:hover {
-        background-color: inherit;
-        color: inherit;
+        background-color: #fffcf1;
       }
+    }
+    &--multi {
+      display: flex;
+      align-items: center;
+      padding-right: 12px;
+    }
+    &-content {
+      width: 100%;
+      align-items: center;
+      display: flex;
     }
     &-text {
       overflow: hidden;
@@ -217,5 +241,23 @@ $colorSize: 16px;
   &--custom-label {
     border-width: 0;
     background-color: transparent;
+  }
+  &--disabled {
+    pointer-events: none;
+    cursor: default;
+    border-color: #d9dfe8;
+
+    .ui-select__label-text,
+    .ui-select__value-text,
+    .ui-select__icon,
+    .ui-select__arrow-icon {
+      color: #8293a1;
+    }
+    .ui-select__color,
+    .ui-select__dot,
+    .ui-select__img,
+    .ui-select__symbol.flag {
+      opacity: .5;
+    }
   }
 }
