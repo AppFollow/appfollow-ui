@@ -1,0 +1,126 @@
+$paddingCellHorizontal: 14px;
+$borderRadiusStripe: 3px;
+
+.ui-sheet {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    height: 36px;
+  }
+  &__title {
+    margin-top: 2px;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    color: $dark;
+  }
+  &__content {
+    overflow-x: auto;
+  }
+  &__table {
+    border-collapse: separate;
+    border-spacing: 0;
+    min-width: 100%;
+
+    &-th,
+    &-td {
+      padding-left: $paddingCellHorizontal;
+      padding-right: $paddingCellHorizontal;
+      padding-top: 0;
+      padding-bottom: 0;
+      height: 50px;
+      border-bottom: 1px solid #d9dfe8;
+
+      &:first-child {
+        padding-left: 0;
+      }
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+    &-th {
+      color: $graphite;
+      text-align: center;
+
+      &:first-child {
+        text-align: left;
+        letter-spacing: .02em;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 18px;
+      }
+      &-text {
+        white-space: nowrap;
+
+        &--sortable {
+          cursor: pointer;
+        }
+      }
+    }
+    &-td {
+      font-size: 16px;
+      line-height: 19px;
+      color: $graphite;
+    }
+    &-tr {
+      &--bold {
+        font-weight: bold;
+      }
+    }
+  }
+  &__sort-icon {
+    text-align: center;
+    width: 14px !important;
+    margin: 0 0 0 2px !important;
+    font-size: 12px !important;
+    color: $steel;
+  }
+  &--stripe {
+    .ui-sheet {
+      &__table {
+        &-th,
+        &-td {
+          border-bottom-color: transparent;
+
+          &:first-child {
+            padding-left: 24px;
+          }
+          &:last-child {
+            padding-right: 24px;
+          }
+        }
+        &-td {
+          height: 64px;
+        }
+        &-tr {
+          &:nth-child(odd) {
+            .ui-sheet__table-td {
+              background-color: $snow;
+            }
+          }
+          &:first-child {
+            .ui-sheet__table-td {
+              &:first-child {
+                border-top-left-radius: $borderRadiusStripe;
+              }
+              &:last-child {
+                border-top-right-radius: $borderRadiusStripe;
+              }
+            }
+          }
+          &:last-child {
+            .ui-sheet__table-td {
+              &:first-child {
+                border-bottom-left-radius: $borderRadiusStripe;
+              }
+              &:last-child {
+                border-bottom-right-radius: $borderRadiusStripe;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
