@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import {useSelectIndex} from 'app/hooks/useSelectIndex';
 import {DropdownOption} from 'app/components/dropdown/options/DropdownOption';
 import {
   DropdownItemPropTypes,
@@ -18,16 +19,28 @@ export const DropdownListMulti = ({
       : [...prev, newValue]);
   };
 
+  const handleTriggerSelect = React.useCallback((index) => {
+    const option = options[index];
+
+    if (!option) return;
+
+    handleChange(null, option.value);
+  }, [options, handleChange]);
+
+  const {selectIndex} = useSelectIndex({
+    maxIndex: options.length - 1,
+    triggerSelect: handleTriggerSelect,
+  });
+
   const handleApply = React.useCallback(
     (event) => onChange(event, resultValue),
     [resultValue, onChange],
   );
 
-  // continue
   return (
     <React.Fragment>
       <div className="ui-select__list ui-scrollbar">
-        {options.map((option) => {
+        {options.map((option, index) => {
           const isMultiSelected = Array.isArray(resultValue)
             && resultValue.includes(option.value);
 
@@ -36,6 +49,7 @@ export const DropdownListMulti = ({
               key={option.value}
               className={cn('ui-select__item ui-select__item--multi', {
                 'ui-select__item--selected': isMultiSelected,
+                'ui-select__item--active': index === selectIndex,
               })}
               onClick={event => handleChange(event, option.value)}
             >
