@@ -39,6 +39,7 @@ const DropdownComponent = ({
   className,
   options,
   customLabel,
+  disabled,
 }) => {
   const {
     dropdownRef,
@@ -60,6 +61,15 @@ const DropdownComponent = ({
     isEmpty = getIsEmptyArray(value) || getIsEmptyArray(valueOption);
   }
 
+  const handleOpen = React.useCallback(
+    () => {
+      if (!disabled) {
+        open();
+      }
+    },
+    [open, disabled],
+  );
+
   const handleChange = React.useCallback(
     (event, newValue) => {
       const changeQuery = field
@@ -79,10 +89,11 @@ const DropdownComponent = ({
       ref={dropdownRef}
       className={cn('ui-select', className, {
         'ui-select--custom-label': customLabel,
+        'ui-select--disabled': disabled,
       })}
     >
       {customLabel ? (
-        <span onClick={open}>
+        <span onClick={handleOpen}>
           {customLabel}
         </span>
       ) : (
@@ -91,7 +102,7 @@ const DropdownComponent = ({
           multi={multi}
           name={name}
           valueOption={valueOption}
-          onClick={open}
+          onClick={handleOpen}
         />
       )}
       {isOpen ? (
@@ -142,6 +153,7 @@ DropdownComponent.propTypes = {
     | color - квадратик с цветом в hex (например цвет тега)
     | image - ссылка на изображение (например иконка аппа)
     | backgroundImageColor - цвет фона изображения (например для windows аппов)
+    | dotColor - цвет круглой точки (например цвет коллекции)
    */
   options: PropTypes.arrayOf(DropdownItemPropTypes).isRequired,
   /**
@@ -152,16 +164,20 @@ DropdownComponent.propTypes = {
    * Кастомный лейбл
    */
   customLabel: PropTypes.node,
+  /**
+   * Если disabled
+   */
+  disabled: PropTypes.bool,
 };
 
 DropdownComponent.defaultProps = {
   value: null,
   className: '',
   field: '',
-  id: '',
   multi: false,
   search: null,
   customLabel: null,
+  disabled: false,
 };
 
 export const Dropdown = React.memo(DropdownComponent);

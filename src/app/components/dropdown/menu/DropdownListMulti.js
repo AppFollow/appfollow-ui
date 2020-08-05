@@ -1,20 +1,22 @@
 import PropTypes from 'prop-types';
 import {DropdownOption} from 'app/components/dropdown/options/DropdownOption';
-import {DropdownMultiSelectedOption} from 'app/components/dropdown/options/DropdownMultiSelectedOption';
 import {
   DropdownItemPropTypes,
   DropdownValuePropTypes,
 } from 'app/constants/dropdownConstant';
 
-export const DropdownListMulti = ({options, onChange, value}) => {
+export const DropdownListMulti = ({
+  options,
+  onChange,
+  value,
+}) => {
   const [resultValue, setResultValue] = React.useState(value);
 
-  const handleChange = React.useCallback(
-    (event, newValue) => setResultValue(resultValue.includes(newValue)
-      ? resultValue.filter(item => item !== newValue)
-      : [...resultValue, newValue]),
-    [resultValue],
-  );
+  const handleChange = (event, newValue) => {
+    setResultValue(prev => prev.includes(newValue)
+      ? prev.filter(item => item !== newValue)
+      : [...prev, newValue]);
+  };
 
   const handleApply = React.useCallback(
     (event) => onChange(event, resultValue),
@@ -25,21 +27,23 @@ export const DropdownListMulti = ({options, onChange, value}) => {
   return (
     <React.Fragment>
       <div className="ui-select__list ui-scrollbar">
-        {options.map(option => {
+        {options.map((option) => {
           const isMultiSelected = Array.isArray(resultValue)
             && resultValue.includes(option.value);
 
           return (
             <div
               key={option.value}
-              className={cn('ui-select__item', {
-                'ui-select__item--multi-selected': isMultiSelected,
+              className={cn('ui-select__item ui-select__item--multi', {
+                'ui-select__item--selected': isMultiSelected,
               })}
               onClick={event => handleChange(event, option.value)}
             >
-              {isMultiSelected
-                ? <DropdownMultiSelectedOption option={option} />
-                : <DropdownOption option={option} />}
+              <div className="ui-select__item-content">
+                <DropdownOption option={option} />
+              </div>
+
+              {isMultiSelected ? <i className="icon close ui-select__label-remove" /> : null}
             </div>
           );
         })}

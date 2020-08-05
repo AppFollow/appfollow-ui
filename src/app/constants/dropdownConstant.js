@@ -17,4 +17,5 @@ export const DropdownItemPropTypes = PropTypes.shape({
   color: PropTypes.string,
   image: PropTypes.string,
   backgroundImageColor: PropTypes.string,
+  dotColor: PropTypes.string,
 });
