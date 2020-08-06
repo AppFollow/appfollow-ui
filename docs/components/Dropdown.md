@@ -114,6 +114,21 @@ const options = [
     field="tag"
     name="Tag"
     onChange={onChange}
+    multi
+    value={[]}
+    options={[
+      {value: 'val1', text: 'Длинный длинный Длинный длинный Длинный длинный Длинный длинный тег'},
+      options[2],
+      options[3],
+      options[4],
+      options[5],
+    ]}
+  />
+
+  <Dropdown
+    field="tag"
+    name="Tag"
+    onChange={onChange}
     options={[
       {value: 'val1', text: 'Длинный длинный Длинный длинный Длинный длинный Длинный длинный тег'},
       options[2],
