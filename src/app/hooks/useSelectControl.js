@@ -26,10 +26,11 @@ const getNextIndex = (currentIndex, maxIndex) => {
   return currentIndex + 1;
 };
 
-export const useSelectIndex = ({
+export const useSelectControl = ({
   startIndex = 0,
   maxIndex,
   triggerSelect,
+  isOpen = false,
 } = {}) => {
   const [selectIndex, setSelectIndex] = useState(startIndex);
   const selectIndexRef = useRef(startIndex);
@@ -60,14 +61,16 @@ export const useSelectIndex = ({
   };
 
   useEffect(() => {
-    handleChangeSelectIndex(0);
-    document.addEventListener('keydown', handleKeyPress);
+    if (isOpen) {
+      handleChangeSelectIndex(0);
+      document.addEventListener('keydown', handleKeyPress);
+    }
 
     return () => {
       document.removeEventListener('keydown', handleKeyPress);
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [maxIndex]);
+  }, [isOpen, maxIndex]);
 
   return {
     selectIndex,

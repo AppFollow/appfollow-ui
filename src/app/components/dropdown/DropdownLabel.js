@@ -10,6 +10,8 @@ export const DropdownLabel = ({
   multi,
   name,
   onClick,
+  isOpen,
+  onClickMultiLabel,
 }) => (
   <div className="ui-select__value" onClick={onClick}>
     {isEmpty ? <DropdownEmptyLabel name={name} /> : null}
@@ -20,6 +22,8 @@ export const DropdownLabel = ({
       <DropdownMultiLabel
         options={valueOption}
         name={name}
+        isEditMode={isOpen}
+        onClickMultiLabel={onClickMultiLabel}
       />
     ) : null}
 
@@ -36,8 +40,11 @@ DropdownLabel.propTypes = {
     PropTypes.arrayOf(DropdownItemPropTypes),
   ]),
   onClick: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  onClickMultiLabel: PropTypes.func,
 };
 
 DropdownLabel.defaultProps = {
   valueOption: null,
+  onClickMultiLabel: undefined,
 };

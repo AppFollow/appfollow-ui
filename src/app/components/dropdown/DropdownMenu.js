@@ -6,7 +6,6 @@ import {
   DropdownItemPropTypes,
   DropdownValuePropTypes,
 } from 'app/constants/dropdownConstant';
-import {useSearch} from 'app/hooks/useSearch';
 
 export const DropdownMenu = ({
   value,
@@ -15,13 +14,18 @@ export const DropdownMenu = ({
   multi,
   isShowSearch,
   dropdownRef,
+  selectIndex,
+  onMouseEnter,
+  selectedValue,
+  onApply,
+  search,
+  setSearch,
 }) => {
   const menuRef = React.useRef(null);
   const [styles, setStyles] = React.useState({
     opacity: 0,
     left: '-10000px',
   });
-  const {search, setSearch, viewList} = useSearch(options);
 
   React.useEffect(() => {
     if (menuRef.current && dropdownRef.current) {
@@ -44,7 +48,7 @@ export const DropdownMenu = ({
       setStyles({left: resultLeft});
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [value, selectedValue]);
 
   return (
     <div
@@ -61,15 +65,21 @@ export const DropdownMenu = ({
 
       {multi ? (
         <DropdownListMulti
-          options={viewList}
+          options={options}
           onChange={onChange}
           value={value}
+          onMouseEnter={onMouseEnter}
+          selectIndex={selectIndex}
+          selectedValue={selectedValue}
+          onApply={onApply}
         />
       ) : (
         <DropdownListSingle
-          options={viewList}
+          options={options}
           onChange={onChange}
           value={value}
+          onMouseEnter={onMouseEnter}
+          selectIndex={selectIndex}
         />
       )}
     </div>
@@ -88,4 +98,17 @@ DropdownMenu.propTypes = {
       current: PropTypes.instanceOf(Element),
     }),
   ]).isRequired,
+  selectIndex: PropTypes.number,
+  onMouseEnter: PropTypes.func,
+  selectedValue: DropdownValuePropTypes,
+  onApply: PropTypes.func,
+  search: PropTypes.string.isRequired,
+  setSearch: PropTypes.func.isRequired,
+};
+
+DropdownMenu.defaultProps = {
+  selectIndex: undefined,
+  onMouseEnter: undefined,
+  selectedValue: undefined,
+  onApply: undefined,
 };
