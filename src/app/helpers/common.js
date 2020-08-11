@@ -13,3 +13,5 @@ export const keyBy = (data, field) => {
 };
 
 export const noop = () => {};
+
+export const random = (min, max) => min + (Math.random() * (max + 1 - min));

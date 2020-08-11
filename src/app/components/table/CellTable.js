@@ -1,8 +1,27 @@
-import {CellTablePropTypes} from 'app/constants/tableConstant';
+import PropTypes from 'prop-types';
+import {
+  CellTablePropTypes,
+  ColumnItemTablePropTypes,
+} from 'app/constants/tableConstant';
+import {
+  getStyleForCellTable,
+} from 'app/helpers/tableHelper';
 
-export const CellTable = ({cell}) => (
+export const CellTable = ({
+  cell,
+  isFixed,
+  column,
+  leftFixed,
+}) => (
   <td
-    className="ui-sheet__table-td"
+    className={cn('ui-sheet__table-td', cell.className, {
+      'ui-sheet__table-td--fixed': isFixed,
+    })}
+    style={{
+      ...getStyleForCellTable(column.width),
+      left: leftFixed ? `${leftFixed}px` : undefined,
+    }}
+    {...cell.cellProps}
   >
     {cell.node}
   </td>
@@ -10,4 +29,13 @@ export const CellTable = ({cell}) => (
 
 CellTable.propTypes = {
   cell: CellTablePropTypes.isRequired,
+  column: ColumnItemTablePropTypes,
+  isFixed: PropTypes.bool,
+  leftFixed: PropTypes.number,
+};
+
+CellTable.defaultProps = {
+  isFixed: false,
+  column: {},
+  leftFixed: 0,
 };

@@ -1,4 +1,163 @@
 ```js
+import {random} from 'app/helpers/common';
+
+const columns = [
+  {
+    id: 'name',
+    content: 'Name',
+    sortable: true,
+    firstSortDirection: 'asc',
+    isNoManaged: true,
+    width: 200,
+  },
+  {
+    id: 'newPositiveRatings',
+    content: 'New Positive Ratings',
+    sortable: true,
+    isNoManaged: true,
+    width: 200,
+  },
+  {
+    id: 'newNegativeRatings',
+    content: 'New Negative Ratings',
+    sortable: true,
+  },
+  {
+    id: 'reviewsReceived',
+    content: 'Reviews Received',
+    sortable: true,
+  },
+  {
+    id: 'reviewsReplied',
+    content: 'Reviews Replied',
+    sortable: true,
+  },
+  {
+    id: 'sentimentScore',
+    content: 'Sentiment Score',
+    sortable: true,
+  },
+  {
+    id: 'reviewsInboxWoAnswer',
+    content: 'Reviews Inbox w/o Answer',
+    sortable: true,
+  },
+  {
+    id: 'topAgent',
+    content: 'Top Agent',
+    sortable: true,
+    firstSortDirection: 'asc',
+  },
+  {
+    id: 'avgResponseTimee',
+    content: 'Avg. Response Time',
+    sortable: true,
+  },
+  {
+    id: 'reviewsTagged',
+    content: 'Reviews Tagged',
+    sortable: true,
+  },
+  {
+    id: 'mostPopularTags',
+    content: 'Most Popular Tags',
+  },
+];
+const getSymbol = (value) => {
+  if (value > 0) return '+';
+  if (value < 0) return '-';
+
+  return '';
+};
+const getType = (value) => {
+  if (value > 0) return 'positive';
+  if (value < 0) return 'negative';
+
+  return '';
+};
+const getRandomAvgCell = () => {
+  const value = random(-5, 5);
+  const viewValue = Math.abs(value).toFixed(3);
+  const symbol = getSymbol(value);
+
+  return {
+    node: `${symbol}${viewValue}`,
+  };
+};
+const getRandomValueCell = (addSymbol) => {
+  const value = Math.ceil(random(-100, 100));
+  const symbol = getSymbol(value);
+
+  return {
+    node: (
+      <Table.Number type={getType(value)} width={30}>
+        {symbol}{Math.ceil(Math.abs(value))}
+      </Table.Number>
+    ),
+  };
+};
+const getRow = (name) => {
+  return {
+    cells: [
+      {node: name},
+      getRandomAvgCell(),
+      getRandomAvgCell(),
+      getRandomValueCell(),
+      getRandomValueCell(),
+      getRandomValueCell('%'),
+      getRandomValueCell(),
+      {node: 'Top Agent'},
+      {node: '10h 30m'},
+      getRandomValueCell('%'),
+      {node: 'Tags'},
+    ],
+  };
+};
+
+const data = React.useMemo(() => ([
+  'Advanced Reviews Dashboard',
+  'Amazon Replies',
+  'Keyword Popularity',
+  'Keyword Recommendations',
+  'Reviews Dashboard',
+  'Semantic Analysis',
+  'Ratings chart',
+  'Reviews chart',
+  'Replies chart',
+  'Tags chart',
+  'Likes chart',
+  'Auto-tags',
+].map(getRow)), []);
+
+const [sort, setSort] = React.useState({
+  direction: 'asc',
+  columnId: 'name',
+});
+const [viewColumns, setViewColumns] = React.useState([
+  'name',
+  'newPositiveRatings',
+  'newNegativeRatings',
+  'reviewsReceived',
+  'reviewsReplied',
+  'sentimentScore',
+]);
+
+<Table
+  title="Controllable and Sortable"
+  columns={columns}
+  data={data}
+  sort={sort}
+  onSort={setSort}
+  isManage
+  viewColumns={viewColumns}
+  onChangeViewColumns={setViewColumns}
+  isHideRows
+  countFixedColumn={2}
+/>
+```
+
+
+```js
 const columns = [
   {
     id: 'name',

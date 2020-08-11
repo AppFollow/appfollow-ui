@@ -8,15 +8,20 @@ export const SortTablePropTypes = PropTypes.shape({
 export const ColumnItemTablePropTypes = PropTypes.shape({
   id: PropTypes.string.isRequired,
   content: PropTypes.node.isRequired,
+  isNoManaged: PropTypes.bool,
+  manageName: PropTypes.string,
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   sortable: PropTypes.bool,
   firstSortDirection: PropTypes.oneOf('asc', 'desc'),
+  className: PropTypes.string,
+  cellProps: PropTypes.objectOf(PropTypes.any),
 });
 
 export const CellTablePropTypes = PropTypes.shape({
   key: PropTypes.string,
   node: PropTypes.node.isRequired,
-  // cellProps
+  className: PropTypes.string,
+  cellProps: PropTypes.objectOf(PropTypes.any),
 });
 
 export const RowTablePropTypes = PropTypes.shape({
