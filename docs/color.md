@@ -110,6 +110,7 @@ const colors = [
       {name: '$bannerBlue', color: '#f5fcfc', isInverted: true},
       {name: '$bannerYellow', color: '#fffcf1', isInverted: true},
       {name: '$bannerRed', color: '#fff7f8', isInverted: true},
+      {name: '$bannerGreen', color: '#eaffea', isInverted: true},
     ],
   },
   {
@@ -118,6 +119,7 @@ const colors = [
       {name: '$bannerBorderBlue', color: '#b3ecec', isInverted: true},
       {name: '$bannerBorderYellow', color: '#fceebd', isInverted: true},
       {name: '$bannerBorderRed', color: '#fec2c9', isInverted: true},
+      {name: '$bannerBorderGreen', color: '#aae6a8', isInverted: true},
     ],
   },
 ];
