@@ -3,9 +3,7 @@ import {
   CellTablePropTypes,
   ColumnItemTablePropTypes,
 } from 'app/constants/tableConstant';
-import {
-  getStyleForCellTable,
-} from 'app/helpers/tableHelper';
+import {getStyleForCellTable} from 'app/helpers/tableHelper';
 
 export const CellTable = ({
   cell,

@@ -4,9 +4,7 @@ import {
   ColumnItemTablePropTypes,
 } from 'app/constants/tableConstant';
 import {CellTable} from 'app/components/table/CellTable';
-import {
-  getStyleForCellTable,
-} from 'app/helpers/tableHelper';
+import {getStyleForCellTable} from 'app/helpers/tableHelper';
 
 export const RowTable = ({
   row,

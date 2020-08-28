@@ -146,7 +146,8 @@ const [viewColumns, setViewColumns] = React.useState([
   title="Controllable and Sortable"
   columns={columns}
   data={data}
-  sort={sort}
+  sortDirection={sort.direction}
+  sortColumnId={sort.columnId}
   onSort={setSort}
   isManage
   viewColumns={viewColumns}
@@ -274,10 +275,8 @@ const bigData = [
       },
     ]}
     data={data}
-    sort={{
-      direction: 'asc',
-      columnId: 'name',
-    }}
+    sortDirection="asc"
+    sortColumnId="name"
     onSort={console.log}
   />
 </>

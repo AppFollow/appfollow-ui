@@ -1,7 +1,5 @@
 import PropTypes from 'prop-types';
-import {
-  getStyleForCellTable,
-} from 'app/helpers/tableHelper';
+import {getStyleForCellTable} from 'app/helpers/tableHelper';
 
 export const NumberTable = ({
   type,

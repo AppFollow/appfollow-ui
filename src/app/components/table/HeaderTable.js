@@ -2,15 +2,14 @@ import PropTypes from 'prop-types';
 import {HeaderCellTable} from 'app/components/table/HeaderCellTable';
 import {
   ColumnItemTablePropTypes,
-  SortTablePropTypes,
+  SortDirectionPropTypes,
 } from 'app/constants/tableConstant';
-import {
-  getStyleForCellTable,
-} from 'app/helpers/tableHelper';
+import {getStyleForCellTable} from 'app/helpers/tableHelper';
 
 export const HeaderTable = ({
   columns,
-  sort,
+  sortDirection,
+  sortColumnId,
   onSort,
   countFixedColumn,
   widthPlaceholder,
@@ -36,7 +35,8 @@ export const HeaderTable = ({
           <HeaderCellTable
             key={col.id}
             data={col}
-            sort={sort}
+            sortDirection={sortDirection}
+            sortColumnId={sortColumnId}
             onSort={onSort}
             isFixed={isFixed}
             leftFixed={leftFixed}
@@ -49,7 +49,8 @@ export const HeaderTable = ({
 
 HeaderTable.propTypes = {
   columns: PropTypes.arrayOf(ColumnItemTablePropTypes).isRequired,
-  sort: SortTablePropTypes.isRequired,
+  sortDirection: SortDirectionPropTypes.isRequired,
+  sortColumnId: PropTypes.string.isRequired,
   onSort: PropTypes.func.isRequired,
   countFixedColumn: PropTypes.number.isRequired,
   widthPlaceholder: PropTypes.number.isRequired,

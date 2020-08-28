@@ -11,7 +11,7 @@ import {ManageTable} from 'app/components/table/ManageTable';
 import {ToggleHiddenRowsTable} from 'app/components/table/ToggleHiddenRowsTable';
 import {NumberTable} from 'app/components/table/NumberTable';
 import {
-  SortTablePropTypes,
+  SortDirectionPropTypes,
   ColumnItemTablePropTypes,
   RowTablePropTypes,
 } from 'app/constants/tableConstant';
@@ -24,7 +24,8 @@ const TableComponent = ({
   isManage,
   viewColumns,
   onChangeViewColumns,
-  sort,
+  sortDirection,
+  sortColumnId,
   onSort,
   columns,
   data,
@@ -47,8 +48,8 @@ const TableComponent = ({
 
     let direction = 'desc';
 
-    if (sort.columnId === id) {
-      if (sort.direction === 'desc') {
+    if (sortColumnId === id) {
+      if (sortDirection === 'desc') {
         direction = 'asc';
       }
     } else {
@@ -59,7 +60,7 @@ const TableComponent = ({
       direction,
       columnId: id,
     });
-  }, [mapColumnById, onSort, sort]);
+  }, [mapColumnById, onSort, sortDirection, sortColumnId]);
 
   const columnsResult = useMemo(
     () => {
@@ -126,7 +127,8 @@ const TableComponent = ({
             {columns ? (
               <HeaderTable
                 columns={columnsResult}
-                sort={sort}
+                sortDirection={sortDirection}
+                sortColumnId={sortColumnId}
                 onSort={handleSort}
                 countFixedColumn={countFixedColumn}
                 widthPlaceholder={widthPlaceholder}
@@ -166,8 +168,10 @@ TableComponent.propTypes = {
   viewColumns: PropTypes.arrayOf(PropTypes.string),
   /** Функция после изменения сортировки, возвращает массив id видимых столбцов */
   onChangeViewColumns: PropTypes.func,
-  /** Сортировка таблицы */
-  sort: SortTablePropTypes,
+  /** Направление сортировки таблицы */
+  sortDirection: SortDirectionPropTypes,
+  /** Id колонки, которая сейчас сортируется */
+  sortColumnId: PropTypes.string,
   /** Функция после изменения сортировки, возвращает объект аналогичный sort */
   onSort: PropTypes.func,
   /**
@@ -213,7 +217,8 @@ TableComponent.defaultProps = {
   isManage: false,
   viewColumns: [],
   onChangeViewColumns: noop,
-  sort: {},
+  sortDirection: 'asc',
+  sortColumnId: '',
   onSort: null,
   columns: [],
   countFixedColumn: 0,

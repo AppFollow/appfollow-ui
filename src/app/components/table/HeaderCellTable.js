@@ -1,15 +1,14 @@
 import PropTypes from 'prop-types';
 import {
   ColumnItemTablePropTypes,
-  SortTablePropTypes,
+  SortDirectionPropTypes,
 } from 'app/constants/tableConstant';
-import {
-  getStyleForCellTable,
-} from 'app/helpers/tableHelper';
+import {getStyleForCellTable} from 'app/helpers/tableHelper';
 
 export const HeaderCellTable = ({
   data,
-  sort,
+  sortDirection,
+  sortColumnId,
   onSort,
   isFixed,
   leftFixed,
@@ -36,9 +35,9 @@ export const HeaderCellTable = ({
       {data.sortable ? (
         <i
           className={cn('icon ui-sheet__sort-icon', {
-            'sort': sort.columnId !== data.id,
-            'sort down': sort.columnId === data.id && sort.direction === 'desc',
-            'sort up': sort.columnId === data.id && sort.direction === 'asc',
+            'sort': sortColumnId !== data.id,
+            'sort down': sortColumnId === data.id && sortDirection === 'desc',
+            'sort up': sortColumnId === data.id && sortDirection === 'asc',
           })}
         />
       ) : null}
@@ -48,7 +47,8 @@ export const HeaderCellTable = ({
 
 HeaderCellTable.propTypes = {
   data: ColumnItemTablePropTypes.isRequired,
-  sort: SortTablePropTypes.isRequired,
+  sortDirection: SortDirectionPropTypes.isRequired,
+  sortColumnId: PropTypes.string.isRequired,
   onSort: PropTypes.func.isRequired,
   isFixed: PropTypes.bool,
   leftFixed: PropTypes.number,

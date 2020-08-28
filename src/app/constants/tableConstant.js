@@ -1,9 +1,6 @@
 import PropTypes from 'prop-types';
 
-export const SortTablePropTypes = PropTypes.shape({
-  direction: PropTypes.oneOf(['asc', 'desc']),
-  columnId: PropTypes.string,
-});
+export const SortDirectionPropTypes = PropTypes.oneOf(['asc', 'desc']);
 
 export const ColumnItemTablePropTypes = PropTypes.shape({
   id: PropTypes.string.isRequired,

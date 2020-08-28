@@ -22,6 +22,18 @@ export const ManageTable = ({
     [onChangeViewColumns],
   );
 
+  const customLabel = React.useMemo(
+    () => (
+      <div className="ui-select__value">
+        <span className="ui-select__value-placeholder">
+          Manage Table
+        </span>
+        <i className="icon dropdown ui-select__arrow-icon" />
+      </div>
+    ),
+    [],
+  );
+
   return (
     <Dropdown
       multi
@@ -29,14 +41,7 @@ export const ManageTable = ({
       options={options}
       onChange={handleChange}
       className="ui-select--dropdown ui-sheet__manage-table"
-      customLabel={(
-        <div className="ui-select__value">
-          <span className="ui-select__value-placeholder">
-            Manage Table
-          </span>
-          <i className="icon dropdown ui-select__arrow-icon" />
-        </div>
-      )}
+      customLabel={customLabel}
     />
   );
 };
