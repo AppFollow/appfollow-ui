@@ -17,6 +17,7 @@ export const ColumnItemTablePropTypes = PropTypes.shape({
 export const CellTablePropTypes = PropTypes.shape({
   key: PropTypes.string,
   node: PropTypes.node.isRequired,
+  align: PropTypes.oneOf(['left', 'center', 'right']).isRequired,
   className: PropTypes.string,
   cellProps: PropTypes.objectOf(PropTypes.any),
 });
@@ -25,4 +26,6 @@ export const RowTablePropTypes = PropTypes.shape({
   key: PropTypes.string,
   type: PropTypes.oneOf(['bold']),
   cells: PropTypes.arrayOf(CellTablePropTypes).isRequired,
+  rowProps: PropTypes.objectOf(PropTypes.any),
+  clickable: PropTypes.boolean,
 });

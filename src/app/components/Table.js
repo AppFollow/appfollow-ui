@@ -10,6 +10,7 @@ import {HeaderTable} from 'app/components/table/HeaderTable';
 import {ManageTable} from 'app/components/table/ManageTable';
 import {ToggleHiddenRowsTable} from 'app/components/table/ToggleHiddenRowsTable';
 import {NumberTable} from 'app/components/table/NumberTable';
+import {ValueDiffTable} from 'app/components/table/ValueDiffTable';
 import {
   SortDirectionPropTypes,
   ColumnItemTablePropTypes,
@@ -104,6 +105,8 @@ const TableComponent = ({
       .reduce((sum, col) => sum + col.width, 0);
   }, [columns, countFixedColumn]);
 
+  const isShowToggleHiddenRows = isHideRows && data.length > countViewRows;
+
   return (
     <div
       className={cn('ui-sheet', `ui-sheet--${type}`, className)}
@@ -143,7 +146,7 @@ const TableComponent = ({
           </table>
         </div>
       </div>
-      {isHideRows ? (
+      {isShowToggleHiddenRows ? (
         <ToggleHiddenRowsTable
           isHide={isHide}
           setIsHide={setIsHide}
@@ -199,7 +202,10 @@ TableComponent.propTypes = {
       node* - node - содержимое заголовка
       className? - кастомный класс
       cellProps? - свойства для ячейки
+      align? - 'left' 'center' 'right'
     }]
+    rowProps? - свойства для строки
+    clickable? - эффект наведения мышки на строку
   */
   data: PropTypes.arrayOf(RowTablePropTypes).isRequired,
   /** Количество колонок, прилепленных к левому краю, прикрепленные столбцы должны быть isNoManaged и иметь width */
@@ -229,3 +235,4 @@ TableComponent.defaultProps = {
 export const Table = React.memo(TableComponent);
 
 Table.Number = NumberTable;
+Table.ValueDiffTable = ValueDiffTable;

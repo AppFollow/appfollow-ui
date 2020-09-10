@@ -18,7 +18,9 @@ export const RowTable = ({
     <tr
       className={cn('ui-sheet__table-tr', {
         [`ui-sheet__table-tr--${row.type}`]: row.type,
+        'ui-sheet__table-tr--clickable': row.clickable,
       })}
+      {...row.rowProps}
     >
       {countFixedColumn ? (
         <td
