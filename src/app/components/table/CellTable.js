@@ -14,6 +14,7 @@ export const CellTable = ({
   <td
     className={cn('ui-sheet__table-td', cell.className, {
       'ui-sheet__table-td--fixed': isFixed,
+      [`ui-sheet__table-td--${cell.align}`]: cell.align,
     })}
     style={{
       ...getStyleForCellTable(column.width),

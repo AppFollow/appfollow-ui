@@ -33,6 +33,11 @@ $marginHorizontalTable: 16px;
     border-spacing: 0;
     min-width: 100%;
 
+    &-tr {
+      &--clickable {
+        cursor: pointer;
+      }
+    }
     &-th,
     &-td {
       padding-left: $paddingCellHorizontal;
@@ -89,6 +94,15 @@ $marginHorizontalTable: 16px;
         text-align: left;
         justify-content: left;
       }
+      &--left {
+        text-align: left;
+      }
+      &--center {
+        text-align: center;
+      }
+      &--right {
+        text-align: right;
+      }
     }
     &-tr {
       &--bold {
@@ -138,6 +152,23 @@ $marginHorizontalTable: 16px;
     width: 55px;
     text-align: right;
   }
+  &__value-diff {
+    display: inline-flex;
+    width: 80px;
+    text-align: right;
+    position: relative;
+    margin: 0 auto;
+    align-items: center;
+    white-space: nowrap;
+
+    &-content {
+      flex: 1;
+    }
+    &-diff {
+      margin-left: 4px;
+      width: calc(50% - 4px);
+    }
+  }
   &__text {
     &--negative {
       color: $red;
@@ -162,6 +193,8 @@ $marginHorizontalTable: 16px;
         }
         &-td {
           height: 64px;
+          padding-top: 8px;
+          padding-bottom: 12px;
         }
         &-tr {
           &:nth-child(odd) {

@@ -79,10 +79,21 @@ const getRandomAvgCell = () => {
   const value = random(-5, 5);
   const viewValue = Math.abs(value).toFixed(3);
   const symbol = getSymbol(value);
+  const diff = random(-50, 50);
+  const symbolDiff = getSymbol(diff);
 
   return {
-    node: `${symbol}${viewValue}`,
-  };
+    node: (
+      <Table.ValueDiffTable
+        type={getType(value)}
+        width={110}
+        widthDiff={50}
+        diff={`${symbolDiff}${Math.ceil(Math.abs(diff))}%`}
+      >
+        {symbol}{viewValue}
+      </Table.ValueDiffTable>
+    ),
+  }
 };
 const getRandomValueCell = (addSymbol) => {
   const value = Math.ceil(random(-100, 100));
@@ -94,6 +105,7 @@ const getRandomValueCell = (addSymbol) => {
         {symbol}{Math.ceil(Math.abs(value))}
       </Table.Number>
     ),
+    align: 'right',
   };
 };
 const getRow = (name) => {
@@ -182,6 +194,10 @@ const data = [
       {node: '1.000'},
       {node: '90'},
     ],
+    rowProps: {
+      onClick: () => console.log('test'),
+    },
+    clickable: true,
   },
   // 2 row
   {
