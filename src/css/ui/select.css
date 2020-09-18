@@ -247,13 +247,16 @@ $colorSize: 16px;
     border-top: 1px solid #f2f2f2;
     cursor: pointer;
   }
-  &--custom-label {
+  &__message {
+    background: #f6f6f6;
+    font-size: 14px;
+    color: $steel;
+    padding: 0 12px;
+    line-height: 36px;
+  }
+  &--default {
     border-width: 0;
     background-color: transparent;
-  }
-  &--dropdown {
-    border-width: 1px;
-    background-color: #fff;
   }
   &--disabled {
     pointer-events: none;

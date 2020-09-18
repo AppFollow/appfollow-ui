@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
-import {DropdownSearch} from 'app/components/dropdown/DropdownSearch';
-import {DropdownListSingle} from 'app/components/dropdown/menu/DropdownListSingle';
-import {DropdownListMulti} from 'app/components/dropdown/menu/DropdownListMulti';
+import {useContext} from 'react';
+import {DropdownLayoutContext} from 'app/helpers/dropdownLayoutContext';
 import {
   DropdownItemPropTypes,
   DropdownValuePropTypes,
@@ -13,42 +12,17 @@ export const DropdownMenu = ({
   options,
   multi,
   isShowSearch,
-  dropdownRef,
+  menuRef,
+  styles,
   selectIndex,
   onMouseEnter,
   selectedValue,
   onApply,
   search,
   setSearch,
+  loading,
 }) => {
-  const menuRef = React.useRef(null);
-  const [styles, setStyles] = React.useState({
-    opacity: 0,
-    left: '-10000px',
-  });
-
-  React.useEffect(() => {
-    if (menuRef.current && dropdownRef.current) {
-      const MAX_PADDING_RIGHT = 24;
-
-      const {left} = dropdownRef.current.getBoundingClientRect();
-      const {width} = menuRef.current.getBoundingClientRect();
-      const windowWidth = window.innerWidth;
-      const windowPageXOffset = window.pageXOffset;
-
-      const realLeft = left + windowPageXOffset;
-
-      // отступ от правого края окна
-      const paddingRight = windowWidth - realLeft - width;
-
-      const resultLeft = paddingRight < MAX_PADDING_RIGHT
-        ? `${paddingRight - MAX_PADDING_RIGHT}px`
-        : 0;
-
-      setStyles({left: resultLeft});
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value, selectedValue]);
+  const {Search, ListMulti, ListSingle, Message} = useContext(DropdownLayoutContext);
 
   return (
     <div
@@ -57,14 +31,20 @@ export const DropdownMenu = ({
       style={styles}
     >
       {isShowSearch ? (
-        <DropdownSearch
+        <Search
           search={search}
           setSearch={setSearch}
         />
       ) : null}
 
+      <Message
+        isHaveData={Boolean(options.length)}
+        isSearch={Boolean(search)}
+        loading={loading}
+      />
+
       {multi ? (
-        <DropdownListMulti
+        <ListMulti
           options={options}
           onChange={onChange}
           value={value}
@@ -74,7 +54,7 @@ export const DropdownMenu = ({
           onApply={onApply}
         />
       ) : (
-        <DropdownListSingle
+        <ListSingle
           options={options}
           onChange={onChange}
           value={value}
@@ -92,18 +72,20 @@ DropdownMenu.propTypes = {
   options: PropTypes.arrayOf(DropdownItemPropTypes).isRequired,
   value: DropdownValuePropTypes.isRequired,
   isShowSearch: PropTypes.bool.isRequired,
-  dropdownRef: PropTypes.oneOfType([
+  menuRef: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.shape({
       current: PropTypes.instanceOf(Element),
     }),
   ]).isRequired,
+  styles: PropTypes.objectOf(PropTypes.any),
   selectIndex: PropTypes.number,
   onMouseEnter: PropTypes.func,
   selectedValue: DropdownValuePropTypes,
   onApply: PropTypes.func,
   search: PropTypes.string.isRequired,
   setSearch: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 DropdownMenu.defaultProps = {
@@ -111,4 +93,5 @@ DropdownMenu.defaultProps = {
   onMouseEnter: undefined,
   selectedValue: undefined,
   onApply: undefined,
+  styles: {},
 };

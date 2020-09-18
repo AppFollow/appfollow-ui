@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
-import {DropdownOption} from 'app/components/dropdown/options/DropdownOption';
+import {useContext} from 'react';
+import {DropdownLayoutContext} from 'app/helpers/dropdownLayoutContext';
 import {
   DropdownItemPropTypes,
   DropdownValuePropTypes,
@@ -12,38 +13,40 @@ export const DropdownListMulti = ({
   onMouseEnter,
   selectedValue,
   onApply,
-}) => (
-  <React.Fragment>
-    <div className="ui-select__list ui-scrollbar">
-      {options.map((option, index) => {
-        const isMultiSelected = Array.isArray(selectedValue)
-          && selectedValue.includes(option.value);
+}) => {
+  const {Option, ApplyButton} = useContext(DropdownLayoutContext);
 
-        return (
-          <div
-            key={option.value}
-            className={cn('ui-select__item ui-select__item--control ui-select__item--multi', {
-              'ui-select__item--selected': isMultiSelected,
-              'ui-select__item--active': index === selectIndex,
-            })}
-            onClick={event => onChange(event, option.value)}
-          >
-            <DropdownOption
-              option={option}
-              onMouseEnter={onMouseEnter}
-              index={index}
-            />
+  return (
+    <React.Fragment>
+      <div className="ui-select__list ui-scrollbar">
+        {options.map((option, index) => {
+          const isMultiSelected = Array.isArray(selectedValue)
+            && selectedValue.includes(option.value);
 
-            {isMultiSelected ? <i className="icon close ui-select__label-remove" /> : null}
-          </div>
-        );
-      })}
-    </div>
-    <div className="ui-select__apply" onClick={onApply}>
-      Apply
-    </div>
-  </React.Fragment>
-);
+          return (
+            <div
+              key={option.value}
+              className={cn('ui-select__item ui-select__item--control ui-select__item--multi', {
+                'ui-select__item--selected': isMultiSelected,
+                'ui-select__item--active': index === selectIndex,
+              })}
+              onClick={event => onChange(event, option.value)}
+            >
+              <Option
+                option={option}
+                onMouseEnter={onMouseEnter}
+                index={index}
+              />
+
+              {isMultiSelected ? <i className="icon close ui-select__label-remove" /> : null}
+            </div>
+          );
+        })}
+      </div>
+      <ApplyButton onApply={onApply} />
+    </React.Fragment>
+  );
+};
 
 DropdownListMulti.propTypes = {
   onChange: PropTypes.func.isRequired,

@@ -150,12 +150,15 @@ const options = [
       options[4],
       options[5],
     ]}
-    customLabel={(
-      <React.Fragment>
-        <i className="icon plus" />
-        Add Filters
-      </React.Fragment>
-    )}
+    className="ui-select--default"
+    layouts={{
+      Label: ({onClick}) => (
+        <span onClick={onClick}>
+          <i className="icon plus" />
+          Add Filters
+        </span>
+      )
+    }}
   />
 
   <br />
@@ -167,10 +170,88 @@ const options = [
   <br />
   <br />
   <br />
-  <br />
-  <br />
-  <br />
-  <br />
-  <br />
 </>
+```
+
+
+Custom Menu
+```js
+const CustomMenu = ({
+  value,
+  onChange,
+  options,
+  multi,
+  isShowSearch,
+  menuRef,
+  styles,
+  selectIndex,
+  onMouseEnter,
+  selectedValue,
+  onApply,
+  search,
+  setSearch,
+}) => (
+  <div
+    ref={menuRef}
+    className="ui-select__menu"
+    style={styles}
+  >
+    <div>
+      My extended data for menu
+    </div>
+    <Dropdown.Search
+      search={search}
+      setSearch={setSearch}
+    />
+    <Dropdown.ListSingle
+      options={options}
+      onChange={onChange}
+      value={value}
+      onMouseEnter={onMouseEnter}
+      selectIndex={selectIndex}
+    />
+  </div>
+);
+
+const layouts = {
+  Menu: CustomMenu,
+};
+
+<Dropdown
+  value="val1"
+  onChange={console.log}
+  options={[
+    {
+      value: 'val1',
+      text: 'Common value',
+    },
+    {
+      flag: 'us',
+      value: 'val2',
+      text: 'Common value',
+    },
+    {
+      icon: 'world',
+      value: 'val3',
+      text: 'Common value',
+    },
+  ]}
+  layouts={layouts}
+/>
+```
+
+Messages
+```
+<Dropdown
+  name="No data :("
+  onChange={console.log}
+  options={[]}
+/>
+
+<Dropdown
+  name="Data loading"
+  onChange={console.log}
+  options={[]}
+  loading
+/>
 ```

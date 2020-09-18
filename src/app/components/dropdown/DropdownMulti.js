@@ -1,3 +1,5 @@
+import {useContext} from 'react';
+import {DropdownLayoutContext} from 'app/helpers/dropdownLayoutContext';
 import {useDropdown} from 'app/hooks/useDropdown';
 import {useSelectControl} from 'app/hooks/useSelectControl';
 import {useSearch} from 'app/hooks/useSearch';
@@ -6,9 +8,8 @@ import {
   DropdownPropTypes,
   DropdownDefaultProps,
 } from 'app/constants/dropdownConstant';
-import {DropdownLabel} from 'app/components/dropdown/DropdownLabel';
-import {DropdownMenu} from 'app/components/dropdown/DropdownMenu';
-import {getIsEmptyArray, keyBy} from 'app/helpers/common';
+import {keyBy} from 'app/helpers/common';
+import {DropdownMenuWrap} from 'app/components/dropdown/DropdownMenuWrap';
 
 const getValueOption = (multi, value, mapOptionsByValue) => {
   let valueOption = null;
@@ -39,10 +40,12 @@ const DropdownMultiComponent = ({
   search,
   className,
   options,
-  customLabel,
   disabled,
   startOpened,
+  loading,
+  multiLeftText,
 }) => {
+  const {Label} = useContext(DropdownLayoutContext);
   const {
     dropdownRef,
     isOpen,
@@ -103,8 +106,6 @@ const DropdownMultiComponent = ({
 
   const valueOption = getValueOption(multi, selectedValue, mapOptionsByValue);
 
-  const isEmpty = getIsEmptyArray(selectedValue) || getIsEmptyArray(valueOption);
-
   const handleClickMultiLabel = React.useCallback(
     (event, option) => {
       if (!option || !option.value) return;
@@ -144,27 +145,20 @@ const DropdownMultiComponent = ({
     <div
       ref={dropdownRef}
       className={cn('ui-select', className, {
-        'ui-select--custom-label': customLabel,
         'ui-select--disabled': disabled,
       })}
     >
-      {customLabel ? (
-        <span onClick={handleOpen}>
-          {customLabel}
-        </span>
-      ) : (
-        <DropdownLabel
-          isEmpty={isEmpty}
-          multi={multi}
-          name={name}
-          valueOption={valueOption}
-          onClick={handleOpen}
-          isOpen={isOpen}
-          onClickMultiLabel={handleClickMultiLabel}
-        />
-      )}
+      <Label
+        multi={multi}
+        name={name}
+        valueOption={valueOption}
+        onClick={handleOpen}
+        isOpen={isOpen}
+        onClickMultiLabel={handleClickMultiLabel}
+        multiLeftText={multiLeftText}
+      />
       {isOpen ? (
-        <DropdownMenu
+        <DropdownMenuWrap
           value={value}
           onChange={handleChangeSelectedValue}
           options={searchedOptions}
@@ -177,6 +171,7 @@ const DropdownMultiComponent = ({
           selectedValue={selectedValue}
           search={searchText}
           setSearch={setSearch}
+          loading={loading}
         />
       ) : null}
     </div>
