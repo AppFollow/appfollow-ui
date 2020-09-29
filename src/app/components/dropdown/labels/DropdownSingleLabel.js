@@ -1,15 +1,21 @@
-import {DropdownSymbols} from 'app/components/dropdown/DropdownSymbols';
+import {useContext} from 'react';
+import {DropdownLayoutContext} from 'app/helpers/dropdownLayoutContext';
 import {DropdownItemPropTypes} from 'app/constants/dropdownConstant';
 
-export const DropdownSingleLabel = ({option}) => (
-  <span className="ui-select__value-text">
-    <DropdownSymbols option={option} />
-    <span className="ui-select__value-single">
-      {option.text}
+export const DropdownSingleLabel = ({selectedOption}) => {
+  const {Symbols} = useContext(DropdownLayoutContext);
+
+  return (
+    <span className="ui-select__value-text">
+      <Symbols option={selectedOption} />
+
+      <span className="ui-select__value-single">
+        {selectedOption.text}
+      </span>
     </span>
-  </span>
-);
+  );
+};
 
 DropdownSingleLabel.propTypes = {
-  option: DropdownItemPropTypes.isRequired,
+  selectedOption: DropdownItemPropTypes.isRequired,
 };
