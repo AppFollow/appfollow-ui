@@ -167,6 +167,7 @@ $marginHorizontalTable: 16px;
     &-diff {
       margin-left: 4px;
       width: calc(50% - 4px);
+      text-align: left;
     }
   }
   &__text {
