@@ -9,7 +9,7 @@ export const ColumnItemTablePropTypes = PropTypes.shape({
   manageName: PropTypes.string,
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   sortable: PropTypes.bool,
-  firstSortDirection: PropTypes.oneOf('asc', 'desc'),
+  firstSortDirection: PropTypes.oneOf(['asc', 'desc']),
   className: PropTypes.string,
   cellProps: PropTypes.objectOf(PropTypes.any),
 });
