@@ -21,10 +21,9 @@
     height: 35px;
     line-height: 35px;
     padding: 0 12px;
-    background: $grey;
     border-width: 1px;
     border-style: solid;
-    border-color: $grey $grey #d9dfe8;
+    border-color: transparent;
     border-radius: 3px 3px 0 0;
     cursor: pointer;
     font-size: 16px;
@@ -40,7 +39,7 @@
       color: $graphite;
       background-color: #fff;
       z-index: 2;
-      border-color: $grey;
+      border-color: #d9dfe8;
       border-bottom: none;
 
       .icon {
