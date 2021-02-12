@@ -107,7 +107,7 @@ const TableComponent = ({
     >
       {title || isManage ? (
         <div className="ui-sheet__top">
-          {title ? <TitleTable title={title} /> : null}
+          {title ? <TitleTable title={title} /> : <div />}
           {isManage ? (
             <ManageTable
               columns={columns}

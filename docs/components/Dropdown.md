@@ -25,6 +25,7 @@ const options = [
   },
   {
     icon: 'world',
+    iconColor: '#ff0000',
     value: 'val3',
     text: 'Common value',
   },

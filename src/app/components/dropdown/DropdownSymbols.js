@@ -20,7 +20,7 @@ export const DropdownSymbols = ({option}) => (
     ) : null}
 
     {option.icon ? (
-      <DropdownIcon icon={option.icon} />
+      <DropdownIcon icon={option.icon} iconColor={option.iconColor} />
     ) : null}
   </React.Fragment>
 );
