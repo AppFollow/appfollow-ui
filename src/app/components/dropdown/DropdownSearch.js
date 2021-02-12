@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 export const DropdownSearch = ({search, setSearch}) => {
   const handleChange = React.useCallback(
     event => setSearch(event.target.value),
@@ -20,9 +18,4 @@ export const DropdownSearch = ({search, setSearch}) => {
       </div>
     </div>
   );
-};
-
-DropdownSearch.propTypes = {
-  search: PropTypes.string.isRequired,
-  setSearch: PropTypes.func.isRequired,
 };

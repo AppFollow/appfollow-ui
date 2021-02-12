@@ -1,8 +1,3 @@
-import PropTypes from 'prop-types';
-import {
-  CellTablePropTypes,
-  ColumnItemTablePropTypes,
-} from 'app/constants/tableConstant';
 import {getStyleForCellTable} from 'app/helpers/tableHelper';
 
 export const CellTable = ({
@@ -25,13 +20,6 @@ export const CellTable = ({
     {cell.node}
   </td>
 );
-
-CellTable.propTypes = {
-  cell: CellTablePropTypes.isRequired,
-  column: ColumnItemTablePropTypes,
-  isFixed: PropTypes.bool,
-  leftFixed: PropTypes.number,
-};
 
 CellTable.defaultProps = {
   isFixed: false,

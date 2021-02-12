@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 const MessageIconComponent = ({
   type,
   name,
@@ -30,23 +28,6 @@ const MessageIconComponent = ({
     {type === 'node' ? node : null}
   </div>
 );
-
-MessageIconComponent.propTypes = {
-  /** Тип иконки */
-  type: PropTypes.oneOf(['icon', 'img', 'node']),
-  /** Name иконки из font awesome */
-  name: PropTypes.string,
-  /** Ссылка на картинку */
-  img: PropTypes.string,
-  /** Jsx вместо картинки */
-  node: PropTypes.node,
-  /** Размер картинки/иконки */
-  size: PropTypes.oneOf(['normal', 'big']),
-  /** Нужна ли белая подложка */
-  isBackground: PropTypes.bool,
-  /** Кастомный класс для иконки */
-  className: PropTypes.string,
-};
 
 MessageIconComponent.defaultProps = {
   type: 'icon',

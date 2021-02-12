@@ -1,7 +1,5 @@
-import PropTypes from 'prop-types';
 import {useContext} from 'react';
 import {DropdownLayoutContext} from 'app/helpers/dropdownLayoutContext';
-import {DropdownItemPropTypes} from 'app/constants/dropdownConstant';
 
 export const DropdownMultiLabel = ({
   multiLeftText,
@@ -37,13 +35,6 @@ export const DropdownMultiLabel = ({
       ))}
     </React.Fragment>
   );
-};
-
-DropdownMultiLabel.propTypes = {
-  selectedOptions: PropTypes.arrayOf(DropdownItemPropTypes).isRequired,
-  multiLeftText: PropTypes.string.isRequired,
-  isOpen: PropTypes.bool,
-  onClickMultiLabel: PropTypes.func,
 };
 
 DropdownMultiLabel.defaultProps = {

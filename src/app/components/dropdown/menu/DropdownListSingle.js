@@ -1,10 +1,5 @@
-import PropTypes from 'prop-types';
 import {useContext} from 'react';
 import {DropdownLayoutContext} from 'app/helpers/dropdownLayoutContext';
-import {
-  DropdownItemPropTypes,
-  DropdownValuePropTypes,
-} from 'app/constants/dropdownConstant';
 
 const normalizeValue = (value) => {
   if (value === 'resetValue' || value === null || value === undefined) return '';
@@ -43,14 +38,6 @@ export const DropdownListSingle = ({
       ))}
     </div>
   );
-};
-
-DropdownListSingle.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  options: PropTypes.arrayOf(DropdownItemPropTypes).isRequired,
-  value: DropdownValuePropTypes.isRequired,
-  selectIndex: PropTypes.number,
-  onMouseEnter: PropTypes.func,
 };
 
 DropdownListSingle.defaultProps = {

@@ -1,8 +1,3 @@
-import PropTypes from 'prop-types';
-import {
-  ColumnItemTablePropTypes,
-  SortDirectionPropTypes,
-} from 'app/constants/tableConstant';
 import {getStyleForCellTable} from 'app/helpers/tableHelper';
 
 export const HeaderCellTable = ({
@@ -44,15 +39,6 @@ export const HeaderCellTable = ({
     </span>
   </th>
 );
-
-HeaderCellTable.propTypes = {
-  data: ColumnItemTablePropTypes.isRequired,
-  sortDirection: SortDirectionPropTypes.isRequired,
-  sortColumnId: PropTypes.string.isRequired,
-  onSort: PropTypes.func.isRequired,
-  isFixed: PropTypes.bool,
-  leftFixed: PropTypes.number,
-};
 
 HeaderCellTable.defaultProps = {
   isFixed: false,

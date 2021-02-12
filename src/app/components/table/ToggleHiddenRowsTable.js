@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 export const ToggleHiddenRowsTable = ({
   isHide,
   setIsHide,
@@ -14,8 +12,3 @@ export const ToggleHiddenRowsTable = ({
     {isHide ? 'More' : 'Less'}
   </div>
 );
-
-ToggleHiddenRowsTable.propTypes = {
-  isHide: PropTypes.bool.isRequired,
-  setIsHide: PropTypes.func.isRequired,
-};

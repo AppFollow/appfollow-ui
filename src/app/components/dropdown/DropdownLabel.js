@@ -1,7 +1,5 @@
-import PropTypes from 'prop-types';
 import {useContext} from 'react';
 import {DropdownLayoutContext} from 'app/helpers/dropdownLayoutContext';
-import {DropdownItemPropTypes} from 'app/constants/dropdownConstant';
 import {getIsEmptyArray} from 'app/helpers/common';
 
 export const DropdownLabel = ({
@@ -38,19 +36,6 @@ export const DropdownLabel = ({
       <i className="icon dropdown ui-select__arrow-icon" />
     </div>
   );
-};
-
-DropdownLabel.propTypes = {
-  multi: PropTypes.bool.isRequired,
-  name: PropTypes.string.isRequired,
-  valueOption: PropTypes.oneOfType([
-    DropdownItemPropTypes,
-    PropTypes.arrayOf(DropdownItemPropTypes),
-  ]),
-  onClick: PropTypes.func.isRequired,
-  isOpen: PropTypes.bool.isRequired,
-  onClickMultiLabel: PropTypes.func,
-  multiLeftText: PropTypes.string,
 };
 
 DropdownLabel.defaultProps = {

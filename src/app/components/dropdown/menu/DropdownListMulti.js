@@ -1,10 +1,5 @@
-import PropTypes from 'prop-types';
 import {useContext} from 'react';
 import {DropdownLayoutContext} from 'app/helpers/dropdownLayoutContext';
-import {
-  DropdownItemPropTypes,
-  DropdownValuePropTypes,
-} from 'app/constants/dropdownConstant';
 
 export const DropdownListMulti = ({
   options,
@@ -46,15 +41,6 @@ export const DropdownListMulti = ({
       <ApplyButton onApply={onApply} />
     </React.Fragment>
   );
-};
-
-DropdownListMulti.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  options: PropTypes.arrayOf(DropdownItemPropTypes).isRequired,
-  selectIndex: PropTypes.number,
-  onMouseEnter: PropTypes.func,
-  selectedValue: DropdownValuePropTypes,
-  onApply: PropTypes.func,
 };
 
 DropdownListMulti.defaultProps = {

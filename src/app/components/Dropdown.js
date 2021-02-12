@@ -1,9 +1,3 @@
-/* eslint-disable react/require-default-props */
-import PropTypes from 'prop-types';
-import {
-  DropdownValuePropTypes,
-  DropdownItemPropTypes,
-} from 'app/constants/dropdownConstant';
 import {DropdownMulti} from 'app/components/dropdown/DropdownMulti';
 import {DropdownSingle} from 'app/components/dropdown/DropdownSingle';
 
@@ -54,93 +48,6 @@ const DropdownComponent = ({layouts, ...props}) => {
 };
 
 DropdownComponent.displayName = 'Dropdown';
-
-DropdownComponent.propTypes = {
-  /**
-   * Автооткрытие
-   */
-  startOpened: PropTypes.bool,
-  className: PropTypes.string,
-  /**
-   * Значение дропдауна
-   */
-  value: DropdownValuePropTypes,
-  /**
-   * Поле, которое изменяется в onChange => (event, {field: newValue})
-   * Если не передали, то onChange => (event, newValue)
-   */
-  field: PropTypes.string,
-  /**
-   * Возможен ли мультивыбор
-   */
-  multi: PropTypes.bool,
-  /**
-   * Имя дропдауна, отображается как плейсхолдер и при выборе нескольких значений
-   */
-  name: PropTypes.string.isRequired,
-  /**
-   * onChange => (event, {field: newValue})
-   */
-  onChange: PropTypes.func.isRequired,
-  /**
-   * Список возможных значений
-    | value - значение
-    | text - текст
-    | flag - флаг us
-    | icon - иконка world
-    | color - квадратик с цветом в hex (например цвет тега)
-    | image - ссылка на изображение (например иконка аппа)
-    | backgroundImageColor - цвет фона изображения (например для windows аппов)
-    | dotColor - цвет круглой точки (например цвет коллекции)
-   */
-  options: PropTypes.arrayOf(DropdownItemPropTypes).isRequired,
-  /**
-   * Нужен ли поиск, по дефолту поиск появляется если больше 8 значений
-   */
-  search: PropTypes.bool,
-  /**
-   * Если disabled
-   */
-  disabled: PropTypes.bool,
-  /**
-   * Если данные загружаются
-   */
-  loading: PropTypes.bool,
-  /**
-   * Кастомные элементы дропдауна:
-   *
-    Label: React.Element,
-    EmptyLabel: React.Element,
-    SingleLabel: React.Element,
-    MultiLabel: React.Element,
-    Symbols: React.Element,
-    Menu: React.Element,
-    Search: React.Element,
-    Option: React.Element,
-    ListMulti: React.Element,
-    ListSingle: React.Element,
-    ApplyButton: React.Element,
-    Message: React.Element,
-   */
-  layouts: {
-    Label: React.Element,
-    EmptyLabel: React.Element,
-    SingleLabel: React.Element,
-    MultiLabel: React.Element,
-    Symbols: React.Element,
-    Menu: React.Element,
-    Search: React.Element,
-    Option: React.Element,
-    ListMulti: React.Element,
-    ListSingle: React.Element,
-    ApplyButton: React.Element,
-    Message: React.Element,
-  },
-  /**
-   * Текст слева при мультивыборе, по дефолту берет name
-   */
-  multiLeftText: PropTypes.string,
-};
 
 DropdownComponent.defaultProps = {
   startOpened: false,
