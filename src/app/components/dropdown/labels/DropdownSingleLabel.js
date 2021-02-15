@@ -1,6 +1,5 @@
 import {useContext} from 'react';
 import {DropdownLayoutContext} from 'app/helpers/dropdownLayoutContext';
-import {DropdownItemPropTypes} from 'app/constants/dropdownConstant';
 
 export const DropdownSingleLabel = ({selectedOption}) => {
   const {Symbols} = useContext(DropdownLayoutContext);
@@ -14,8 +13,4 @@ export const DropdownSingleLabel = ({selectedOption}) => {
       </span>
     </span>
   );
-};
-
-DropdownSingleLabel.propTypes = {
-  selectedOption: DropdownItemPropTypes.isRequired,
 };

@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 const getText = (
   isHaveData,
   isSearch,
@@ -32,10 +30,4 @@ export const DropdownMessage = ({
       {text}
     </div>
   );
-};
-
-DropdownMessage.propTypes = {
-  isHaveData: PropTypes.bool.isRequired,
-  isSearch: PropTypes.bool.isRequired,
-  loading: PropTypes.bool.isRequired,
 };

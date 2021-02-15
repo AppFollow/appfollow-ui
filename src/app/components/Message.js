@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import {MessageIcon} from 'app/components/message/MessageIcon';
 
 const MessageComponent = ({
@@ -27,32 +26,6 @@ const MessageComponent = ({
 );
 
 MessageComponent.displayName = 'Message';
-
-MessageComponent.propTypes = {
-  type: PropTypes.oneOf(['warning', 'info', 'error', 'default']),
-  className: PropTypes.string,
-  children: PropTypes.node.isRequired,
-  /** Иконка */
-  icon: PropTypes.shape({
-    /** Тип иконки */
-    type: PropTypes.oneOf(['icon', 'img', 'node']),
-    /** Name иконки из font awesome */
-    name: PropTypes.string,
-    /** Ссылка на картинку */
-    img: PropTypes.string,
-    /** JSX вместо картинки */
-    node: PropTypes.node,
-    /** Размер картинки/иконки */
-    size: PropTypes.oneOf(['normal', 'big']),
-    /** Нужна ли белая подложка */
-    isBackground: PropTypes.bool,
-    /** Кастомный класс для иконки */
-    className: PropTypes.string,
-  }),
-  /** Колбек, если баннер умеет закрываться */
-  onRemove: PropTypes.func,
-  actionNode: PropTypes.bool,
-};
 
 MessageComponent.defaultProps = {
   type: 'default',

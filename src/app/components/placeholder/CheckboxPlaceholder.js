@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 /**
  * Компонент заглушки чекбокса
  */
@@ -12,9 +10,5 @@ const CheckboxPlaceholderComponent = ({className}) => (
     )}
   />
 );
-
-CheckboxPlaceholderComponent.propTypes = {
-  className: PropTypes.string.isRequired,
-};
 
 export const CheckboxPlaceholder = React.memo(CheckboxPlaceholderComponent);

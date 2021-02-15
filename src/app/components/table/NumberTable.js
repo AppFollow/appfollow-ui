@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import {getStyleForCellTable} from 'app/helpers/tableHelper';
 
 export const NumberTable = ({
@@ -16,16 +15,6 @@ export const NumberTable = ({
     {children}
   </span>
 );
-
-NumberTable.propTypes = {
-  children: PropTypes.node.isRequired,
-  type: PropTypes.oneOf(['negative', 'positive']),
-  className: PropTypes.string,
-  width: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
-};
 
 NumberTable.defaultProps = {
   type: '',

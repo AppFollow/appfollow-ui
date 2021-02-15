@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import {getStyleForCellTable} from 'app/helpers/tableHelper';
 
 export const ValueDiffTable = ({
@@ -24,21 +23,6 @@ export const ValueDiffTable = ({
     </span>
   </span>
 );
-
-ValueDiffTable.propTypes = {
-  children: PropTypes.node.isRequired,
-  type: PropTypes.oneOf(['negative', 'positive']),
-  diff: PropTypes.string,
-  className: PropTypes.string,
-  width: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
-  widthDiff: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
-};
 
 ValueDiffTable.defaultProps = {
   type: '',

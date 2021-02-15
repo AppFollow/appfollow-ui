@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import {useCallback} from 'react';
 
 const TabsComponent = ({
@@ -56,20 +55,9 @@ const TabsComponent = ({
 
 TabsComponent.displayName = 'Tabs';
 
-TabsComponent.propTypes = {
-  tabs: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string,
-    icon: PropTypes.string,
-    title: PropTypes.string,
-  })).isRequired,
-  activeTab: PropTypes.string,
-  children: PropTypes.element.isRequired,
-  onChange: PropTypes.func.isRequired,
-  className: PropTypes.string,
-};
-
 TabsComponent.defaultProps = {
   activeTab: '',
   className: '',
 };
+
 export const Tabs = React.memo(TabsComponent);

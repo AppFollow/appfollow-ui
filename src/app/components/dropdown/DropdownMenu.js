@@ -1,10 +1,5 @@
-import PropTypes from 'prop-types';
 import {useContext} from 'react';
 import {DropdownLayoutContext} from 'app/helpers/dropdownLayoutContext';
-import {
-  DropdownItemPropTypes,
-  DropdownValuePropTypes,
-} from 'app/constants/dropdownConstant';
 
 export const DropdownMenu = ({
   value,
@@ -64,28 +59,6 @@ export const DropdownMenu = ({
       )}
     </div>
   );
-};
-
-DropdownMenu.propTypes = {
-  multi: PropTypes.bool.isRequired,
-  onChange: PropTypes.func.isRequired,
-  options: PropTypes.arrayOf(DropdownItemPropTypes).isRequired,
-  value: DropdownValuePropTypes.isRequired,
-  isShowSearch: PropTypes.bool.isRequired,
-  menuRef: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.shape({
-      current: PropTypes.instanceOf(Element),
-    }),
-  ]).isRequired,
-  styles: PropTypes.objectOf(PropTypes.any),
-  selectIndex: PropTypes.number,
-  onMouseEnter: PropTypes.func,
-  selectedValue: DropdownValuePropTypes,
-  onApply: PropTypes.func,
-  search: PropTypes.string.isRequired,
-  setSearch: PropTypes.func.isRequired,
-  loading: PropTypes.bool.isRequired,
 };
 
 DropdownMenu.defaultProps = {

@@ -5,7 +5,6 @@ import {useSelectControl} from 'app/hooks/useSelectControl';
 import {useSearch} from 'app/hooks/useSearch';
 import {
   COUNT_OPTIONS_FOR_SEARCH,
-  DropdownPropTypes,
   DropdownDefaultProps,
 } from 'app/constants/dropdownConstant';
 import {keyBy} from 'app/helpers/common';
@@ -178,7 +177,6 @@ const DropdownMultiComponent = ({
   );
 };
 
-DropdownMultiComponent.propTypes = DropdownPropTypes;
 DropdownMultiComponent.defaultProps = DropdownDefaultProps;
 
 export const DropdownMulti = React.memo(DropdownMultiComponent);

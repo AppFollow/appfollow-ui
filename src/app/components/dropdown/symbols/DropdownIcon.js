@@ -1,9 +1,7 @@
-import PropTypes from 'prop-types';
+export const DropdownIcon = ({icon, iconColor}) => {
+  const styles = React.useMemo(() => iconColor ? {color: iconColor} : undefined, [iconColor]);
 
-export const DropdownIcon = ({icon}) => (
-  <i className={`icon ${icon} ui-select__icon ui-select__symbol`} />
-);
-
-DropdownIcon.propTypes = {
-  icon: PropTypes.string.isRequired,
-};
+  return (
+    <i className={`icon ${icon} ui-select__icon ui-select__symbol`} style={styles} />
+  );
+}

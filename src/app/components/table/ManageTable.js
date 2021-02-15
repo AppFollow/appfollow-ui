@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-import {ColumnItemTablePropTypes} from 'app/constants/tableConstant';
 import {Dropdown} from 'app/components/Dropdown';
 import {LabelManageTable} from 'app/components/table/LabelManageTable';
 
@@ -37,10 +35,4 @@ export const ManageTable = ({
       layouts={layouts}
     />
   );
-};
-
-ManageTable.propTypes = {
-  columns: PropTypes.arrayOf(ColumnItemTablePropTypes).isRequired,
-  viewColumns: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onChangeViewColumns: PropTypes.func.isRequired,
 };

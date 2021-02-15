@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import {
   useCallback,
   useMemo,
@@ -11,11 +10,6 @@ import {ManageTable} from 'app/components/table/ManageTable';
 import {ToggleHiddenRowsTable} from 'app/components/table/ToggleHiddenRowsTable';
 import {NumberTable} from 'app/components/table/NumberTable';
 import {ValueDiffTable} from 'app/components/table/ValueDiffTable';
-import {
-  SortDirectionPropTypes,
-  ColumnItemTablePropTypes,
-  RowTablePropTypes,
-} from 'app/constants/tableConstant';
 import {keyBy, noop} from 'app/helpers/common';
 
 const TableComponent = ({
@@ -113,7 +107,7 @@ const TableComponent = ({
     >
       {title || isManage ? (
         <div className="ui-sheet__top">
-          {title ? <TitleTable title={title} /> : null}
+          {title ? <TitleTable title={title} /> : <div />}
           {isManage ? (
             <ManageTable
               columns={columns}
@@ -157,64 +151,6 @@ const TableComponent = ({
 };
 
 TableComponent.displayName = 'Table';
-
-TableComponent.propTypes = {
-  /** Кастомный стиль для таблицы */
-  className: PropTypes.string,
-  /** Заголовок таблицы */
-  title: PropTypes.node,
-  /** Тип таблицы */
-  type: PropTypes.oneOf(['normal', 'stripe']),
-  /** Нужно ли управление таблицей */
-  isManage: PropTypes.bool,
-  /** Список видимых колонок */
-  viewColumns: PropTypes.arrayOf(PropTypes.string),
-  /** Функция после изменения сортировки, возвращает массив id видимых столбцов */
-  onChangeViewColumns: PropTypes.func,
-  /** Направление сортировки таблицы */
-  sortDirection: SortDirectionPropTypes,
-  /** Id колонки, которая сейчас сортируется */
-  sortColumnId: PropTypes.string,
-  /** Функция после изменения сортировки, возвращает объект аналогичный sort */
-  onSort: PropTypes.func,
-  /**
-   * Настройки колонок
-   *
-   *
-    id* - string - id колонки
-    content* - node - содержимое заголовка
-    isNoManaged? - bool - нужно ли убрать управление колонкой через Manage Table (по умолчанию false)
-    manageName? - string - кастомное название колонки в селекторе Manage Table
-    width? - string | number - фиксированная ширина колонки
-    sortable? - boolean - можно ли сортировать колонку (по умолчанию false)
-    firstSortDirection? - 'asc' | 'desc' - направление первой сортировки столбца
-    className? - кастомный класс
-    cellProps? - свойства для ячейки
-  */
-  columns: PropTypes.arrayOf(ColumnItemTablePropTypes),
-  /**
-   * Данные таблицы
-   *
-    key? - ключ строки
-    type? - 'bold' - тип строки
-    cells* [{
-      key? - ключ ячейки
-      node* - node - содержимое заголовка
-      className? - кастомный класс
-      cellProps? - свойства для ячейки
-      align? - 'left' 'center' 'right'
-    }]
-    rowProps? - свойства для строки
-    clickable? - эффект наведения мышки на строку
-  */
-  data: PropTypes.arrayOf(RowTablePropTypes).isRequired,
-  /** Количество колонок, прилепленных к левому краю, прикрепленные столбцы должны быть isNoManaged и иметь width */
-  countFixedColumn: PropTypes.number,
-  /** Скрывать ли таблицу в more/less  */
-  isHideRows: PropTypes.bool,
-  /** Количество строчек, которые выводится до more */
-  countViewRows: PropTypes.number,
-};
 
 TableComponent.defaultProps = {
   className: '',

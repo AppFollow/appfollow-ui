@@ -1,8 +1,3 @@
-import PropTypes from 'prop-types';
-import {
-  RowTablePropTypes,
-  ColumnItemTablePropTypes,
-} from 'app/constants/tableConstant';
 import {CellTable} from 'app/components/table/CellTable';
 import {getStyleForCellTable} from 'app/helpers/tableHelper';
 
@@ -47,11 +42,4 @@ export const RowTable = ({
       })}
     </tr>
   );
-};
-
-RowTable.propTypes = {
-  row: RowTablePropTypes.isRequired,
-  columns: PropTypes.arrayOf(ColumnItemTablePropTypes).isRequired,
-  countFixedColumn: PropTypes.number.isRequired,
-  widthPlaceholder: PropTypes.number.isRequired,
 };

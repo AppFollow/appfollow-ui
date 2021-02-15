@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import {InputPlaceholder} from 'app/components/placeholder/InputPlaceholder';
 import {TextPlaceholder} from 'app/components/placeholder/TextPlaceholder';
 import {CheckboxPlaceholder} from 'app/components/placeholder/CheckboxPlaceholder';
@@ -58,39 +57,6 @@ const PlaceholderComponent = ({
 };
 
 PlaceholderComponent.displayName = 'Placeholder';
-
-PlaceholderComponent.propTypes = {
-  /**
-   * Класс
-   */
-  className: PropTypes.string,
-  /**
-   * Тип заглушки
-   */
-  type: PropTypes.oneOf([
-    'h2',
-    'h5',
-    'kpi',
-    'text',
-    'input',
-    'checkbox',
-  ]),
-  /**
-   * Элемент имеет анимацию
-   */
-  isAnimate: PropTypes.bool,
-  /**
-   * Ширина (10, 10px, 10%)
-   */
-  width: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
-  /**
-   * Иконка для инпута
-   */
-  iconDropdown: PropTypes.string,
-};
 
 PlaceholderComponent.defaultProps = {
   className: '',

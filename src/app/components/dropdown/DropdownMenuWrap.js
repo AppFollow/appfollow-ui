@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-import {DropdownValuePropTypes} from 'app/constants/dropdownConstant';
 import {useContext} from 'react';
 import {DropdownLayoutContext} from 'app/helpers/dropdownLayoutContext';
 
@@ -48,17 +46,6 @@ export const DropdownMenuWrap = ({
       {...otherProps}
     />
   );
-};
-
-DropdownMenuWrap.propTypes = {
-  value: DropdownValuePropTypes.isRequired,
-  selectedValue: DropdownValuePropTypes,
-  dropdownRef: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.shape({
-      current: PropTypes.instanceOf(Element),
-    }),
-  ]).isRequired,
 };
 
 DropdownMenuWrap.defaultProps = {

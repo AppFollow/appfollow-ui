@@ -1,9 +1,4 @@
-import PropTypes from 'prop-types';
 import {HeaderCellTable} from 'app/components/table/HeaderCellTable';
-import {
-  ColumnItemTablePropTypes,
-  SortDirectionPropTypes,
-} from 'app/constants/tableConstant';
 import {getStyleForCellTable} from 'app/helpers/tableHelper';
 
 export const HeaderTable = ({
@@ -45,13 +40,4 @@ export const HeaderTable = ({
       })}
     </thead>
   );
-};
-
-HeaderTable.propTypes = {
-  columns: PropTypes.arrayOf(ColumnItemTablePropTypes).isRequired,
-  sortDirection: SortDirectionPropTypes.isRequired,
-  sortColumnId: PropTypes.string.isRequired,
-  onSort: PropTypes.func.isRequired,
-  countFixedColumn: PropTypes.number.isRequired,
-  widthPlaceholder: PropTypes.number.isRequired,
 };

@@ -5,7 +5,6 @@ import {useSelectControl} from 'app/hooks/useSelectControl';
 import {useSearch} from 'app/hooks/useSearch';
 import {
   COUNT_OPTIONS_FOR_SEARCH,
-  DropdownPropTypes,
   DropdownDefaultProps,
 } from 'app/constants/dropdownConstant';
 import {DropdownMenuWrap} from 'app/components/dropdown/DropdownMenuWrap';
@@ -140,7 +139,6 @@ const DropdownSingleComponent = ({
   );
 };
 
-DropdownSingleComponent.propTypes = DropdownPropTypes;
 DropdownSingleComponent.defaultProps = DropdownDefaultProps;
 
 export const DropdownSingle = React.memo(DropdownSingleComponent);
