@@ -13,6 +13,7 @@ const ButtonComponent = props => {
     className,
     inverted,
     type,
+    buttonType,
     color,
     size,
     disabled,
@@ -41,7 +42,7 @@ const ButtonComponent = props => {
   const {as, ...renderProps} = otherProps;
 
   if (ElementType === 'button') {
-    renderProps.type = 'button';
+    renderProps.type = buttonType;
   }
 
   const handleClick = useCallback(event => {
@@ -77,6 +78,7 @@ ButtonComponent.defaultProps = {
   content: null,
   inverted: false,
   type: 'default',
+  buttonType: 'button',
   size: 'normal',
   color: '',
   disabled: false,
