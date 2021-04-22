@@ -1,12 +1,12 @@
 {
   "name": "appfollow-ui",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Appfollow UI",
   "scripts": {
     "prepublishOnly": "npm run compile",
     "compile:js": "tsc",
     "compile:css": "postcss src/css/index.css -c .postcssrc.json -o lib/css/index.css",
-    "compile": "npm run compile:js && npm run compile:css",
+    "compile": "rm -rf lib && npm run compile:js && npm run compile:css",
     "dev": "styleguidist server",
     "prod": "styleguidist build",
     "css:fix": "stylelint *.css ./src/css --fix; exit 0",
@@ -21,7 +21,8 @@
   "author": "AppFollow",
   "license": "ISC",
   "files": [
-    "lib"
+    "lib",
+    "src"
   ],
   "keywords": [
     "appfollow",
