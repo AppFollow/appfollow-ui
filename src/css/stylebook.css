@@ -114,6 +114,7 @@ html * {
     }
   }
 }
+
 .ui-scrollbar {
   position: relative;
   overflow: -moz-scrollbars-none;
@@ -130,7 +131,6 @@ html * {
     background-color: #f2f2f2;
     border-radius: 3px !important;
   }
-
   &__ms {
     &--show {
       -ms-overflow-style: auto;
