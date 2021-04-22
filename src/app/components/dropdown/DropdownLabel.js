@@ -1,6 +1,6 @@
-import {useContext} from 'react';
-import {DropdownLayoutContext} from 'app/helpers/dropdownLayoutContext';
-import {getIsEmptyArray} from 'app/helpers/common';
+import React, {useContext} from 'react';
+import {DropdownLayoutContext} from '../../helpers/dropdownLayoutContext';
+import {getIsEmptyArray} from '../../helpers/common';
 
 export const DropdownLabel = ({
   valueOption,

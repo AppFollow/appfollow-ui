@@ -1,5 +1,5 @@
 ```js noeditor
-import {Comments} from 'app/docs/Comments';
+import {Comments} from '_common/Comments';
 
 <Comments
   visible

@@ -1,5 +1,5 @@
 ```js noeditor
-import {Comments} from 'app/docs/Comments';
+import {Comments} from '_common/Comments';
 
 <Comments
   markdown={`
@@ -13,7 +13,7 @@ import {Comments} from 'app/docs/Comments';
 ```
 
 ```js noeditor
-import {ColorItem} from 'app/docs/ColorItem';
+import {ColorItem} from '_common/ColorItem';
 const colors = [
   {
     text: 'Green',

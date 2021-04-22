@@ -1,3 +1,6 @@
+import React from 'react';
+import cn from 'classnames';
+
 export const ToggleHiddenRowsTable = ({
   isHide,
   setIsHide,

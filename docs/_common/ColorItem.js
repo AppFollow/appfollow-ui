@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import cn from 'classnames';
 import copy from 'clipboard-copy';
 
 const ColorItemComponent = ({name, color, isInverted}) => {
@@ -37,12 +37,6 @@ const ColorItemComponent = ({name, color, isInverted}) => {
       </div>
     </div>
   );
-};
-
-ColorItemComponent.propTypes = {
-  name: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
-  isInverted: PropTypes.bool.isRequired,
 };
 
 export const ColorItem = ColorItemComponent;

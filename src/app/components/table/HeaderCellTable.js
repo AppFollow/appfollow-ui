@@ -1,4 +1,7 @@
-import {getStyleForCellTable} from 'app/helpers/tableHelper';
+import React from 'react';
+import cn from 'classnames';
+
+import {getStyleForCellTable} from '../../helpers/tableHelper';
 
 export const HeaderCellTable = ({
   data,

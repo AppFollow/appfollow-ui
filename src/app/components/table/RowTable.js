@@ -1,5 +1,8 @@
-import {CellTable} from 'app/components/table/CellTable';
-import {getStyleForCellTable} from 'app/helpers/tableHelper';
+import React from 'react';
+import cn from 'classnames';
+
+import {CellTable} from './CellTable';
+import {getStyleForCellTable} from '../../helpers/tableHelper';
 
 export const RowTable = ({
   row,

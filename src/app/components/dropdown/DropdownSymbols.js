@@ -1,8 +1,10 @@
-import {DropdownColor} from 'app/components/dropdown/symbols/DropdownColor';
-import {DropdownFlag} from 'app/components/dropdown/symbols/DropdownFlag';
-import {DropdownIcon} from 'app/components/dropdown/symbols/DropdownIcon';
-import {DropdownImage} from 'app/components/dropdown/symbols/DropdownImage';
-import {DropdownDotColor} from 'app/components/dropdown/symbols/DropdownDotColor';
+import React from 'react';
+
+import {DropdownColor} from './symbols/DropdownColor';
+import {DropdownFlag} from './symbols/DropdownFlag';
+import {DropdownIcon} from './symbols/DropdownIcon';
+import {DropdownImage} from './symbols/DropdownImage';
+import {DropdownDotColor} from './symbols/DropdownDotColor';
 
 export const DropdownSymbols = ({option}) => (
   <React.Fragment>

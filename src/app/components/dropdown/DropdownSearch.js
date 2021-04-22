@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const DropdownSearch = ({search, setSearch}) => {
   const handleChange = React.useCallback(
     event => setSearch(event.target.value),

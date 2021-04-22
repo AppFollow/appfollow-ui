@@ -2,6 +2,7 @@
 ---
 
 ## Разработка
+
 `yarn` - установить npm зависимости
 
 `yarn dev` - дев сборка стайлбука http://localhost:6060/
@@ -23,6 +24,7 @@
 ---
 
 ## Публикация в npm
+
 1. Полное ревью ПРа и тесты
 
 2. `npm version patch`
@@ -36,9 +38,10 @@
 ---
 
 ## Импорт
+
 `import 'appfollow-ui/lib/css/index.css';` - импортировать стили
 
-`import {Button} from 'appfollow-ui` - импортировать компонент
+`import {Button} from 'appfollow-ui/lib/app/components/Button` - импортировать компонент
 
 ---
 

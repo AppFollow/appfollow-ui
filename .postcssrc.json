@@ -1,0 +1,18 @@
+{
+  "parser": "postcss-scss",
+  "map": true,
+  "plugins": {
+    "postcss-import": {
+      "path": "src/css"
+    },
+    "postcss-mixins": {},
+    "precss": {},
+    "postcss-csso": {
+      "restructure": false,
+      "comments": "none"
+    },
+    "autoprefixer": {
+      "flexbox": "no-2009"
+    }
+  }
+}

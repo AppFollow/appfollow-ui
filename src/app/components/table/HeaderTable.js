@@ -1,5 +1,7 @@
-import {HeaderCellTable} from 'app/components/table/HeaderCellTable';
-import {getStyleForCellTable} from 'app/helpers/tableHelper';
+import React from 'react';
+
+import {getStyleForCellTable} from '../../helpers/tableHelper';
+import {HeaderCellTable} from './HeaderCellTable';
 
 export const HeaderTable = ({
   columns,

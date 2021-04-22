@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {compiler} from 'markdown-to-jsx';
 
 const CommentsComponent = ({text, markdown, visible}) => {
@@ -17,12 +16,6 @@ const CommentsComponent = ({text, markdown, visible}) => {
       ) : null}
     </div>
   );
-};
-
-CommentsComponent.propTypes = {
-  text: PropTypes.string,
-  visible: PropTypes.bool,
-  markdown: PropTypes.string.isRequired,
 };
 
 CommentsComponent.defaultProps = {

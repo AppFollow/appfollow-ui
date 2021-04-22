@@ -1,4 +1,20 @@
-import {useCallback} from 'react';
+import React, {useCallback} from 'react';
+import cn from 'classnames';
+
+export type Tab = {
+  name: string;
+  icon?: string;
+  title: string;
+  className?: string;
+};
+
+export interface TabsProps {
+  tabs: Array<Tab>;
+  activeTab?: string;
+  children?: React.ReactNode;
+  onChange?: Function;
+  className?: string;
+}
 
 const TabsComponent = ({
   tabs,
@@ -6,11 +22,11 @@ const TabsComponent = ({
   children,
   onChange,
   className,
-}) => {
+}: TabsProps) => {
   const handleClick = useCallback(event => {
     const {tab} = event.currentTarget.dataset;
 
-    if (activeTab !== tab) {
+    if (activeTab !== tab && onChange) {
       onChange(event, tab);
     }
   }, [onChange, activeTab]);
@@ -60,4 +76,4 @@ TabsComponent.defaultProps = {
   className: '',
 };
 
-export const Tabs = React.memo(TabsComponent);
+export const Tabs = React.memo<TabsProps>(TabsComponent);

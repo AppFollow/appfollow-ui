@@ -1,8 +1,21 @@
-import {InputPlaceholder} from 'app/components/placeholder/InputPlaceholder';
-import {TextPlaceholder} from 'app/components/placeholder/TextPlaceholder';
-import {CheckboxPlaceholder} from 'app/components/placeholder/CheckboxPlaceholder';
+import React from 'react';
+import cn from 'classnames';
 
-const textTypes = ['h2', 'h5', 'kpi', 'text'];
+import {InputPlaceholder} from './placeholder/InputPlaceholder';
+import {TextPlaceholder} from './placeholder/TextPlaceholder';
+import {CheckboxPlaceholder} from './placeholder/CheckboxPlaceholder';
+
+export type PlaceholderType = 'h2' | 'h5' | 'kpi' | 'text' | 'input' | 'checkbox';
+
+export interface PlaceholderProps {
+  isAnimate?: boolean;
+  className?: string;
+  width?: string | number;
+  type?: PlaceholderType;
+  iconDropdown?: string;
+}
+
+const textTypes: readonly PlaceholderType[] = ['h2', 'h5', 'kpi', 'text'];
 /**
  * Компонент кнопки
  */
@@ -12,7 +25,7 @@ const PlaceholderComponent = ({
   width,
   type,
   iconDropdown,
-}) => {
+}: PlaceholderProps) => {
   const resultClassName = cn(
     {
       'ui-placeholder--active': isAnimate,
@@ -20,7 +33,7 @@ const PlaceholderComponent = ({
     className,
   );
 
-  const isText = textTypes.includes(type);
+  const isText = type !== undefined && textTypes.includes(type);
 
   let Component = null;
 
@@ -38,7 +51,7 @@ const PlaceholderComponent = ({
 
   if (!Component) return null;
 
-  const props = {
+  const props: PlaceholderProps = {
     className: resultClassName,
     width: typeof width === 'number' && width
       ? `${width}px`
@@ -53,7 +66,7 @@ const PlaceholderComponent = ({
     props.type = type;
   }
 
-  return <Component {...props} />;
+  return <Component {...props as any} />;
 };
 
 PlaceholderComponent.displayName = 'Placeholder';
@@ -66,4 +79,4 @@ PlaceholderComponent.defaultProps = {
   iconDropdown: 'caret down',
 };
 
-export const Placeholder = React.memo(PlaceholderComponent);
+export const Placeholder = React.memo<PlaceholderProps>(PlaceholderComponent as any);
