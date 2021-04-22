@@ -1,4 +1,26 @@
-import {MessageIcon} from 'app/components/message/MessageIcon';
+import React, {MouseEventHandler} from 'react';
+import cn from 'classnames';
+
+import {MessageIcon} from './message/MessageIcon';
+
+export interface MessageIconProps {
+  type?: 'icon' | 'img' | 'node';
+  name?: string;
+  img?: string;
+  size?: 'normal' | 'big';
+  node?: React.ReactNode;
+}
+
+export type MessageType = 'warning' | 'info' | 'error' | 'default';
+
+export interface MessageProps {
+  type?: MessageType;
+  className?: string;
+  children: React.ReactNode;
+  icon?: MessageIconProps;
+  onRemove?: MouseEventHandler<HTMLElement>;
+  actionNode?: React.ReactNode;
+}
 
 const MessageComponent = ({
   type,
@@ -7,7 +29,7 @@ const MessageComponent = ({
   icon,
   onRemove,
   actionNode,
-}) => (
+}: MessageProps) => (
   <div className={cn('ui-infostrip', `ui-infostrip--${type}`, className)}>
     {icon ? <MessageIcon {...icon} /> : null}
 
@@ -35,4 +57,4 @@ MessageComponent.defaultProps = {
   actionNode: null,
 };
 
-export const Message = React.memo(MessageComponent);
+export const Message = React.memo<MessageProps>(MessageComponent as any);

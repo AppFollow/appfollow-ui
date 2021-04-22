@@ -1,12 +1,39 @@
-import {getElementType} from 'app/helpers/getElementType';
-import {useCallback} from 'react';
+import React, {useCallback} from 'react';
+import cn from 'classnames';
+
+import {getElementType} from '../helpers/getElementType';
+
+export type ButtonType = 'default' | 'primary' | 'secondary' | 'custom';
+export type ButtonHtmlType = 'button' | 'reset' | 'submit';
+export type ButtonColor = 'red' | 'green' | 'graphite';
+export type ButtonSize = 'normal' | 'big';
+
+export interface ButtonProps {
+  content?: React.ReactNode;
+  children?: React.ReactNode;
+  className?: string;
+  inverted?: boolean;
+  type?: ButtonType;
+  buttonType?: ButtonHtmlType;
+  color?: ButtonColor;
+  size?: ButtonSize;
+  disabled?: boolean;
+  loading?: boolean;
+  basic?: boolean;
+  icon?: string;
+  onClick?: Function;
+  as?: string | JSX.Element;
+  href?: string;
+  target?: string;
+  rel?: string;
+}
 
 /**
  * Компонент кнопки
  *
  * @author [Alec Zvoncov](https://github.com/offcall)
  */
-const ButtonComponent = props => {
+const ButtonComponent = (props: ButtonProps) => {
   const {
     content,
     children,
@@ -42,7 +69,7 @@ const ButtonComponent = props => {
   const {as, ...renderProps} = otherProps;
 
   if (ElementType === 'button') {
-    renderProps.type = buttonType;
+    (renderProps as any).type = buttonType;
   }
 
   const handleClick = useCallback(event => {
@@ -88,4 +115,4 @@ ButtonComponent.defaultProps = {
   onClick: null,
 };
 
-export const Button = React.memo(ButtonComponent);
+export const Button = React.memo<ButtonProps>(ButtonComponent as any);

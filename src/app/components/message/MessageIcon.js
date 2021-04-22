@@ -1,3 +1,6 @@
+import React from 'react';
+import cn from 'classnames';
+
 const MessageIconComponent = ({
   type,
   name,

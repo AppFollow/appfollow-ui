@@ -1,16 +1,88 @@
-import {
+import React, {
   useCallback,
   useMemo,
   useState,
 } from 'react';
-import {TitleTable} from 'app/components/table/TitleTable';
-import {BodyTable} from 'app/components/table/BodyTable';
-import {HeaderTable} from 'app/components/table/HeaderTable';
-import {ManageTable} from 'app/components/table/ManageTable';
-import {ToggleHiddenRowsTable} from 'app/components/table/ToggleHiddenRowsTable';
-import {NumberTable} from 'app/components/table/NumberTable';
-import {ValueDiffTable} from 'app/components/table/ValueDiffTable';
-import {keyBy, noop} from 'app/helpers/common';
+import cn from 'classnames';
+
+import {keyBy, noop} from '../helpers/common';
+
+import {TitleTable} from './table/TitleTable';
+import {BodyTable} from './table/BodyTable';
+import {HeaderTable} from './table/HeaderTable';
+import {ManageTable} from './table/ManageTable';
+import {ToggleHiddenRowsTable} from './table/ToggleHiddenRowsTable';
+import {NumberTable} from './table/NumberTable';
+import {ValueDiffTable} from './table/ValueDiffTable';
+
+export interface ITableProps {
+  data: Array<TableRow>;
+  title?: string;
+  viewColumns?: ReadonlyArray<string>;
+  onChangeViewColumns?: (viewColumns: Array<string>) => void;
+  sortDirection?: TTableDirection;
+  sortColumnId?: string;
+  onSort?: (data: {columnId: string; direction: TTableDirection}) => void;
+  columns?: ReadonlyArray<TableColumn>;
+  countFixedColumn?: number;
+  isManage?: boolean;
+  className?: string;
+  isHideRows?: boolean;
+  type?: 'stripe' | 'normal';
+  countViewRows?: number;
+}
+
+export type TTableDirection = 'asc' | 'desc';
+
+export type TTypeCellValueDiff = 'negative' | 'positive';
+
+export type TableColumn = {
+  id: string;
+  content: React.ReactNode;
+  isNoManaged?: boolean;
+  manageName?: string;
+  width?: string | number;
+  sortable?: boolean;
+  firstSortDirection?: TTableDirection;
+  className?: string;
+  cellProps?: object;
+};
+
+export type TableCell = {
+  node: React.ReactNode;
+  key?: string;
+  className?: string;
+  cellProps?: object;
+  align?: 'left' | 'center' | 'right';
+};
+
+export type TableRow = {
+  type?: 'bold';
+  cells?: Array<TableCell>;
+  rowProps?: object;
+  clickable?: boolean;
+};
+
+export type TOnSortArg = {
+  direction: TTableDirection;
+  columnId: string;
+};
+
+export interface IValueDiffTable {
+  type?: TTypeCellValueDiff;
+  diff?: React.ReactNode;
+  children: React.ReactNode;
+  className?: string;
+  width?: string | number;
+  widthDiff?: string | number;
+}
+
+export interface INumberTable {
+  type?: TTypeCellValueDiff;
+  children: React.ReactNode;
+  className?: string;
+  width?: string | number;
+}
 
 const TableComponent = ({
   className,
@@ -27,7 +99,7 @@ const TableComponent = ({
   countFixedColumn,
   isHideRows,
   countViewRows,
-}) => {
+}: ITableProps & {viewColumns: ReadonlyArray<string>, columns: ReadonlyArray<TableColumn>, countViewRows: number}) => {
   const [isHide, setIsHide] = useState(isHideRows);
   const mapColumnById = useMemo(
     () => keyBy(columns, 'id'),
@@ -52,7 +124,8 @@ const TableComponent = ({
     }
 
     onSort({
-      direction,
+      // TODO: FIX
+      direction: direction as any,
       columnId: id,
     });
   }, [mapColumnById, onSort, sortDirection, sortColumnId]);
@@ -78,7 +151,7 @@ const TableComponent = ({
 
       return data.map((row) => ({
         ...row,
-        cells: row.cells.filter((cell, index) => columnsViewByIndex[index]),
+        cells: row.cells!.filter((cell, index) => columnsViewByIndex[index]),
       }));
     },
     [columns, data, isManage, viewColumns],
@@ -96,7 +169,7 @@ const TableComponent = ({
 
     return columns
       .slice(0, countFixedColumn)
-      .reduce((sum, col) => sum + col.width, 0);
+      .reduce((sum, col) => sum + +col.width!, 0);
   }, [columns, countFixedColumn]);
 
   const isShowToggleHiddenRows = isHideRows && data.length > countViewRows;
@@ -168,7 +241,10 @@ TableComponent.defaultProps = {
   countViewRows: 5,
 };
 
-export const Table = React.memo(TableComponent);
+export const Table = React.memo(TableComponent) as any as React.NamedExoticComponent<ITableProps> & {
+  ValueDiffTable: React.FC<IValueDiffTable>;
+  Number: React.FC<INumberTable>;
+};
 
-Table.Number = NumberTable;
-Table.ValueDiffTable = ValueDiffTable;
+Table.Number = NumberTable as any;
+Table.ValueDiffTable = ValueDiffTable as any;

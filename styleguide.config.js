@@ -1,4 +1,8 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
+/* eslint-disable
+  @typescript-eslint/no-var-requires,
+  no-undef
+  */
+
 const path = require('path');
 
 module.exports = {
@@ -11,6 +15,7 @@ module.exports = {
     url: 'https://github.com/AppFollow/appfollow-ui',
     text: 'GitHub',
   },
+  propsParser: require('react-docgen-typescript').withCustomConfig('./tsconfig.json', {}).parse,
   pagePerSection: true,
   sections: [
     {
@@ -26,20 +31,18 @@ module.exports = {
     },
     {
       name: 'Components',
-      components: 'src/app/components/[A-Z]*.js',
+      components: 'src/app/components/[A-Z]*.tsx',
       exampleMode: 'collapse',
       usageMode: 'expand',
       sectionDepth: 1,
     },
   ],
   getComponentPathLine(componentPath) {
-    const name = path.basename(componentPath, '.js');
-
-    return `import {${name}} from 'appfollow-ui';`;
+    const name = path.basename(componentPath, '.tsx');
+    return `import {${name}} from 'appfollow-ui/lib/app/components/${name}';`;
   },
   getExampleFilename(componentPath) {
-    const name = path.basename(componentPath, '.js');
-
+    const name = path.basename(componentPath, '.tsx');
     return path.join(__dirname, `docs/components/${name}.md`);
   },
   template: {

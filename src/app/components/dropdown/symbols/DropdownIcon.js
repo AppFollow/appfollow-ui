@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const DropdownIcon = ({icon, iconColor}) => {
   const styles = React.useMemo(() => iconColor ? {color: iconColor} : undefined, [iconColor]);
 

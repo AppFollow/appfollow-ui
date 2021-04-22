@@ -1,4 +1,7 @@
-import {TextPlaceholder} from 'app/components/placeholder/TextPlaceholder';
+import React from 'react';
+import cn from 'classnames';
+
+import {TextPlaceholder} from './TextPlaceholder';
 
 /**
  * Компонент заглушки инпута

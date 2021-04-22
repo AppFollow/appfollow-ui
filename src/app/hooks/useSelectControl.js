@@ -8,7 +8,7 @@ import {
   ENTER_KEY,
   UP_KEY,
   DOWN_KEY,
-} from 'app/constants/keyConstant';
+} from '../constants/keyConstant';
 
 const getBeforeIndex = (currentIndex) => {
   if (currentIndex - 1 < 0) {

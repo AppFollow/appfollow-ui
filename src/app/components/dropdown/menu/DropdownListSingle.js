@@ -1,5 +1,7 @@
-import {useContext} from 'react';
-import {DropdownLayoutContext} from 'app/helpers/dropdownLayoutContext';
+import React, {useContext} from 'react';
+import cn from 'classnames';
+
+import {DropdownLayoutContext} from '../../../helpers/dropdownLayoutContext';
 
 const normalizeValue = (value) => {
   if (value === 'resetValue' || value === null || value === undefined) return '';

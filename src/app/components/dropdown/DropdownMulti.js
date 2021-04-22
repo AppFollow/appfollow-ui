@@ -1,14 +1,16 @@
-import {useContext} from 'react';
-import {DropdownLayoutContext} from 'app/helpers/dropdownLayoutContext';
-import {useDropdown} from 'app/hooks/useDropdown';
-import {useSelectControl} from 'app/hooks/useSelectControl';
-import {useSearch} from 'app/hooks/useSearch';
+import React, {useContext} from 'react';
+import cn from 'classnames';
+
+import {DropdownLayoutContext} from '../../helpers/dropdownLayoutContext';
+import {useDropdown} from '../../hooks/useDropdown';
+import {useSelectControl} from '../../hooks/useSelectControl';
+import {useSearch} from '../../hooks/useSearch';
 import {
   COUNT_OPTIONS_FOR_SEARCH,
   DropdownDefaultProps,
-} from 'app/constants/dropdownConstant';
-import {keyBy} from 'app/helpers/common';
-import {DropdownMenuWrap} from 'app/components/dropdown/DropdownMenuWrap';
+} from '../../constants/dropdownConstant';
+import {keyBy} from '../../helpers/common';
+import {DropdownMenuWrap} from './DropdownMenuWrap';
 
 const getValueOption = (multi, value, mapOptionsByValue) => {
   let valueOption = null;

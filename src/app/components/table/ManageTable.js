@@ -1,5 +1,7 @@
-import {Dropdown} from 'app/components/Dropdown';
-import {LabelManageTable} from 'app/components/table/LabelManageTable';
+import React from 'react';
+
+import {Dropdown} from '../Dropdown';
+import {LabelManageTable} from './LabelManageTable';
 
 const layouts = {
   Label: LabelManageTable,
