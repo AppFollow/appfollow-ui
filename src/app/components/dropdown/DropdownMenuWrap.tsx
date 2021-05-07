@@ -31,8 +31,6 @@ export const DropdownMenuWrap = React.memo(({
 
       const dropdownRect = dropdownRef.current.getBoundingClientRect();
       const menuRect = menuRef.current.getBoundingClientRect();
-
-      // отступ от правого края окна
       const paddingRight = window.innerWidth - (dropdownRect.left + window.pageXOffset) - menuRect.width;
 
       setStyles({
