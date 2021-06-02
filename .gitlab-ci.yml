@@ -1,0 +1,62 @@
+---
+include:
+  - project: "appfollow/devops/gitlab-pipeline-templates"
+    file: "templates.yml"
+    ref: "master"
+
+stages:
+  - build
+  - deploy-testing
+  - deploy-production
+
+build:
+  extends: ._template_kaniko
+  stage: build
+  variables:
+    kaniko_extra_args: |
+      --build-arg GITLAB_TOKEN=$GITLAB_PACKAGE_TOKEN
+      --context .
+      --dockerfile Dockerfile
+      --destination $CI_REGISTRY_IMAGE/backend:$CI_COMMIT_REF_SLUG-$CI_PIPELINE_ID
+
+deploy-to-dev:
+  stage: deploy-testing
+  image: registry.gitlab.com/appfollow/devops/dockerfiles/cicd:master
+  when: manual
+  script:
+    - helm upgrade
+      --install
+      --values kubernetes/chart/values-dev.yaml
+      --set image.tag=$CI_COMMIT_REF_SLUG-$CI_PIPELINE_ID
+      --set annotationEnv=$CI_ENVIRONMENT_SLUG
+      --set annotationApp=$CI_PROJECT_PATH_SLUG
+      --atomic
+      --reset-values
+      --wait
+      --timeout 120s
+      ui-kit
+      ./kubernetes/chart
+  environment:
+    name: dev/stage
+
+deploy-to-prod:
+  stage: deploy-production
+  image: registry.gitlab.com/appfollow/devops/dockerfiles/cicd:master
+  # only:
+  #   - master
+  when: manual
+  script:
+    - helm upgrade
+      --install
+      --values kubernetes/chart/values-prod.yaml
+      --set image.tag=$CI_COMMIT_REF_SLUG-$CI_PIPELINE_ID
+      --set annotationEnv=$CI_ENVIRONMENT_SLUG
+      --set annotationApp=$CI_PROJECT_PATH_SLUG
+      --atomic
+      --reset-values
+      --wait
+      --timeout 120s
+      ui-kit
+      ./kubernetes/chart
+  environment:
+    name: prod/production

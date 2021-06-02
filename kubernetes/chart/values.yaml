@@ -1,0 +1,26 @@
+replicaCount: 1
+
+annotationApp: gitlab
+annotationEnv: gitlab
+
+image:
+  repository: registry.gitlab.com/appfollow/frontend/appfollow-ui/backend
+  tag: latest
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: 
+  - name: registry-gitlab
+nameOverride: ""
+fullnameOverride: ""
+
+podAnnotations: {}
+
+service:
+  type: ClusterIP
+  port: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
