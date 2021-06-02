@@ -34,7 +34,7 @@ deploy-to-dev:
       --reset-values
       --wait
       --timeout 120s
-      ui-kit
+      stylebook
       ./kubernetes/chart
   environment:
     name: dev/stage
@@ -56,7 +56,7 @@ deploy-to-prod:
       --reset-values
       --wait
       --timeout 120s
-      ui-kit
+      stylebook
       ./kubernetes/chart
   environment:
     name: prod/production

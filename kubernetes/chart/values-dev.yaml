@@ -7,11 +7,11 @@ ingress:
     ingress.kubernetes.io/ssl-redirect: "true"
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
   path: /
-  host: ui-kit.rancher-dev-public.appfollow.io
+  host: stylebook.rancher-dev-public.appfollow.io
   tls:
     - hosts:
-        - ui-kit.rancher-dev-public.appfollow.io
-      secretName: ui-kit-tls
+        - stylebook.rancher-dev-public.appfollow.io
+      secretName: stylebook-tls
 
 environment: {}
 
