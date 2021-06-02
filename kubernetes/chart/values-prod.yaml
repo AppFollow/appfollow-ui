@@ -6,11 +6,11 @@ ingress:
     kubernetes.io/ingress.class: nginx-public
     cert-manager.io/cluster-issuer: letsencrypt-dns
   path: /
-  host: stylebook.rancher-prod-public.appfollow.io
+  host: stylebook-prod.appfollow.io
   tls:
     - hosts:
-        - stylebook.rancher-prod-public.appfollow.io
-      secretName: stylebook-tls
+        - stylebook-prod.appfollow.io
+      secretName: appfollow-wildcard
 
 environment: {}
 
