@@ -4,13 +4,12 @@ ingress:
   enabled: true
   annotations:
     kubernetes.io/ingress.class: nginx-public
-    cert-manager.io/cluster-issuer: letsencrypt-dns
   path: /
-  host: stylebook-prod.appfollow.io
+  host: stylebook.rancher-prod-public.appfollow.io
   tls:
     - hosts:
-        - stylebook-prod.appfollow.io
-      secretName: appfollow-wildcard
+        - stylebook.rancher-prod-public.appfollow.io
+      secretName: rancher-prod-public-wildcard
 
 environment: {}
 
