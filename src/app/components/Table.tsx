@@ -17,7 +17,7 @@ import {ValueDiffTable} from './table/ValueDiffTable';
 
 export interface ITableProps {
   data: Array<TableRow>;
-  title?: string;
+  title?: React.ReactNode;
   viewColumns?: ReadonlyArray<string>;
   onChangeViewColumns?: (viewColumns: Array<string>) => void;
   sortDirection?: TTableDirection;
